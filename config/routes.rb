@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'bookings/new'
-  get 'bookings/edit'
-  get 'bookings/show'
-  get 'bookings/index'
   devise_for :users
+
+  resources :users, only: [:show, :edit, :update]
+
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     # resources :groups
@@ -13,3 +12,5 @@ Rails.application.routes.draw do
     end
     # resources :reviews
 end
+
+
