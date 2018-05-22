@@ -8,10 +8,9 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
 
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    # resources :groups
-    resources :items do
-      # resources :bookings
-    end
-    # resources :reviews
+
+  resources :items
+
+  resources :bookings
+
 end
