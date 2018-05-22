@@ -1,0 +1,10 @@
+<%= simple_form_for item do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :rental_price %>
+  <%= f.input :buying_price %>
+  <%= f.input :size %>
+  <%= f.input :availability, :as => :select, :label => "Available?"%>
+  <%= f.submit %>
+<% end %>
+  <%= link_to 'back', items_path %> |
