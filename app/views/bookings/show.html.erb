@@ -1,6 +1,18 @@
 <h1>Bookings#show</h1>
 <p>Find me in app/views/bookings/show.html.erb</p>
 
-<ul>
-  <li><%= @bookings.each { |booking| puts booking } %></li>
-</ul>
+
+<div>
+  <%= @booking.item.name %>
+  <%= link_to "Edit booking", edit_item_booking_path %>
+</div>
+<div>
+  <%= @booking.start_date %>
+  <%= @booking.end_date %>
+</div>
+<div>
+  <%= @booking.item.rental_price %>
+  <%= @booking.item.buying_price %>
+</div>
+
+<%= link_to "Back", item_bookings_path %>
