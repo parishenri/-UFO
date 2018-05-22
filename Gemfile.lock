@@ -229,6 +229,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   carrierwave (~> 1.2)
   cloudinary
+  bootstrap-sass
   devise
   figaro
   font-awesome-sass (~> 5.0.9)
@@ -238,7 +239,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
-  rails (= 5.2.0)
+  rails (~> 5.2.0)
   redis
   sass-rails
   simple_form

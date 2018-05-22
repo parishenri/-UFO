@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
+  skip_before_action :authenticate_user!
 
   def index
     @items = Item.all
