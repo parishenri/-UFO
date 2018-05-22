@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :show]
+  before_action :set_booking, only: [:edit, :show, :update]
+  before_action :set_item
 
   def new
     @booking = Booking.new
@@ -18,19 +19,31 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @item = Item.create(booking_params)
-    redirect_to bookings_show_path
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.item = Item.find(params[:item_id])
+    @booking.save
+    redirect_to item_bookings_path
   end
 
   def update
     @booking.update(booking_params)
-    redirect_to bookings_show_path
+    redirect_to item_bookings_path
+  end
+
+  def destroy
+    @booking.destroy(booking_params)
+    redirect_to item_bookings_path
   end
 
   private
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def booking_params
