@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def user_profile
     @user = User.find(params[:id])
   end
+
+  def user_listing
+    @items = Item.all
+  end
 end
