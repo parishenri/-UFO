@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :show, :update]
+  before_action :set_booking, only: [:edit, :show, :update, :destroy]
   before_action :set_item, except: :index
   before_action :set_user, only: :index
 
@@ -33,8 +33,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    item = @booking.item
     @booking.destroy
-    redirect_to item_bookings_path
+    redirect_to item_bookings_path(item)
   end
 
   private
