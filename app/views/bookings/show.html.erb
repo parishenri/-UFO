@@ -1,18 +1,32 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+
+<div class="container">
+  <div>
+    <h1>Bookings#show</h1>
+    <p>Find me in app/views/bookings/show.html.erb</p>
 
 
-<div>
-  <%= @booking.item.name %>
-  <%= link_to "Edit booking", edit_item_booking_path %>
+    <div>
+      <%= @booking.item.name %>
+      <%= link_to "Edit booking", edit_item_booking_path %>
+    </div>
+    <div>
+      <%= @booking.start_date %>
+      <%= @booking.end_date %>
+    </div>
+    <div>
+      <%= @booking.item.rental_price %>
+      <%= @booking.item.buying_price %>
+    </div>
+  </div>
+<div class="container-item-show">
+  <div class="card image-item-show-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @item.photo%>');">
+  </div>
+  <div class="item-description">
+  <h1><%= @item.name %></h1>
+    <p> description </p>
+    <p><%= @item.description %></p>
+    <p>Size: <%= @item.size %></p>
+  </div>
 </div>
-<div>
-  <%= @booking.start_date %>
-  <%= @booking.end_date %>
+  <%= link_to "Back", item_bookings_path %>
 </div>
-<div>
-  <%= @booking.item.rental_price %>
-  <%= @booking.item.buying_price %>
-</div>
-
-<%= link_to "Back", item_bookings_path %>
