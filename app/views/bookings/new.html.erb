@@ -2,6 +2,7 @@
   <h1>Bookings#new</h1>
   <p>Find me in app/views/bookings/new.html.erb</p>
 
+<<<<<<< linking-booking
   <%= simple_form_for([@item, @booking]) do |f| %>
     <%= f.input :start_date, as: :date %>
     <%= f.input :end_date, as: :date %>
@@ -9,3 +10,10 @@
   <% end %>
   <%= link_to "Back", items_path %>
 </div>
+=======
+<%= simple_form_for([@item, @booking]) do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit "add booking", class: "btn btn-primary" %>
+<% end %>
+>>>>>>> master
