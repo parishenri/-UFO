@@ -1,17 +1,23 @@
+.container {
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
+
 .container-item-show {
   display: flex;
   justify-content: center;
   margin: 2%;
 }
 
-
 .image-item-show-page {
   width: 200px;
   margin-top: 10%;
   margin-bottom: 10%;
   margin-left: 5%;
-  margin-right: 5%;}
-
+  margin-right: 5%;
+}
 
 .item-description {
   margin-top: 10%;
