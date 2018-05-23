@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy(booking_params)
+    @booking.destroy
     redirect_to item_bookings_path
   end
 

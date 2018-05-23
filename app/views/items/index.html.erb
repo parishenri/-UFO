@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>List items</h1>
+  <h1>Items around you</h1>
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
@@ -7,8 +7,6 @@
           <div class="card-description">
             <h2><%= link_to item.name, item_path(item) %></h2>
           </div>
-          <%= link_to 'edit', edit_item_path(item) %>
-          <%= link_to 'delete', item_path(item), method: :delete %>
         </div>
       </div>
     <% end %>
