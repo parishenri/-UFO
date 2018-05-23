@@ -1,19 +1,21 @@
 <div class="container">
-  <h1>Bookings#new</h1>
-  <p>Find me in app/views/bookings/new.html.erb</p>
-
-<<<<<<< linking-booking
-  <%= simple_form_for([@item, @booking]) do |f| %>
-    <%= f.input :start_date, as: :date %>
-    <%= f.input :end_date, as: :date %>
-    <%= f.submit "add a booking", class: "btn btn-primary" %>
-  <% end %>
-  <%= link_to "Back", items_path %>
+  <h2>New Booking</h2>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="date_form">
+        <%= simple_form_for([@item, @booking]) do |f| %>
+          <%= f.input :start_date, as: :date, order: [:day, :month, :year], input_html: { class: "form_style" }%>
+          <%= f.input :end_date, as: :date, order: [:day, :month, :year],input_html: { class: "form_style" } %>
+          <%= f.submit "add booking", class: "btn btn-primary btn-xs" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <%= cl_image_tag @item.photo, class: "card" %>
+    </div>
+  </div>
 </div>
-=======
-<%= simple_form_for([@item, @booking]) do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.submit "add booking", class: "btn btn-primary" %>
-<% end %>
->>>>>>> master
+
+<div class="back_links">
+<%= link_to "Back", items_path %>
+</div>
