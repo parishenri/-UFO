@@ -1,12 +1,6 @@
-<h1>All my bookings</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
-
 <ul>
   <% @bookings.each do |booking| %>
-    <% if booking.user == current_user %>
-      <li><%= link_to booking.item.name, item_booking_path(booking.item, booking) %></li>
-    <% end %>
+    <li><%= booking.item.name %> | <%= booking.start_date %></li>
   <% end %>
-  <%= link_to "Back", items_path %>
 </ul>
 
