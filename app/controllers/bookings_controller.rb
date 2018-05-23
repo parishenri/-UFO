@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :show, :update]
-  before_action :set_item
+  before_action :set_item, except: :index
+  before_action :set_user, only: :index
 
   def new
     @booking = Booking.new
@@ -15,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.all
+    @bookings = current_user.bookings
   end
 
   def create
@@ -23,7 +24,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.item = Item.find(params[:item_id])
     @booking.save
-    redirect_to item_bookings_path
+    redirect_to user_bookings_path(current_user)
   end
 
   def update
@@ -32,7 +33,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy(booking_params)
+    @booking.destroy
     redirect_to item_bookings_path
   end
 
@@ -44,6 +45,10 @@ class BookingsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   def booking_params
