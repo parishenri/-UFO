@@ -8,5 +8,38 @@ h2 {
   font-size: 16px;
   color: #36393b;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+}
+
+#how-it-works{
+	background-image: url(https://images.pexels.com/photos/373883/pexels-photo-373883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+}
+
+.works-text{
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+}
+
+.works-text h2{
+	font-size: 40px;
+	font-family: 'Bree Serif', serif;
+	color: #F4F2F2;
+}
+
+
+.info-picture{
+	width: 50vh;
+	border-radius: 3px;
+	margin-right: 80px;
+}
+
+.info-text{
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
 }
