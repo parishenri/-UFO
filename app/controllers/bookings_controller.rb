@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :show, :update]
+  before_action :set_booking, only: [:edit, :show, :update, :destroy]
   before_action :set_item
 
   def new
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy(booking_params)
+    @booking.destroy
     redirect_to item_bookings_path
   end
 

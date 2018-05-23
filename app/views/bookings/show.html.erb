@@ -5,6 +5,7 @@
 <div>
   <%= @booking.item.name %>
   <%= link_to "Edit booking", edit_item_booking_path %>
+  <%= link_to "Delete booking", [@item, @booking], method: :delete %>
 </div>
 <div>
   <%= @booking.start_date %>
