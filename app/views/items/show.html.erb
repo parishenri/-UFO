@@ -4,16 +4,16 @@
   </div>
 
   <div class="item-description">
-    <h1><%= @item.name %></h1>
-    <p> description </p>
-    <p><%= @item.description %></p>
-    <p>Rental_price: <%= @item.rental_price %></p>
-    <p>Buying_price: <%= @item.buying_price %></p>
-    <p>Size: <%= @item.size %></p>
+    <h1 class="new-header"><%= @item.name %></h1>
+    <p class="p-new"> description </p>
+    <p class="p-new"><%= @item.description %></p>
+    <p class="p-new">Rental_price: <%= @item.rental_price %></p>
+    <p class="p-new">Buying_price: <%= @item.buying_price %></p>
+    <p class="p-new">Size: <%= @item.size %></p>
     <p>Available: <%= @item.availability %></p>
     <%= link_to 'back', items_path %> | <%= link_to 'delete', item_path(@item), method: :delete %> | <%= link_to 'book it', new_item_booking_path(@item) %>
   </div>
 
-  <%= image_tag "map.png", class: "mapsize", height: 500, width: 300 %>
+  <%= image_tag "map.png", class: "mapsize", height: 500, width: 400 %>
 
 </div>
