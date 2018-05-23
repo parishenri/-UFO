@@ -1,9 +1,10 @@
-<h1>Bookings#index</h1>
+<h1>All my bookings</h1>
 <p>Find me in app/views/bookings/index.html.erb</p>
 
 <ul>
   <% @bookings.each do |booking| %>
-    <li><%= link_to booking.item.name, item_booking_path(booking.item, booking) %>  </li>
+    <li><%= link_to booking.item.name, item_booking_path(booking.item, booking) %></li>
   <% end %>
+  <%= link_to "Back", items_path %>
 </ul>
 
