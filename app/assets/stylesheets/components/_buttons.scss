@@ -1,4 +1,42 @@
 
+.gray-button{
+	border-radius: 5px;
+	background-color: #D2D3D8;
+	color: black;
+	width: 120px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	opacity: 0.8;
+}
+
+.gray-button:hover{
+	opacity: 1;
+	box-shadow: 3px;
+}
+.info-banner-button{
+	border-radius: 16px;
+	background-color: #2b2b2b;
+	color: white;
+	width: 180px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+
+.info-banner-button:hover{
+	border-radius: 16px;
+	background-color: #2b2b2b;
+	color: white;
+	width: 180px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	letter-spacing: 2px;
+	opacity: 0.9;
+}
+
+
 .secondary-btn {
 	background-color: #DE7F7F;
 	text-align: center;

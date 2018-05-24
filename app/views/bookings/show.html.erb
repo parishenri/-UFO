@@ -1,31 +1,26 @@
 <div class="container">
   <div>
-    <h1>Bookings</h1>
+    <h1>Bookings hahah</h1>
     <div>
-      <%= @booking.item.name %>
-      <%= link_to "Edit booking", edit_item_booking_path(@item, @booking) %>
-      <%= link_to "Delete booking", item_booking_path(@item, @booking), method: :delete %>
-    </div>
-    <div>
-      <%= @booking.start_date.strftime("%d/%m/%Y - ") %>
-      <%= @booking.end_date.strftime("%d/%m/%Y") %>
-    </div>
-    <div>
-      <p>Price per day £<%= @booking.item.rental_price %></p>
-    </div>
-    <div>
-      <p>Price to buy £<%= @booking.item.buying_price %></p>
     </div>
   </div>
+
 <div class="container-item-show">
   <div class="card image-item-show-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @item.photo%>');">
   </div>
   <div class="item-description">
   <h1><%= @item.name %></h1>
+  <p><%= @booking.item.name %></p>
+  <p><%= link_to "Edit booking", edit_item_booking_path(@item, @booking) %></p>
+  <p><%= link_to "Delete booking", item_booking_path(@item, @booking), method: :delete %></p>
+  <p><%= @booking.start_date.strftime("%d/%m/%Y - ") %></p>
+  <p><%= @booking.end_date.strftime("%d/%m/%Y") %></p>
+      <p>Price per day £<%= @booking.item.rental_price %></p>
+      <p>Price to buy £<%= @booking.item.buying_price %></p>
     <p> description </p>
     <p><%= @item.description %></p>
     <p>Size: <%= @item.size %></p>
   </div>
 </div>
-  <%= link_to "Back", item_booking_path(@item, @booking) %>
+  <%= link_to "Back", user_bookings_path(current_user) %>
 </div>

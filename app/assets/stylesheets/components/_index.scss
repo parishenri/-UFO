@@ -3,7 +3,6 @@
 @import "navbar";
 @import "banner";
 @import "card";
-@import "headers";
 @import "footer";
 @import "buttons";
 @import "container-item-show";
@@ -11,7 +10,7 @@
 @import "back_links";
 @import "form_style";
 @import "calendar";
-
+@import "booking_status";
 
 
 body{
@@ -24,5 +23,10 @@ body{
 
 .new-header{
 	font-size: 20px;
-	text-decoration: underline;
+	text-decoration: underline;		
+}
+
+.page-header {
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
 }

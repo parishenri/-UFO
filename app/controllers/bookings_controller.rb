@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.status = "pending"
     @booking.item = Item.find(params[:item_id])
     @booking.save
     redirect_to user_bookings_path(current_user)

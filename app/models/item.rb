@@ -9,9 +9,12 @@ class Item < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   include PgSearch
   pg_search_scope :global_search,
-    against: [ :name, :description ],
+    against: [ :name, :description,  ],
+    associated_against: {
+      user: [ :address ]
+    },
     using: {
-    tsearch: { prefix: true }
+      tsearch: { prefix: true }
     }
 
 end
