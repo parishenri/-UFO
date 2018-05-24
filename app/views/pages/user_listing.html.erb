@@ -10,22 +10,26 @@
           <%= link_to 'edit', edit_item_path(item) %>
           <%= link_to 'delete', item_path(item), method: :delete %>
         </div>
-      <div class="listing-status">
-        <p>Availability:</p>
-        <% if @available_items.include?(item) %>
-          <p class="grey">Pending</p>
-          <p class="grey">Booked</p>
-        <% elsif @pending_items.include?(item) %>
-          <p class="orange">Pending</p>
-          <p class="grey">Booked</p>
-        <% elsif @accepted_items.include?(item) %>
-          <p class="grey">Pending</p>
-          <p class="green">Booked</p>
-        <% elsif @pendingandbooked.include?(item) %>
-          <p class="orange">Pending</p>
-          <p class="green">Booked</p>
-        <% end %>
-      </div>
+        <div class="listing-status">
+          <p>Availability:</p>
+          <% if @available_items.include?(item) %>
+            <p class="grey">Pending</p>
+            <p class="grey">Booked</p>
+            <%= link_to '<i class="fa fa-calendar-alt"></i>'.html_safe, calendar_path(item) %>
+          <% elsif @pending_items.include?(item) %>
+            <p class="orange">Pending</p>
+            <p class="grey">Booked</p>
+            <%= link_to '<i class="fa fa-calendar-alt"></i>'.html_safe, calendar_path(item) %>
+          <% elsif @accepted_items.include?(item) %>
+            <p class="grey">Pending</p>
+            <p class="green">Booked</p>
+            <%= link_to '<i class="fa fa-calendar-alt"></i>'.html_safe, calendar_path(item) %>
+          <% elsif @pendingandbooked.include?(item) %>
+            <p class="orange">Pending</p>
+            <p class="green">Booked</p>
+            <%= link_to '<i class="fa fa-calendar-alt"></i>'.html_safe, calendar_path(item) %>
+          <% end %>
+        </div>
       </div>
     <% end %>
 
