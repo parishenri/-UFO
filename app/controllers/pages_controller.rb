@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @items = Item.all
+    @location = request.location.data['city']
   end
 
   def dashboard

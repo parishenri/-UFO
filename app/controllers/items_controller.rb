@@ -3,8 +3,24 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @items = Item.global_search(params[:query])
+
+    @location = request.location.data['city']
+      if @location.empty?
+        user_location = "London UK"
+      else
+        user_location = [request.location.data['latitude'], request.location.data['longitude']]
+      end
+
+    near_items = User.near(user_location, 25)
+    @search = Item.global_search(params[:query]) if params[:query].present?
+
+    if @search.nil?
+      @items = Item.includes(:user).where(user_id: near_items.map(&:id))
+      else
+    @items = @search.where(user_id: near_items.map(&:id))
   end
+end
+
 
   def new
     @item = Item.new
