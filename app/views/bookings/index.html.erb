@@ -3,7 +3,6 @@
 <div class="container">
   <div class="row">
     <h2>My bookings</h2>
-
     <% @bookings.each do |booking| %>
     <div class="col-xs-6 col-sm-3">
       <%= link_to item_booking_path(booking.item, booking)  do %>
@@ -17,5 +16,15 @@
     </div>
     <% end %>
   </div>
+
+  <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: @bookings)  do |date, bookings| %>
+    <%= date.day %>
+      <% bookings.each do |booking| %>
+      <div>
+        <%= booking.item.name %>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
 
