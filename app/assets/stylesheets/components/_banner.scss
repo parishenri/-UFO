@@ -2,11 +2,11 @@
   color: white;
   text-align: center;
   height: 60vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-position: center;
 }
 
 .info-banner {
@@ -14,19 +14,50 @@
   height: 60vh;
   background-size: cover;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   border-top: solid;
   border-bottom: solid;
   border-width: 1px;
   border-color: #e5e9f2;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 10px 0px; 
+}
+
+.info-banner-picture{
+  height: 200px;
+  width: 320px;
+  border-radius: 3px;
+  margin: 0px 80px 0 40px;
+}
+
+.info-text{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #2c302e;
+  font-weight: bold;
+  font-size: 10px;
+  margin: 0px 40px 0px 80px;
+}
+
+.info-text h3{
+  font-size: 16px;
+  margin: 0px 15px 0px 0px;
+}
+
+.info-text h4{
+  font-size: 14px;
+  color: #bfc3c7;
+  margin-top: 5px
 }
 
 .banner h1 {
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  color: #FF99B9;
 }
 .banner p {
   font-size: 15px;
