@@ -7,4 +7,11 @@ class Item < ApplicationRecord
   validates :size, presence: true
   validates :photo, presence: true
   mount_uploader :photo, PhotoUploader
+  include PgSearch
+  pg_search_scope :global_search,
+    against: [ :name, :description ],
+    using: {
+    tsearch: { prefix: true }
+    }
+
 end
