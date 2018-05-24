@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:dashboard, :show, :edit, :update, :destroy]
 
+
+
+  def index
+    @users = User.where.not(latitude: nil, longitude: nil)
+
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
+  end
+
   def dashboard
   end
 
@@ -41,6 +55,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :phone_number, :city, :age, :gender)
+    params.require(:user).permit(:first_name, :last_name, :address, :phone_number, :city, :age, :gender, :latitude, :longitude)
   end
 end
