@@ -13,6 +13,9 @@ class PagesController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def calendar
+  end
+
   def user_listing
     @items = Item.where(user_id: current_user).to_a
     @available_items = []
