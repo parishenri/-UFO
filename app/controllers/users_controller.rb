@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:dashboard, :show, :edit, :update, :destroy]
 
-  def map
+
+  def index
     @users = User.where.not(latitude: nil, longitude: nil)
-    @markers = @Users.map do |user|
+
+    @markers = @users.map do |user|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
-        # infoWindow: { content: render_to_string(partial: "/users/map_box", locals: { flat: flat }) }
+        lat: user.latitude,
+        lng: user.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
+  end
+
+  def dashboard
   end
 
   def edit

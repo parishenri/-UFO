@@ -1,11 +1,11 @@
 <div class="container">
-  <h1>Items around you</h1>
+  <h2>Items around you</h2>
   <div class="row">
     <% @items.each do |item| %>
-      <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
+      <div class="col-xs-12 col-sm-3" style="margin-bottom: 20px;">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path item.photo%>');">
           <div class="card-description">
-            <h2><%= link_to item.name, item_path(item) %></h2>
+            <h4><%= link_to item.name, item_path(item) %></h4>
           </div>
         </div>
       </div>
