@@ -1,19 +1,21 @@
 
 <div class="container">
   <div>
-    <h1>Bookings#show</h1>
-    <p>Find me in app/views/bookings/show.html.erb</p>
-    <div>
+    <h1>Bookings</h1>
+    <div class="">
       <%= @booking.item.name %>
-      <%= link_to "Edit booking", edit_item_booking_path %>
+      <%= link_to "Edit booking", edit_item_booking_path(@item, @booking) %>
+      <%= link_to "Delete booking", item_booking_path(@item, @booking), method: :delete %>
     </div>
     <div>
-      <%= @booking.start_date %>
-      <%= @booking.end_date %>
+      <%= @booking.start_date.strftime("%d/%m/%Y - ") %>
+      <%= @booking.end_date.strftime("%d/%m/%Y") %>
     </div>
     <div>
-      <%= @booking.item.rental_price %>
-      <%= @booking.item.buying_price %>
+      <p>Price per day £<%= @booking.item.rental_price %></p>
+    </div>
+    <div>
+      <p>Price to buy £<%= @booking.item.buying_price %></p>
     </div>
   </div>
 <div class="container-item-show">

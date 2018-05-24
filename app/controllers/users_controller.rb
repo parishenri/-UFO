@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:dashboard, :show, :edit, :update, :destroy]
 
 
-
   def index
     @users = User.where.not(latitude: nil, longitude: nil)
 
