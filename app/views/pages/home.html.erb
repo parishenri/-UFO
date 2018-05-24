@@ -1,19 +1,24 @@
 <!-- Landing Page -->
 
-
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/114820/pexels-photo-114820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
-    <div class="banner-content">
-      <h1>rent something that means something </h1>
-        <%= form_tag items_path, method: :get do %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/114820/pexels-photo-114820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+  <div class="banner-content">
+    <h1>rent something that means something </h1>
+      <%= form_tag items_path, method: :get, class: "form-inline" do %>
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Which item do you want rent?"
         %>
-      <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>">
+         <%= text_field_tag :place,
+        params[:place],
+        class: "form-control",
+        placeholder: "Where?"
+        %>
+        <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>">
+        <input type="submit" class="btn btn-primar">
       <% end %>
-    </div>
   </div>
+</div>
 
 
 <div class="container">
