@@ -2,7 +2,12 @@
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/175696/pexels-photo-175696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
     <div class="banner-content">
       <h1>Sustainable Apparel </h1>
-      <a class="btn gray-button">Meet Us</a>
+      <%= form_tag items_path, method: :get, class: "form-inline" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "What item?" %>
+        <%= text_field_tag :place, params[:place], class: "form-control", placeholder: "Where?" %>
+        <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>">
+        <%= submit_tag :submit, class: "hidden" %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -16,17 +21,17 @@
     <% @items.first(8).each do |item| %>
       <div class="card">
           <%= link_to item_path(item.id) do %>
-            <%= cl_image_tag item.photo, class: "card-link", class: "card-image", crop: :fill%> 
+            <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
           <% end %>
           <div class="card-description">
             <h3><%= item.name %></h3>
             <p> <strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
-            <p>This is the rating and comments</p>       
+            <p>This is the rating and comments</p>
           </div>
           <div class="card-rating">
           </div>
       </div>
-    <% end %>  
+    <% end %>
   </div>
 
   <h2 class="page-header">Most Popular</h2>
@@ -34,17 +39,17 @@
     <% @items.first(8).each do |item| %>
       <div class="card">
           <%= link_to item_path(item.id) do %>
-            <%= cl_image_tag item.photo, class: "card-link", class: "card-image", crop: :fill%> 
+            <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
           <% end %>
           <div class="card-description">
             <h3><%= item.name %></h3>
             <p> <strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
-            <p>This is the rating and comments</p>       
+            <p>This is the rating and comments</p>
           </div>
           <div class="card-rating">
           </div>
       </div>
-    <% end %>  
+    <% end %>
   </div>
 
 
@@ -53,19 +58,19 @@
     <% @items.first(8).each do |item| %>
       <div class="card">
           <%= link_to item_path(item.id) do %>
-            <%= cl_image_tag item.photo, class: "card-link", class: "influencer-card-image", crop: :fill%> 
+            <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
           <% end %>
           <div class="card-description">
             <h3>Influencer's Name</h3>
             <p>PARIS, France</p>
-            <p>In here we will give a brief summary of the influencer's style and whatever.</p>       
+            <p>In here we will give a brief summary of the influencer's style and whatever.</p>
           </div>
           <div class="card-rating">
           </div>
       </div>
-    <% end %>  
+    <% end %>
   </div>
-  <br>  
+  <br>
   <div class="info-banner">
     <%= image_tag("https://images.pexels.com/photos/46244/girl-portrait-carnival-retro-46244.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class:"info-banner-picture" ) %>
     <div class="info-text">
@@ -81,17 +86,17 @@
     <% @items.first(8).each do |item| %>
       <div class="card">
           <%= link_to item_path(item.id) do %>
-            <%= cl_image_tag item.photo, class: "card-link", class: "group-card-image", crop: :fill%> 
+            <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
           <% end %>
           <div class="card-description">
             <h3>Group Name</h3>
-            <p>In here we will put a brief description of the groups and what they will be offering to the public. We should put in the top right corner if they are free to join or by request.</p>       
+            <p>In here we will put a brief description of the groups and what they will be offering to the public. We should put in the top right corner if they are free to join or by request.</p>
           </div>
           <div class="card-rating">
           </div>
       </div>
-    <% end %>  
-  </div>  
+    <% end %>
+  </div>
   <br>
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/688656/pexels-photo-688656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
     <div class="banner-content">

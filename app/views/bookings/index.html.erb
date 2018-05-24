@@ -1,6 +1,7 @@
 <div class="container">
   <h2 class="h2-big">Welcome,<strong><%= @user.first_name %></strong> here are your Bookings</h2>
 
+
   <ul>
     <% @bookings.each do |booking| %>
       <li> <%= booking.item.name %> | <%= booking.start_date %></li>
@@ -19,8 +20,9 @@
           <% end %>
           </div>
         </div>
-        <% end %>
+      <% end %>
     </div>
+    <% end %>
   </div>
 
   <div class="calendar">
@@ -35,5 +37,3 @@
   </div>
 
 </div>
-
-

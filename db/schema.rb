@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_05_24_140103) do
     t.datetime "updated_at", null: false
     t.date "start_date"
     t.date "end_date"
-    t.string "status"
+    t.string "status", default: "available"
     t.index ["item_id"], name: "index_bookings_on_item_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

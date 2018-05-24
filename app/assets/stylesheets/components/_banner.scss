@@ -7,6 +7,18 @@
   align-items: center;
   justify-content: center;
   background-position: center;
+  .form-inline {
+    .form-control {
+      background-color: transparent;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid #fff9;
+      color: white;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
 }
 
 .info-banner {
@@ -21,7 +33,7 @@
   border-bottom: solid;
   border-width: 1px;
   border-color: #e5e9f2;
-  margin: 10px 0px 10px 0px; 
+  margin: 10px 0px 10px 0px;
 }
 
 .info-banner-picture{
