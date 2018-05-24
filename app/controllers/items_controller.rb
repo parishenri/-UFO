@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @items = Item.all
+    @items = Item.global_search(params[:query])
   end
 
   def new

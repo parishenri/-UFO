@@ -8,6 +8,18 @@
     </div>
   </div>
 
+  <%= form_tag items_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Which item do you want rent?"
+  %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Where"
+  %>
+<% end %>
 
 
 <div class="container">
