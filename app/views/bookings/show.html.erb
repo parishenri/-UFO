@@ -4,7 +4,7 @@
     <h1>Bookings</h1>
     <div class="">
       <%= @booking.item.name %>
-      <%= link_to "Edit booking", edit_item_booking_path %>
+      <%= link_to "Edit booking", edit_item_booking_path(@item, @booking) %>
       <%= link_to "Delete booking", item_booking_path(@item, @booking), method: :delete %>
     </div>
     <div>
