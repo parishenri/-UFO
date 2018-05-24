@@ -9,7 +9,9 @@
 @import "date_form";
 @import "back_links";
 @import "form_style";
+@import "calendar";
 @import "booking_status";
+
 
 body{
   background-color: #ffffff;
@@ -21,7 +23,7 @@ body{
 
 .new-header{
 	font-size: 20px;
-	text-decoration: underline;			
+	text-decoration: underline;		
 }
 
 .page-header {
