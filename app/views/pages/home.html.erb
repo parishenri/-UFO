@@ -1,10 +1,10 @@
 <!-- Landing Page -->
 
 
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/114820/pexels-photo-114820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/175696/pexels-photo-175696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
     <div class="banner-content">
-      <h1>rent something that means something </h1>
-      <a class="meet-ufo btn btn-primary btn-sm">meet UFO</a>
+      <h1>Sustainable Apparel </h1>
+      <a class="btn gray-button">Meet Us</a>
     </div>
   </div>
 
@@ -12,102 +12,97 @@
 
 <div class="container">
 
-  <div class="row">
-    <h2>Just In</h2>
 
-    <% @items.first(4).each do |item| %>
-    <div class="col-xs-6 col-sm-3">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_tag = item.photo %>');">
-        <div class="card-category"></div>
-        <div class="card-description">
-            <h2><%= item.name %></h2>
-            <p><%= item.name %></p>
-        </div>
-            <i class="fas fa-plus"></i>
-            <%= link_to '', item_path(item), class:"card-link" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-
-<div class="row">
-    <h2>Most Popular</h2>
-
-    <% @items.first(4).each do |item| %>
-    <div class="col-xs-6 col-sm-3">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_tag = item.photo %>');">
-        <div class="card-category"></div>
-        <div class="card-description">
-            <h2><%= item.name %></h2>
-            <p><%= item.name %></p>
-        </div>
-            <i class="fas fa-plus"></i>
-            <%= link_to '', item_path(item), class:"card-link" %>
-        </div>
-    </div>
-    <% end %>
-  </div>
-  <div>
-    <h2>Top Influencer's</h2>
-    <div class="influencer-align">
-      <% @items.first(8).each do |item| %>
-        <!-- insert <div class="card"> -->
-        <div class="influencer-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_tag = item.photo %>');">
-          <div class="influencer-card-category"></div>
-          <div class="influencer-card-description">
-            <h2><%= item.name %></h2>
-            <p><%= item.name %></p>
+  <h2 class="page-header">Just In</h2>
+  <div class="cards-container">
+    <% @items.first(8).each do |item| %>
+      <div class="card">
+          <%= link_to item_path(item.id) do %>
+            <%= cl_image_tag item.photo, class: "card-link", class: "card-image", crop: :fill%> 
+          <% end %>
+          <div class="card-description">
+            <h3><%= item.name %></h3>
+            <p> <strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
+            <p>This is the rating and comments</p>       
           </div>
-            <i class="fas fa-plus"></i>
-            <%= link_to '', item_path(item), class:"card-link" %>
-        </div>
-      <% end %>
-    </div>
+          <div class="card-rating">
+          </div>
+      </div>
+    <% end %>  
   </div>
 
+  <h2 class="page-header">Most Popular</h2>
+  <div class="cards-container">
+    <% @items.first(8).each do |item| %>
+      <div class="card">
+          <%= link_to item_path(item.id) do %>
+            <%= cl_image_tag item.photo, class: "card-link", class: "card-image", crop: :fill%> 
+          <% end %>
+          <div class="card-description">
+            <h3><%= item.name %></h3>
+            <p> <strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
+            <p>This is the rating and comments</p>       
+          </div>
+          <div class="card-rating">
+          </div>
+      </div>
+    <% end %>  
+  </div>
+
+
+  <h2 class="page-header">Top Influencer's</h2>
+  <div class="cards-container">
+    <% @items.first(8).each do |item| %>
+      <div class="card">
+          <%= link_to item_path(item.id) do %>
+            <%= cl_image_tag item.photo, class: "card-link", class: "influencer-card-image", crop: :fill%> 
+          <% end %>
+          <div class="card-description">
+            <h3>Influencer's Name</h3>
+            <p>PARIS, France</p>
+            <p>In here we will give a brief summary of the influencer's style and whatever.</p>       
+          </div>
+          <div class="card-rating">
+          </div>
+      </div>
+    <% end %>  
+  </div>
+  <br>  
   <div class="info-banner">
-    <div class="info-header">
-    <div>
-      <%= image_tag("https://images.pexels.com/photos/46244/girl-portrait-carnival-retro-46244.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class:"info-picture" ) %>
-    </div>
+    <%= image_tag("https://images.pexels.com/photos/46244/girl-portrait-carnival-retro-46244.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class:"info-banner-picture" ) %>
     <div class="info-text">
-      <h2>Find Out How Much your could earn uploading your items</h2>
-      <h2>Turn your extra sapce into extra income</h2>
-      <div class="secondary-btn">
-        <p>Find Out More</p>
+            <h3>Find Out How Much your could earn uploading your items</h3>
+            <h4>Turn your extra sapce into extra income</h4>
+            <a class="btn info-banner-button">Find out More</a>
+    </div>
+  </div>
+
+  <br>
+  <h2 class="page-header">Popular Groups</h2>
+  <div class="cards-container">
+    <% @items.first(8).each do |item| %>
+      <div class="card">
+          <%= link_to item_path(item.id) do %>
+            <%= cl_image_tag item.photo, class: "card-link", class: "group-card-image", crop: :fill%> 
+          <% end %>
+          <div class="card-description">
+            <h3>Group Name</h3>
+            <p>In here we will put a brief description of the groups and what they will be offering to the public. We should put in the top right corner if they are free to join or by request.</p>       
+          </div>
+          <div class="card-rating">
+          </div>
       </div>
-    </div>
-    </div>
-  </div>
-
-<div class="row">
-    <h2>Most Popular Group</h2>
-
-    <% @items.first(3).each do |item| %>
-    <div class="col-xs-4 col-sm-4 ">
-      <div class="group-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_tag = item.photo %>');">
-        <div class="card-category"></div>
-        <div class="card-description">
-            <h2><%= item.name %></h2>
-            <p><%= item.name %></p>
-        </div>
-            <i class="fas fa-plus"></i>
-            <%= link_to '', item_path(item), class:"card-link" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="info-banner" id="how-it-works">
-    <div class="works-text">
-      <h2>How it Works</h2>
-      <div class="secondary-btn">
-        <p>Find Out More</p>
-      </div>
-    </div>
+    <% end %>  
+  </div>  
+  <br>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/688656/pexels-photo-688656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+    <div class="banner-content">
+      <h1>How it Works </h1>
+      <a class="btn gray-button">In here</a>
     </div>
   </div>
 
-  </div>
+
 </div>
+<br>
+<br>
