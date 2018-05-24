@@ -1,9 +1,6 @@
 .month-calendar {
   width: 33%;
   margin: 0 auto;
-  position: fixed;
-  top: 10%;
-  right: 3%;
   font-size: 12px;
 }
 
@@ -15,4 +12,8 @@ font-weight: bold;
   .fa-caret-right {
   color: black;
   }
+}
+
+.calendar-container {
+  margin: 10px;
 }
