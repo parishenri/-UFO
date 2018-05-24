@@ -29,6 +29,15 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = @item.user
+
+    @markers = [@user].map do |u|
+      {
+        lat: u.latitude,
+        lng: u.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def destroy
