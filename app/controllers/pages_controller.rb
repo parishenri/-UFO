@@ -7,6 +7,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @items = Item.all
+    @user = User.find(params[:id])
+    @bookings = current_user.bookings
   end
 
   def user_profile
