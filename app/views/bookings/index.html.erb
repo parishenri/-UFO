@@ -1,17 +1,20 @@
-<div>
-  <h1>My bookings</h1>
-</div>
-
 <div class="container">
-  <% @bookings.each do |booking| %>
-  <div class="flexbox-booking">
-      <div class="card image-item-show-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.item.photo %>');">
-        <%= link_to item_booking_path(booking.item, booking)  do %>
-        <%= booking.item.name %>
-        <%= booking.start_date.strftime("%d/%m/%Y") %>
-      <% end %>
-      </div>
+  <div>
+    <h1>My bookings</h1>
   </div>
-  <% end %>
-</div>
 
+  <div class="container-flex">
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <div class="col-xs-12 col-sm-3">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.item.photo %>');">
+            <%= link_to item_booking_path(booking.item, booking)  do %>
+            <%= booking.item.name %>
+            <%= booking.start_date.strftime("%d/%m/%Y") %>
+          <% end %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
