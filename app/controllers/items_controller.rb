@@ -26,6 +26,14 @@ class ItemsController < ApplicationController
       @items = Item.all
     end
 
+    @markers = @items.map do |item|
+      {
+        lat: item.user.latitude,
+        lng: item.user.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
+
     # if @search.nil?
     #   @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     #   else

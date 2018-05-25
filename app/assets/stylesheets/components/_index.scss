@@ -13,7 +13,9 @@
 @import "booking_status";
 @import "input-bar";
 @import "dashboard";
-
+@import "google-map";
+@import "items-show";
+@import "container-results";
 
 body{
   background-color: #ffffff;
@@ -25,7 +27,7 @@ body{
 
 .new-header{
 	font-size: 20px;
-	text-decoration: underline;		
+	text-decoration: underline;
 }
 
 .page-header {

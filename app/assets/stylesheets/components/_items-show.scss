@@ -1,0 +1,126 @@
+
+
+.container-item-show {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;	
+  margin-bottom: 5px;
+  min-height: 400px;	
+  justify-content: center;
+
+}
+
+.item-available{
+	color: green;
+}
+
+.item-not-available{
+	color: red;
+}
+
+.item-show-links a {
+	align-items: center;
+	color: gray !important;
+
+}
+
+.item-show-links a:hover{
+	color: #FD9AB9 !important;
+	text-decoration: none;
+}
+
+.map_and_itemdescription{
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+}
+
+.item-show-card{
+  display: flex;
+  position: relative;
+  margin: 10px;
+  margin-left: 90px;
+  margin-right: 140px;
+  padding: 5px;
+  transition: .3s;
+  height: 80vh;
+  width: 60vh;
+  crop: fill;
+  background-position: center;
+  background-size: cover;
+}
+
+.item-show-card:hover{
+	transform: scale(1.03);
+}
+
+.item-description {
+border-radius: 4px;
+  margin-right: 5%;	
+  border-style: solid;
+  border-color: #dddddd;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    margin-bottom: 5px;
+    margin-top: 0px;
+    background-color: #717373;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 3px 0px 5px 0px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: lighter;
+    color: #F7FBFC;
+    font-size: 18px;
+    border-style: solid;
+    border-width: 1px;
+     border-color: #dddddd;
+  }
+}
+
+.item-show-buying-renting{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0px 5px 0 5px;
+}
+
+.item-show-details{
+	display: flex;
+	margin: 1px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 0px 0px ;
+}
+
+.mapsize {
+
+  margin-top: 10%;
+  margin-bottom: 10%;
+  // margin-left: 10%;
+}
+
+.item-show-influencer-box{
+	border-style: solid;
+	border-width: 1px;
+	max-width: 590px;
+	padding: 5px 5px 30px 5px;
+	border-color: #dddddd;
+	h2{
+		font-size: 12px;
+		font-weight: 600;
+		font-family: 'Raleway', sans-serif !important;
+	}
+	p{
+		font-color: gray;
+		font-family: 'Raleway', sans-serif !important;
+		font-color: 717373;
+	}
+	h3{
+		font-size: 16px;
+		font-weight: bold;
+		font-family: 'Raleway', sans-serif;
+	}
+}

@@ -40,6 +40,12 @@ label{
 	color: #373737;
 	font-family: 'Heebo', sans-serif;
 }
+
+.sign-up-details-container{
+	display: flex;
+	flex-direction: row;
+}
+
 .details-container{
 	display: flex;
 	align-content: center;
@@ -48,6 +54,7 @@ label{
 
 .details-container a{
 	color: black;
+	margin-bottom: 10px;
 }
 
 .back-link{
@@ -60,4 +67,11 @@ label{
 	border-radius: 3px;
 	margin: 10px 60px 0 0px;
 	opacity: 0.8;
+}
+
+.sign-up-image{
+	height: 40vh;
+	border-radius: 3px;
+	margin: 10px 60px 0px 150px;
+	opacity: 0.6;
 }

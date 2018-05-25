@@ -99,3 +99,44 @@
 .secondary-btn:hover {
 	background-color: #302F2B;
 }
+
+.item-show-button{
+	border-radius: 5px;
+	background-color: #505051;
+	color: #DE7F7F;
+	height: 30px;
+	width: 95px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	opacity: 0.8;
+	border-line: solid;
+	border-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.item-show-button:hover{
+	border-radius: 5px;
+	background-color: #505051;
+	color: #DE7F7F;
+	height: 30px;
+	width: 95px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	opacity: 0.3;
+	border-line: solid;
+	border-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+
+
+
