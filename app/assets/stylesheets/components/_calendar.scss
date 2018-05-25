@@ -17,3 +17,13 @@ font-weight: bold;
 .calendar-container {
   margin: 10px;
 }
+
+.calendar-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.drop-down-see-item {
+  display: flex;
+  justify-content: space-between;
+}
