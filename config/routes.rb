@@ -11,11 +11,15 @@ Rails.application.routes.draw do
     resources :bookings, only: :index
   end
 
-  root to: 'pages#home'
-
   resources :items do
     resources :bookings, except: [:index]
   end
+
+  resources :conversations do
+    resources :messages
+  end
+
+  root to: 'pages#home'
 end
 
 
