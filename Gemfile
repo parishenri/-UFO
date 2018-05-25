@@ -24,6 +24,7 @@ gem 'pg_search'
 gem 'geocoder'
 gem 'simple_calendar'
 gem 'momentjs-rails'
+gem 'mailboxer'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
