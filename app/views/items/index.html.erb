@@ -1,12 +1,11 @@
 <div class="container-results-main">
   <div class="container-results">
 
-
   <!-- 1) Cards -->
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <% @items.each do |item| %>
-          <div class="col-xs-12 col-sm-4 card-boot" style="margin-bottom: 20px;">
+          <div class="col-xs-12 col-sm-4 card-boot" style="margin-bottom: 20px; margin-right: 0px">
             <div class="card-results">
                 <%= link_to item_path(item.id) do %>
                   <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
@@ -24,7 +23,7 @@
       </div>
       <!-- 2) Map -->
       <div class="col-xs-12 col-sm-6 map-index">
-        <div id="map" style="width: 90%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
+        <div id="map" style="margin-left: 45px; width: 85%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
       </div>
     </div>
   </div>
