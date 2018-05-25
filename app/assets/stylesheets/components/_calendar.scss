@@ -1,6 +1,5 @@
 .month-calendar {
-  width: 33%;
-  margin: 0 auto;
+  width: 100%;
   font-size: 12px;
 }
 
@@ -27,3 +26,33 @@ font-weight: bold;
   display: flex;
   justify-content: space-between;
 }
+
+
+.dropdown-div {
+  margin: 0px 0px;
+}
+
+#dLabel {
+ background-color: #fd9ab9;
+ border: none !important;
+ color: white;
+  padding: 10px 10px;
+}
+
+
+.calendar-view-item-button {
+  margin: 0px 0px;
+  padding: 10px 10px;
+  background: #fd9ab9;
+  border-radius: 3px;
+  a {
+  color: white;
+  text-decoration: none;
+  }
+}
+
+.tab-content {
+  margin: 50px 10px;
+}
+
+
