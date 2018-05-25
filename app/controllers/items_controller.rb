@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     near_items = User.near(user_location, 25)
 
     if params[:query] || params[:location] || params[:place] #query = item name & des, location = geolocalisation, place = search function
-      if !params[:place].empty?
+      if params[:place]
         @items = Item.global_search("#{params[:query]} #{params[:place]}") if params[:query].present?
       else
         @items = Item.global_search(params[:query]).where(user_id: near_items.map(&:id))
@@ -22,6 +22,17 @@ class ItemsController < ApplicationController
       @items = Item.all
     end
 
+    if @items.nil?
+      @items = Item.all
+    end
+
+    @markers = @items.map do |item|
+      {
+        lat: item.user.latitude,
+        lng: item.user.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
 
     # if @search.nil?
     #   @items = Item.includes(:user).where(user_id: near_items.map(&:id))
