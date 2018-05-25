@@ -2,7 +2,6 @@
   <li class="active dashboard-link"><a data-toggle="tab" href="#profile">Profile</a></li>
   <li class="dashboard-link"><a data-toggle="tab" href="#book">Bookings</a></li>
   <li class="dashboard-link"><a data-toggle="tab" href="#list">Listings</a></li>
-  <li class="dashboard-link"><a data-toggle="tab" href="#profile">Profile</a></li>
   <li class="dashboard-link" id="show-calendar-tab"><a data-toggle="tab" href="#calendar">Calendar</a></li>
 
 </ul>
@@ -64,107 +63,86 @@
 
             </div>
           </div>
+
         </div>
       </div>
-
     </div>
+  </div>
 
 
   <div id="book" class="tab-pane fade">
     <div class="container">
-
-      <h1>My items to rent</h1>
+    <h1>My bookings</h1>
       <div class="row">
-        <% @items_listing.each do |item| %>
-          <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path item.photo%>');">
-              <div class="card-description">
-                <h2><%= link_to item.name, item_path(item) %></h2>
-              </div>
-              <%= link_to 'edit', edit_item_path(item) %>
-              <%= link_to 'delete', item_path(item), method: :delete %>
-            </div>
-            <div class="listing-status">
-              <p>Availability:</p>
-              <% if @available_items.include?(item) %>
-                <p class="grey">Pending</p>
-                <p class="grey">Booked</p>
-                <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
-              <% elsif @pending_items.include?(item) %>
-                <p class="orange">Pending</p>
-                <p class="grey">Booked</p>
-                <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a>
-              <% elsif @accepted_items.include?(item) %>
-                <p class="grey">Pending</p>
-                <p class="green">Booked</p>
-                <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
-              <% elsif @pendingandbooked.include?(item) %>
-                <p class="orange">Pending</p>
-                <p class="green">Booked</p>
-                <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
+        <% @bookings.each do |booking| %>
+          <div class="col-xs-6 col-sm-3">
+            <div class="card mw">
+              <%= link_to item_path(booking.item) do %>
+                <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)"></div>
               <% end %>
+              <div class="card-description">
+                <h3><%= booking.item.name %></h3>
+                <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+              </div>
+              <div class="card-rating">
+              </div>
             </div>
           </div>
         <% end %>
-
       </div>
     </div>
-    <%= link_to 'add an item', new_item_path(@item) %>
   </div>
 
-
-    <div id="list" class="tab-pane fade">
-      <div class="container">
-        <h1>My items to rent</h1>
-        <div class="row">
-          <% @items.each do |item| %>
-            <% if item.user == current_user %>
-              <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path item.photo%>');">
-                  <div class="card-description">
-                    <h2><%= link_to item.name, item_path(item) %></h2>
-                  </div>
-                  <%= link_to 'edit', edit_item_path(item) %>
-                  <%= link_to 'delete', item_path(item), method: :delete %>
+  <div id="list" class="tab-pane fade">
+    <div class="container">
+      <h1>My items to rent</h1>
+      <div class="row">
+        <% @items.each do |item| %>
+          <% if item.user == current_user %>
+            <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
+              <div class="card mw">
+                <%= link_to item_path(item) do %>
+                  <div class="card-image" style="background-image: url(<%= image_tag = item.photo %>)"></div>
+                <% end %>
+                <div class="card-description">
+                  <h3><%= link_to item.name, item_path(item), class: "name-item" %></h3>
+                </div>
+                <div class="card-rating">
                 </div>
               </div>
+
+          <div class="listing-status">
+            <p class="listing-status-items">Availability:</p>
+            <% if @available_items.include?(item) %>
+              <p class="grey listing-status-items">Pending</p>
+              <p class="grey listing-status-items">Booked</p>
+              <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
+            <% elsif @pending_items.include?(item) %>
+              <p class="orange listing-status-items">Pending</p>
+              <p class="grey listing-status-items">Booked</p>
+              <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a>
+            <% elsif @accepted_items.include?(item) %>
+              <p class="grey listing-status-items">Pending</p>
+              <p class="green listing-status-items">Booked</p>
+              <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
+            <% elsif @pendingandbooked.include?(item) %>
+              <p class="orange listing-status-items">Pending</p>
+              <p class="green listing-status-items">Booked</p>
+              <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
             <% end %>
+
+
+            </div>
           <% end %>
-        </div>
+        <% end %>
+      </div>
+      </div>
+      <div class="row">
+        <%= link_to 'add an item', new_item_path(@item)%>
       </div>
     </div>
-    <%= link_to 'add an item', new_item_path(@item) %>
   </div>
 
-  <div id="profile" class="tab-pane fade">
-    <div class="container-profile-page">
-      <h1>Welcome <%= current_user.first_name %></h1>
-
-        <div class ="flex-landing-page">
-          <div>
-            <h2>Personal details</h2>
-            <p>First name: <%= @user.first_name %></p>
-            <p>First name: <%= @user.email %></p>
-            <p>Last name: <%= @user.last_name %></p>
-            <p>Address: <%= @user.address %></p>
-            <p>Phone number: <%= @user.phone_number %></p>
-            <p>city: <%= @user.city %></p>
-            <p>Age: <%= @user.age %></p>
-            <p>Gender: <%= @user.gender %></p>
-          </div>
-
-
-          <div class="activity_overview">
-            <div>
-              <h2>Share your passion for renting</h2>
-              <p>Refer a friend and get £45 when they rent there first item</p>
-              <span class="button">Refer a friend</span>
-            </div>
-          </div>
-        </div>
-
-    </div>
-  </div>
 
   <div id="calendar" class="tab-pane fade">
     <div class="calendar-page-container">
@@ -202,12 +180,9 @@
           </div>
         </div>
       </div>
-      <div>
-        <h3>Increase revenues from rentals</h2>
-      </div>
     </div>
-    <%= link_to 'add an item', new_item_path(@item) %>
   </div>
+
 </div>
 
 <%= javascript_pack_tag 'dashboard' %>
