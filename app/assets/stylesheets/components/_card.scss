@@ -3,10 +3,12 @@
   flex-direction: row;
   overflow-x: scroll;
   justify-content: space-between;
+  overflow-x: scroll;
 }
 
 .card-image{
   height: 250px;
+  min-width: 220px;
   width: 100%;
   background-size: cover;
   background-position: center;

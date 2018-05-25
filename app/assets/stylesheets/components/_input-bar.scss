@@ -1,0 +1,63 @@
+.input-bar{
+	width: 200px;
+	height: 30px;
+	font-size: 12px;
+	color: #232323;
+	margin: 0px 6px 0px 6px;
+}
+
+label{
+	font-size: 16px;
+	font-family: 'Heebo', sans-serif;
+	color: #373737;
+	padding: 0px;
+	font-weight: lighter;
+}
+
+.edit-user-name-and-email{
+	display: flex;
+	flex-direction: row;
+}
+
+.edit-user{
+	display: flex;
+	flex-direction: column;
+}
+
+.details-container-two p{
+	font-size: 12px;
+	color: #373737;
+} 
+
+.details-container h2{
+ 	font-size: 16px;
+	color: #373737;
+	font-family: 'Heebo', sans-serif;
+}
+
+.header-editu {
+	font-size: 16px !important;
+	color: #373737;
+	font-family: 'Heebo', sans-serif;
+}
+.details-container{
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+}
+
+.details-container a{
+	color: black;
+}
+
+.back-link{
+	font-size: 10px;
+	color: #373737;
+}
+
+.edit-user-image{
+	height: 40vh;
+	border-radius: 3px;
+	margin: 10px 60px 0 0px;
+	opacity: 0.8;
+}

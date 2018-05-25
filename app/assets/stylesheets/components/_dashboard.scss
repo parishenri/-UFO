@@ -1,0 +1,16 @@
+.dash-container{
+	display: flex;
+	flex-direction: row;
+}
+
+.dash-menu{
+	display: flex;
+	flex-direction: column;
+}
+
+.dash-header{
+ 	font-size: 18px !important;
+	color: #373737;
+	font-family: 'Heebo', sans-serif !important;
+}
+
