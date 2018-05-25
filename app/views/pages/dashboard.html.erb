@@ -1,95 +1,92 @@
-<div class="container">
-
-  <ul class="nav nav-tabs">
-    <li class="active dashboard-link"><a data-toggle="tab" href="#dash">Dashboard</a></li>
-    <li class="dashboard-link"><a data-toggle="tab" href="#book">Bookings</a></li>
-    <li class="dashboard-link"><a data-toggle="tab" href="#list">Listings</a></li>
-    <li class="dashboard-link"><a data-toggle="tab" href="#profile">Profile</a></li>
-    <li class="dashboard-link"><a data-toggle="cal" href="#profile">Calendar</a></li>
-  </ul>
-
-  <div class="dashboard-container">
-    <div class="dash-menu">
-        <h2 class="dash-header">Welcome, <%= current_user.first_name %></h2>
-          <p>view all listings</p>
-          <p>current orders</p>
-          <p>order history</p>
-          <p>ID verification</p>
-    </div>
-    <div class="dash-account-overview">
-      <h2>Activity overview</h2>
-      <p>Revenues: "May"</p>
-      <p>Listing reviewed/30 days: "50"</p>
-      <p>Overall rating: "4.5*"</p>
-      <p>Total reviews: "22"</p>
-      <p>5 star reviews: "80%"</p>
-      <h2>Share your passion for renting</h2>
-      <p>Refer a friend and get £45 when they rent there first item</p>
-    </div>
-  </div>
-<!-- 
+<ul class="nav nav-tabs">
+  <li class="active dashboard-link"><a data-toggle="tab" href="#profile">Profile</a></li>
+  <li class="dashboard-link"><a data-toggle="tab" href="#book">Bookings</a></li>
+  <li class="dashboard-link"><a data-toggle="tab" href="#list">Listings</a></li>
+  <li class="dashboard-link"><a data-toggle="cal" href="#cal">Calendar</a></li>
+</ul>
 
 
+<div class="tab-content">
 
-   
-        
+  <div id="profile" class="tab-pane fade in active">
+    <div class="container-profile-page">
+      <h1>Welcome <%= current_user.first_name %></h1>
+      <div>
+        <h2>Personal details</h2>
+        <p>First name: <%= @user.first_name %></p>
+        <p>First name: <%= @user.email %></p>
+        <p>Last name: <%= @user.last_name %></p>
+        <p>Address: <%= @user.address %></p>
+        <p>Phone number: <%= @user.phone_number %></p>
+        <p>City: <%= @user.city %></p>
+        <p>Age: <%= @user.age %></p>
+        <p>Gender: <%= @user.gender %></p>
+        <p>ID verification</p>
+      </div>
 
+      <div class="activity_overview">
+        <div>
+          <h2>Activity overview</h2>
+          <p>Revenues: £500 in 2018</p>
+          <p>Listing reviewed/30 days: 50</p>
+          <p>Overall rating: 4.5*</p>
+          <p>Total reviews: 22</p>
+          <p>5 star reviews: 80%</p>
+          <p>Order history</p>
+        </div>
+          <h2>Share your passion for renting</h2>
+          <p>Refer a friend and get £45 when they rent there first item</p>
+        <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Refer a friend
+        </button>
 
-            <div>
-
-
-              <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Refer a friend
-              </button>
-
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Refer a friend</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Share and get £45</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Refer a friend</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Share and get £45</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
 
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
-    <div id="book" class="tab-pane fade">
-      <div class="container">
-        <div class="row">
-          <h2>My bookings</h2>
 
-          <% @bookings.each do |booking| %>
+  <div id="book" class="tab-pane fade">
+    <div class="container">
+    <h1>My bookings</h1>
+      <div class="row">
+        <% @bookings.each do |booking| %>
           <div class="col-xs-6 col-sm-3">
-            <%= link_to item_booking_path(booking.item, booking)  do %>
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_tag = booking.item.photo %>');">
-                <div class="card-category"></div>
-                <div class="card-description">
-                    From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %>
-                </div>
+            <div class="card mw">
+              <%= link_to item_path(booking.item) do %>
+                <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)"></div>
+              <% end %>
+              <div class="card-description">
+                <h3><%= booking.item.name %></h3>
+                <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
               </div>
-            <% end %>
+              <div class="card-rating">
+              </div>
+            </div>
           </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
 
@@ -112,38 +109,12 @@
           <% end %>
         </div>
       </div>
-      <%= link_to 'add an item', new_item_path(@item) %>
+
     </div>
+    <%= link_to 'add an item', new_item_path(@item) %>
+  </div>
 
-    <div id="profile" class="tab-pane fade">
-      <div class="container-profile-page">
-        <h1>Welcome <%= current_user.first_name %></h1>
-
-    <div class ="flex-landing-page">
-      <div>
-        <h2>Personal details</h2>
-        <p>First name: <%= @user.first_name %></p>
-        <p>First name: <%= @user.email %></p>
-        <p>Last name: <%= @user.last_name %></p>
-        <p>Address: <%= @user.address %></p>
-        <p>Phone number: <%= @user.phone_number %></p>
-        <p>city: <%= @user.city %></p>
-        <p>Age: <%= @user.age %></p>
-        <p>Gender: <%= @user.gender %></p>
-      </div>
-
-
-      <div class="activity_overview">
-        <div>
-          <h2>Share your passion for renting</h2>
-          <p>Refer a friend and get £45 when they rent there first item</p>
-          <span class="button">Refer a friend</span>
-        </div>
-      </div>
-    </div>
-
-      </div>
-    </div> -->
+  <div id="cal" class="tab-pane fade">
   </div>
 </div>
 
