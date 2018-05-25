@@ -1,18 +1,43 @@
 <div class="container-item-show">
 
-  <div class="card image-item-show-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @item.photo%>');">
+  <div class="item-show-card" style="background-image: url('<%= cl_image_path @item.photo%>');">
   </div>
 
   <div class="item-description">
-    <h1 class="new-header"><%= @item.name %></h1>
-    <p class="p-new"> description </p>
-    <p class="p-new"><%= @item.description %></p>
-    <p class="p-new">Rental_price: <%= @item.rental_price %></p>
-    <p class="p-new">Buying_price: <%= @item.buying_price %></p>
-    <p class="p-new">Size: <%= @item.size %></p>
-    <p>Available: <%= @item.availability %></p>
-    <%= link_to 'back', items_path %> | <%= link_to 'delete', item_path(@item), method: :delete %> | <%= link_to 'book it', new_item_booking_path(@item) %>
-  </div>
-   <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-  </div>
+    <div class="map_and_itemdescription">
+    <h1 class=""><%= @item.name %></h1>
+    <div class="item-show-details">
+      <p class=""><strong> Description: </strong><%= @item.description %></p>
+      <div class="item-show-buying-renting">
+        <p><strong> Rental Price:</strong>   $<%= @item.rental_price %></p>
+      </div>
+      <div>  
+        <p><strong> Buying Price:</strong>   $<%= @item.buying_price %></p>
+      </div>  
+      <p class="">Size: <%= @item.size %></p>
+      <% if @item.availability %>
+        <p class="item-available">Available</p>
+      <% else %>
+        <p class="item-not-available">Not Available</p>  
+      <% end %>
+      <div class="btn input-btn">
+        <%= link_to 'book it', new_item_booking_path(@item), class: "btn input-btn-ontop" %>
+      </div>  
+    </div>
+    <div class="item-show-links">
+    <%= link_to 'back', items_path %> | <%= link_to 'delete', item_path(@item), method: :delete %> 
+    </div>
+    <div class="item-show-influencer-box">
+      <h3> REVIEWS </h3>
+      <h2> Catalina Boex: from BARCELONA </h2>
+        <p>I have bought many dresses from this user and he is very helpful all the time. The delivery is always on time.</p>
+      <h2> Arthur Wagon: from PARIS </h2>
+        <p>The items sometimes are true to their size but sometimes they fit a big bigger. I think I would try to talk in detail to the owner of the apparel in order to make a final decision</p>  
+      <h2> Leonard Percival: from GREECE </h2>
+        <p>I have only have great experiences with this user. They always have excellent custome service and I have no complaints with them.</p> 
+    </div> 
+      <div class="show-google-map" id="map" style="width: 590px; height: 400px;" data-markers="<%= @markers.to_json %>">
+      </div>
+    </div>
+  </div>  
 </div>
