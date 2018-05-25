@@ -10,36 +10,28 @@ class PagesController < ApplicationController
     @items = Item.all
     @user = User.find(params[:id])
     @bookings = current_user.bookings
-  end
 
-  def user_profile
-    @user = User.find(params[:id])
-  end
-
-  def calendar
-  end
-
-  def user_listing
-    @items = Item.where(user_id: current_user).to_a
+    #the below is for displaying the user_listings within the new format of dashboard
+    @items_listing = Item.where(user_id: current_user).to_a
     @available_items = []
     @pending_items = []
     @accepted_items = []
     @pendingandbooked = []
-    @bookings = Booking.all
+    @bookings_listing = Booking.all
     # there is not a booking across all users
-    if (@bookings.length == 0)
-      @items.each do |item|
+    if (@bookings_listing.length == 0)
+      @items_listing.each do |item|
         @available_items.push(item)
       end
     else
-      @bookings.each do |booking|
-        @items.each do |item|
+      @bookings_listing.each do |booking|
+        @items_listing.each do |item|
           #if its included in any array don`t push it in again
           if (@available_items.include?(item) == false && @pending_items.include?(item) == false && @accepted_items.include?(item) == false && @pendingandbooked.include?(item) == false)
             if (booking.item_id != item.id)
                 @available_items.push(item)
             else
-              # there are bookings
+              # there are bookings_listing
               if (booking.status == "pending")
                 @pending_items.push(item)
               elsif (booking.status == "accepted")
@@ -52,5 +44,15 @@ class PagesController < ApplicationController
         end
       end
     end
+  end
+
+  def user_profile
+    @user = User.find(params[:id])
+  end
+
+  def calendar
+  end
+
+  def user_listing
   end
 end
