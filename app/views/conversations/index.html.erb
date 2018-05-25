@@ -1,11 +1,17 @@
-<div class="container">
-  <h2>Conversations</h2>
+  
+  <h2 class="h2messages">Messages <%= link_to "(New Message)", new_conversation_path, class: "new-convo-link" %></h2>
+<div class="message-container">
+  
 
-  <% @conversations.each do |conversation| %>
-    <div>
-      <%= link_to conversation.subject, conversation_path(conversation) %>
-    </div>
-  <% end %>
+	<div class="message-box">
+	  <% @conversations.each do |conversation| %>
+	    <div class="message-title">
+	      <p>Message Title: <%= link_to conversation.subject, conversation_path(conversation), input_html: {class: "message-link"}%></p>
+	    </div>
+	  <% end %>
+	</div>
 
-  <%= link_to "New Conversation", new_conversation_path %>
+	<div>
+	<%= image_tag "https://images.pexels.com/photos/261706/pexels-photo-261706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "message-image"%>
+	</div>
 </div>
