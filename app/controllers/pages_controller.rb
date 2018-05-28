@@ -6,12 +6,11 @@ class PagesController < ApplicationController
     @location = request.location.data['city']
   end
 
-  def dashboard
+  def user_listing
     @items = Item.all
-    @user = User.find(params[:id])
+    @user = current_user
     @bookings = current_user.bookings
 
-    #the below is for displaying the user_listings within the new format of dashboard
     @items_listing = Item.where(user_id: current_user).to_a
     @available_items = []
     @pending_items = []
@@ -53,6 +52,4 @@ class PagesController < ApplicationController
   def calendar
   end
 
-  def user_listing
-  end
 end

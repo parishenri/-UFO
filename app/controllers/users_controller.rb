@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -12,9 +12,6 @@ class UsersController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
-  end
-
-  def dashboard
   end
 
   def edit
