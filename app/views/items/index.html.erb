@@ -1,6 +1,18 @@
 <div class="container-results-main">
   <div class="container-results">
 
+    <%= simple_form_for @item, url: items_path, method: :get, html: { class: 'form-inline' } do |f| %>
+      <%= f.error_notification %>
+
+        <td class="select-form"><%= f.input :size, collection: @sizes, label: false, prompt: "Size" %></td>
+
+        <td class="select-form"><%= f.input :buying_price, collection: @prices, label: false, prompt: "Buy price" %></td>
+
+        <td class="select-form"><%= f.input :rental_price, collection: @prices, label: false, prompt: "Rent price" %></td>
+
+        <td class="select-form"><%= f.submit "Apply" %></td>
+    <% end %>
+
   <!-- 1) Cards -->
     <div class="row">
       <div class="col-xs-12 col-sm-6">

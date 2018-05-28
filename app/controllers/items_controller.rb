@@ -3,6 +3,16 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @prices = ["1K", "2K", "3K"]
+    @sizes = ["Tiny", "medium", "Massive"]
+    @item = Item.new
+
+    if params[:item].nil?
+      @items = Item.all
+    else
+      @items = Item.filter(item_params)
+    end
+
     @location = request.location.data['city']
     if @location.empty?
       user_location = "London UK"
@@ -10,16 +20,16 @@ class ItemsController < ApplicationController
       user_location = [request.location.data['latitude'], request.location.data['longitude']]
     end
 
-    near_items = User.near(user_location, 25)
+    near_items = User.near(user_location, 5)
 
     if params[:query] || params[:location] || params[:place] #query = item name & des, location = geolocalisation, place = search function
       if params[:place]
-        @items = Item.global_search("#{params[:query]} #{params[:place]}") if params[:query].present?
+        @items = @items.global_search("#{params[:query]} #{params[:place]}") if params[:query].present?
       else
-        @items = Item.global_search(params[:query]).where(user_id: near_items.map(&:id))
+        @items = @items.global_search(params[:query]).where(user_id: near_items.map(&:id))
       end
     else
-      @items = Item.all
+      # @items = Item.all
     end
 
     if @items.nil?
@@ -30,15 +40,8 @@ class ItemsController < ApplicationController
       {
         lat: item.user.latitude,
         lng: item.user.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
-
-    # if @search.nil?
-    #   @items = Item.includes(:user).where(user_id: near_items.map(&:id))
-    #   else
-    # @items = @search.where(user_id: near_items.map(&:id))
-    # end
   end
 
 
