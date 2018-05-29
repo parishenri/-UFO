@@ -9,7 +9,7 @@ Geocoder.configure(
   # http_proxy: nil,            # HTTP proxy server (user:pass@host:port)
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
   distances: :spherical,          # :spherical or :linear
-  api_key: "AIzaSyD17KJYa9fn_ExaEBTl09CxxrI8lxT_sXA",               # API key for geocoding service
+  api_key: ENV['GOOGLE_API_SERVER_KEY'],               # API key for geocoding service
 
   # cache: nil,                 # cache object (must respond to #[], #[]=, and #del)
   # cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
