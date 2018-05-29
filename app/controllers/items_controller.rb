@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def index
     @prices = ["1K", "2K", "3K"]
     @sizes = ["Tiny", "medium", "Massive"]
+    @colors = ["Pink", "Blue", "white"]
     @item = Item.new
 
     if params[:item].nil?
@@ -41,6 +42,11 @@ class ItemsController < ApplicationController
         lat: item.user.latitude,
         lng: item.user.longitude#,
       }
+    end
+
+    respond_to do |format|
+      format.html { render 'items/index' }
+      format.js
     end
   end
 
@@ -92,6 +98,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
   end
 end

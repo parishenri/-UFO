@@ -1,0 +1,10 @@
+itemsForm = document.getElementById("new_item")
+console.log(itemsForm)
+
+cards = document.querySelectorAll('.card-results')
+  cards.forEach(function(card) {
+  card.remove();
+})
+
+results = document.getElementById('results')
+results.innerHTML = "<%= j render 'card_results', items: @items %>";
