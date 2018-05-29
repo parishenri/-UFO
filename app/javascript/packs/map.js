@@ -14,6 +14,4 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.fitLatLngBounds(markers);
   }
 }
-
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
 // autocomplete();
