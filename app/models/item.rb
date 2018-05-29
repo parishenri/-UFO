@@ -13,12 +13,9 @@ class Item < ApplicationRecord
 
 
   pg_search_scope :global_search,
-    against: [ :name, :description, :size, :buying_price, :rental_price],
-    associated_against: {
-      user: [ :address ]
-    },
+    against: [ :name, :description ],
     using: {
-      tsearch: { prefix: true }
+    tsearch: { prefix: true }
     }
 
   def self.filter(args)
