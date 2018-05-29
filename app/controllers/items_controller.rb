@@ -70,6 +70,12 @@ class ItemsController < ApplicationController
   def show
     @user = @item.user
     @booking = Booking.new
+    @order = Order.new
+    @booking_dates = []
+    @item.bookings.each do |booking|
+      @booking_dates << { from: booking.start_date, to: booking.end_date }
+    end
+
 
     @markers = [@user].map do |u|
       {

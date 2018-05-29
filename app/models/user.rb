@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :bookings
+  has_many :orders
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   validates :size, presence: true
   validates :photo, presence: true
   mount_uploader :photo, PhotoUploader
+  monetize :rental_price_cents
+  monetize :buying_price_cents
   include PgSearch
 
 

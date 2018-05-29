@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_111431) do
+ActiveRecord::Schema.define(version: 2018_05_29_170303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 2018_05_25_111431) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "rental_price"
-    t.integer "buying_price"
     t.string "size"
     t.boolean "availability"
     t.boolean "rental_only"
@@ -49,6 +47,9 @@ ActiveRecord::Schema.define(version: 2018_05_25_111431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.integer "rental_price_cents", default: 0, null: false
+    t.integer "buying_price_cents", default: 0, null: false
+    t.string "sku"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -104,6 +105,18 @@ ActiveRecord::Schema.define(version: 2018_05_25_111431) do
     t.string "message_id"
     t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "item_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "GBP", null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -162,6 +175,7 @@ ActiveRecord::Schema.define(version: 2018_05_25_111431) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_groups", "groups"
