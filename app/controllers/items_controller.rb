@@ -116,8 +116,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.delete
-    redirect_to items_path
+    @item.destroy
+    redirect_to user_listing_path
   end
 
   private
