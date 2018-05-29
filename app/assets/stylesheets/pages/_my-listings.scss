@@ -1,25 +1,47 @@
 .items-div {
   display: flex;
+  justify-content: space-between;
 }
 
 .add-item {
-  margin: 0px 0px;
+  margin: 20px 0px;
   padding: 10px 10px;
   vertical-align: middle;
-  display: table-cell;
+  background-color: #fd9ab9;
+  border-radius: 3px;
+  text-decoration: none;
 }
+
+.add-item-btn {
+  text-decoration: none;
+  color: white;
+}
+
+.add-item-btn:hover {
+  background-color: #f86a96;
+  text-decoration: none;
+  color: white;
+}
+
+
+.add-item:hover {
+  background-color: #f86a96;
+  text-decoration: none;
+  color: white;
+}
+
 
 .items-and-calendar {
   display: flex;
-  justify-content: space-between
-
+  justify-content: space-between;
 }
 
 .calendar-my-listing {
-  margin: 2%;
   justify-content: space-around;
   width: 400px;
   height: 400px;
+  padding: 0px 0px;
+  margin-top: -18px;
 }
 
 
@@ -43,6 +65,9 @@
   display: flex;
 }
 
+#calendar {
+  margin-right: 0px;
+}
 
 .my-listing-card-image {
   height: 250px;
@@ -51,4 +76,13 @@
   background-size: cover;
   background-position: center;
   border-radius: 2px;
+}
+
+.js-click {
+  color: #d3d3d4;
+  z-index: 5; position:relative;
+}
+
+.js-click:hover {
+  color: #fd9ab9;
 }
