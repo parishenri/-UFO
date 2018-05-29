@@ -66,6 +66,7 @@ class ItemsController < ApplicationController
 
   def show
     @user = @item.user
+    @booking = Booking.new
 
     @markers = [@user].map do |u|
       {

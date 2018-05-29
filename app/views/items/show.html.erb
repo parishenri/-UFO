@@ -5,37 +5,51 @@
 
   <div class="item-description">
     <div class="map_and_itemdescription">
-    <h1 class=""><%= @item.name %></h1>
-    <div class="item-show-details">
-      <p class=""><strong> Description: </strong><%= @item.description %></p>
-      <div class="item-show-buying-renting">
+        <h1 class=""><%= @item.name %></h1>
+      <div class="item-show-details">
+        <p class=""><strong> Description: </strong><%= @item.description %></p>
+        <div class="item-show-buying-renting">
         <p><strong> Rental Price:</strong>   $<%= @item.rental_price %></p>
       </div>
       <div>  
         <p><strong> Buying Price:</strong>   $<%= @item.buying_price %></p>
       </div>  
-      <p class="">Size: <%= @item.size %></p>
-      <% if @item.availability %>
+        <p class="">Size: <%= @item.size %></p>
+        <% if @item.availability %>
         <p class="item-available">Available</p>
-      <% else %>
+        <% else %>
         <p class="item-not-available">Not Available</p>  
-      <% end %>
-      <div class="btn input-btn">
+        <% end %>
+
+      <div class="form-wrapper" style="width: 500px; margin: 0 auto;">
+        <div>
+          <%= simple_form_for [@item, @booking], method: :post do |t| %>
+            <%= t.input :start_date, as: :string, input_html: { id: "start_date"} %>
+            <%= t.input :end_date, as: :string, input_html: { id: "end_date"} %>
+        </div>
+            <%= t.submit "Book it", class: "btn input-btn-ontop" %>
+            <% end %>
+      </div>
+
+      
+
+<!--       <div class="btn input-btn">
         <%= link_to 'book it', new_item_booking_path(@item), class: "btn input-btn-ontop" %>
-      </div>  
-    </div>
-    <div class="item-show-links">
-    <%= link_to 'back', items_path %> | <%= link_to 'delete', item_path(@item), method: :delete %> 
-    </div>
-    <div class="item-show-influencer-box">
-      <h3> REVIEWS </h3>
-      <h2> Catalina Boex: from BARCELONA </h2>
-        <p>I have bought many dresses from this user and he is very helpful all the time. The delivery is always on time.</p>
-      <h2> Arthur Wagon: from PARIS </h2>
-        <p>The items sometimes are true to their size but sometimes they fit a big bigger. I think I would try to talk in detail to the owner of the apparel in order to make a final decision</p>  
-      <h2> Leonard Percival: from GREECE </h2>
-        <p>I have only have great experiences with this user. They always have excellent custome service and I have no complaints with them.</p> 
-    </div> 
+      </div>   -->
+      </div>
+
+      <div class="item-show-links">
+        <%= link_to 'back', items_path %>
+      </div>
+      <div class="item-show-influencer-box">
+        <h3> REVIEWS </h3>
+        <h2> Catalina Boex: from BARCELONA </h2>
+          <p>I have bought many dresses from this user and he is very helpful all the time. The delivery is always on time.</p>
+        <h2> Arthur Wagon: from PARIS </h2>
+          <p>The items sometimes are true to their size but sometimes they fit a big bigger. I think I would try to talk in detail to the owner of the apparel in order to make a final decision</p>  
+        <h2> Leonard Percival: from GREECE </h2>
+          <p>I have only have great experiences with this user. They always have excellent custome service and I have no complaints with them.</p> 
+      </div> 
       <div class="show-google-map" id="map" style="width: 590px; height: 400px;" data-markers="<%= @markers.to_json %>">
       </div>
     </div>
