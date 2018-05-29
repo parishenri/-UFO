@@ -1,110 +1,99 @@
-    <div class="container-profile-page">
-      <h1>Welcome <%= current_user.first_name %></h1>
-      <div>
-        <h2>Personal details</h2>
-        <p>First name: <%= @user.first_name %></p>
-        <p>First name: <%= @user.email %></p>
-        <p>Last name: <%= @user.last_name %></p>
-        <p>Address: <%= @user.address %></p>
-        <p>Phone number: <%= @user.phone_number %></p>
-        <p>City: <%= @user.city %></p>
-        <p>Age: <%= @user.age %></p>
-        <p>Gender: <%= @user.gender %></p>
-        <p>ID verification</p>
-      </div>
+<div class="container-profile-page">
 
-      <div class="activity_overview">
-        <div>
-          <h2>Activity overview</h2>
-          <p>Revenues: £500 in 2018</p>
-          <p>Listing reviewed/30 days: 50</p>
-          <p>Overall rating: 4.5*</p>
-          <p>Total reviews: 22</p>
-          <p>5 star reviews: 80%</p>
-          <p>Order history</p>
-        </div>
-          <h2>Share your passion for renting</h2>
-          <p>Refer a friend and get £45 when they rent there first item</p>
-        <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Refer a friend
-        </button>
+  <h1>Welcome <%= current_user.first_name %></h1>
 
-                <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Refer a friend</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Share and get £45</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </div>
+    <div class="container">
+      <div class="edit-user">
+        <h2 class="header-edit">Edit User</h2>
+          <%resource_name.to_s.humanize %>
+          <%= simple_form_for(@user) do |f| %>
+          <%= f.error_notification %>
+          <div class="details-container">
 
-            </div>
-          </div>
+          <div class="form-inputs">
 
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-  <div class="edit-user">
-    <h2 class="header-editu">Edit User</h2>
-      <%resource_name.to_s.humanize %>
-      <%= simple_form_for(@user) do |f| %>
-      <%= f.error_notification %>
-      <div class="details-container">
-        <div class="form-inputs">
           <div class="edit-user-name-and-email">
-            <%= f.input :first_name, input_html: {class: "input-bar"} %>
-            <%= f.input :last_name, input_html: {class: "input-bar"}%>
-            <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
+          <%= f.input :first_name, input_html: {class: "input-bar"} %>
+          <%= f.input :last_name, input_html: {class: "input-bar"}%>
+          <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
           </div>
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+
           <% end %>
 
-          <div class="edit-user-name-and-email">
-            <%= f.input :address, required: false, input_html: {class: "input-bar"}%>
-            <%= f.input :city, required: false, input_html: {class: "input-bar"} %>
-            <%= f.input :phone_number, required: false, input_html: {class: "input-bar"}%>
-          </div>
+              <div class="edit-user-name-and-email">
+                <%= f.input :address, required: false, input_html: {class: "input-bar"}%>
+                <%= f.input :city, required: false, input_html: {class: "input-bar"} %>
+                <%= f.input :phone_number, required: false, input_html: {class: "input-bar"}%>
+              </div>
 
-          <div class="edit-user-name-and-email">
-            <%= f.input :age, required: false, input_html: {class: "input-bar"} %>
-            <%= f.input :gender, required: false, input_html: {class: "input-bar"} %>
-            <%= f.input :id_document, required: false, input_html: {class: "input-bar"} %>
-          </div>
-          <div class="form-actions btn input-btn">
-            <input type="submit" name="commit" value="Update" input_html="{&quot;class&quot;=>&quot;btn input-btn&quot;}" class="input-btn-ontop" data-disable-with="Update">
-          </div>
-        </div>
-      <% end %>
+              <div class="edit-user-name-and-email">
+                <%= f.input :age, required: false, input_html: {class: "input-bar"} %>
+                <%= f.input :gender, required: false, input_html: {class: "input-bar"} %>
+                <%= f.input :id_document, required: false, input_html: {class: "input-bar"} %>
+              </div>
 
-     <%= image_tag "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "edit-user-image"%>
+              <div class="form-actions btn input-btn">
+                <input type="submit" name="commit" value="Update" input_html="{&quot;class&quot;=>&quot;btn input-btn&quot;}" class="input-btn-ontop" data-disable-with="Update">
+              </div>
+            </div>
+          <% end %>
+
+          <%= image_tag "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "edit-user-image"%>
+      </div>
     </div>
 
-</div>
     <div class="details-container-two">
       <h2 class="header-editu">Cancel my account</h2>
       <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
       <p><%= link_to "Back", :back, input_html: {class: "back-link"} %></p>
+    </div>
+
+  <div class="activity_overview">
+    <div>
+      <h2>Activity overview</h2>
+      <p>Revenues: £500 in 2018</p>
+      <p>Listing reviewed/30 days: 50</p>
+      <p>Overall rating: 4.5*</p>
+      <p>Total reviews: 22</p>
+      <p>5 star reviews: 80%</p>
+      <p>Order history</p>
+    </div>
+
+    <h2>Share your passion for renting</h2>
+    <p>Refer a friend and get £45 when they rent there first item</p>
+
+    <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Refer a friend
+    </button>
+
+                <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Refer a friend</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Share and get £45</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
