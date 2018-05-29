@@ -1,7 +1,7 @@
 <div class="container-results-main">
   <div class="container-results">
 
-    <%= simple_form_for @item, url: items_path, method: :get, html: { class: 'form-inline' } do |f| %>
+    <%= simple_form_for @item, url: items_path, remote: true, method: :get, html: { class: 'form-inline' } do |f| %>
       <%= f.error_notification %>
 
         <td class="select-form"><%= f.input :size, collection: @sizes, label: false, prompt: "Size" %></td>
@@ -10,7 +10,9 @@
 
         <td class="select-form"><%= f.input :rental_price, collection: @prices, label: false, prompt: "Rent price" %></td>
 
-        <td class="select-form"><%= f.submit "Apply" %></td>
+        <td class="select-form"><%= f.input :color, collection: @colors, label: false, prompt: "Colour" %></td>
+
+        <td class="select-form"><%= f.submit "Apply", id: "filter-button" %></td>
     <% end %>
 
   <!-- 1) Cards -->
@@ -40,3 +42,4 @@
     </div>
   </div>
 </div>
+
