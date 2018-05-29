@@ -11,6 +11,8 @@ class PagesController < ApplicationController
     @user = current_user
     @bookings = current_user.bookings
 
+    @bookings = @bookings.where(item_id: params[:item][:name]) if params[:item] && params[:item][:name]
+    @item = Item.new
     @items_listing = Item.where(user_id: current_user).to_a
     @available_items = []
     @pending_items = []
@@ -25,6 +27,7 @@ class PagesController < ApplicationController
     else
       @bookings_listing.each do |booking|
         @items_listing.each do |item|
+
           #if its included in any array don`t push it in again
           if (@available_items.include?(item) == false && @pending_items.include?(item) == false && @accepted_items.include?(item) == false && @pendingandbooked.include?(item) == false)
             if (booking.item_id != item.id)
@@ -43,6 +46,7 @@ class PagesController < ApplicationController
         end
       end
     end
+    @user_items = Item.where(user: current_user)
   end
 
   def user_profile
