@@ -75,3 +75,19 @@ label{
 	margin: 10px 60px 0px 150px;
 	opacity: 0.6;
 }
+
+.datebar {
+	width: 100px;
+	height: 20px;
+	border-style: none;
+	font-size: 12px;
+}
+
+.calendar-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.calendar-container p {
+	font-size: 12px;
+}

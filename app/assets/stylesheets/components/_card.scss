@@ -1,9 +1,9 @@
 .cards-container{
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
   justify-content: space-between;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .card-image{
