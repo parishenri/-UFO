@@ -9,14 +9,11 @@
       <div class="item-show-details">
         <p class=""><strong> Description: </strong><%= @item.description %></p>
         <div class="item-show-buying-renting">
-        <p><strong> Rental Price:</strong>   £<%= @item.rental_price %></p>
+<p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price) %></p>
       </div>
-      <div>
-        <p><strong> Buying Price:</strong>   £<%= @item.buying_price %></p>
-      </div>
-      <div>
-        <p><strong> Colour:</strong>   <%= @item.color %></p>
-      </div>
+      <div>  
+        <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price) %></p>
+      </div>  
         <p class="">Size: <%= @item.size %></p>
         <% if @item.availability %>
         <p class="item-available">Available</p>
@@ -24,14 +21,28 @@
         <p class="item-not-available">Not Available</p>
         <% end %>
 
-      <div class="form-wrapper" style="width: 500px; margin: 0 auto;">
-        <div>
-          <%= simple_form_for [@item, @booking], method: :post do |t| %>
-            <%= t.input :start_date, as: :string, input_html: { id: "start_date"} %>
-            <%= t.input :end_date, as: :string, input_html: { id: "end_date"} %>
+      <div class="request-booking-box">
+        <div class="form-wrapper">
+            <p>Booking Date:</p>
+            <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
+                <div class="input-group">
+                  <i class="far fa-calendar-alt calendar-icon"></i>
+                  <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
+                </div>
+                <div class="input-group">
+                  <i class="far fa-calendar-alt"></i>
+                  <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
+                </div>
+                <div id="bookedDates" data-dates="<%= @booking_dates.to_json %>"></div>
+                <%= t.submit "Request Booking", class: "request-booking-btn" %>
+              <% end %>
+
+            <%= form_tag orders_path do %>
+                <%= hidden_field_tag 'item_id', @item.id %>
+                <%= hidden_field_tag 'type', "buying" %>
+                <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+            <% end %> 
         </div>
-            <%= t.submit "Book it", class: "btn input-btn-ontop" %>
-            <% end %>
       </div>
 
 

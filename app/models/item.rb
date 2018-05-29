@@ -9,6 +9,8 @@ class Item < ApplicationRecord
   validates :color, presence: true
 
   mount_uploader :photo, PhotoUploader
+  monetize :rental_price_cents
+  monetize :buying_price_cents
   include PgSearch
 
 

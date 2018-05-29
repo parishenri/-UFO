@@ -10,16 +10,26 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     resources :bookings, only: :index
   end
+  
+  resources :orders, only: [ :show, :create] do
+    resources :payments, only: [:new, :create]
+  end
 
   resources :items do
     resources :bookings, except: [:index]
+    # resources :orders, only: [ :show, :create] do
+    #   resources :payments, only: [:new, :create]
+    # end
   end
+  
 
   resources :conversations do
     resources :messages
   end
 
   root to: 'pages#home'
+
+
 end
 
 

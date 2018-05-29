@@ -28,6 +28,7 @@ class BookingsController < ApplicationController
     @booking.status = "pending"
     @booking.item = Item.find(params[:item_id])
     @booking.save
+    flash[:notice] = 'Your request has been sent'
     redirect_to user_bookings_path(current_user)
   end
 
