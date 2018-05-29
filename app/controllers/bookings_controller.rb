@@ -17,6 +17,9 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
+    @user_bookings = @bookings
+    @user_bookings = @bookings.where(id: params[:booking][:item]) if params[:booking] && params[:booking][:item]
+    @booking = Booking.new
   end
 
   def create

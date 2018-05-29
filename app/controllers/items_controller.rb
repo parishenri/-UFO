@@ -5,42 +5,77 @@ class ItemsController < ApplicationController
   def index
     @prices = ["1K", "2K", "3K"]
     @sizes = ["Tiny", "medium", "Massive"]
+    @colors = ["Pink", "Blue", "white"]
     @item = Item.new
 
-    if params[:item].nil?
-      @items = Item.all
-    else
-      @items = Item.filter(item_params)
-    end
+    # if params[:item].nil?
+    #   @items = Item.all
+    # else
+    #   @items = Item.filter(item_params)
+    # end
+
+    # @location = request.location.data['city']
+    # if @location.empty?
+    #   user_location = "London UK"
+    # else
+    #   user_location = [request.location.data['latitude'], request.location.data['longitude']]
+    # end
+
+    # near_items = User.near(user_location, 5)
+
+    # if params[:query] || params[:place] || params[:location] #query = item name & des, location = geolocalisation, place = search function
+    #   if params[:place]
+    #     @items = @items.global_search("#{params[:query]} #{params[:place]}") if params[:query].present?
+    #   else
+    #     @items = @items.global_search(params[:query]).where(user_id: near_items.map(&:id))
+    #   end
+    # end
+
+    # if @items.nil?
+    #   @items = Item.all
+    # end
+
 
     @location = request.location.data['city']
-    if @location.empty?
-      user_location = "London UK"
+
+     if @location.empty?
+        if params[:place].present?
+          user_location = params[:place]
+        else
+          user_location = "London UK"
+        end
+     else
+      if params[:place].present?
+          user_location = params[:place]
+        else
+          user_location = [request.location.data['latitude'], request.location.data['longitude']]
+        end
+     end
+
+     near_items = User.near(user_location, 15)
+
+
+      @items = Item.includes(:user).where(user_id: near_items.map(&:id))
+
+    if params[:query].present?
+      @search = Item.global_search(params[:query])
+      @items = @search.where(user_id: near_items.map(&:id))
     else
-      user_location = [request.location.data['latitude'], request.location.data['longitude']]
+      @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
 
-    near_items = User.near(user_location, 5)
 
-    if params[:query] || params[:location] || params[:place] #query = item name & des, location = geolocalisation, place = search function
-      if params[:place]
-        @items = @items.global_search("#{params[:query]} #{params[:place]}") if params[:query].present?
-      else
-        @items = @items.global_search(params[:query]).where(user_id: near_items.map(&:id))
-      end
-    else
-      # @items = Item.all
-    end
-
-    if @items.nil?
-      @items = Item.all
-    end
 
     @markers = @items.map do |item|
       {
         lat: item.user.latitude,
         lng: item.user.longitude#,
       }
+    end
+
+    respond_to do |format|
+      format.html { render 'items/index' }
+      format.js
     end
   end
 
@@ -87,8 +122,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.delete
-    redirect_to items_path
+    @item.destroy
+    redirect_to user_listing_path
   end
 
   private
@@ -98,6 +133,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
   end
 end

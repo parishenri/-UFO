@@ -31,6 +31,15 @@
   }
 }
 
+@media(max-width: 720px) {
+  .map-index {
+    height: 400px;
+  }
+  #map{
+    height: 200px;
+  }
+}
+
 .card-results{
   // display: flex;
   // flex-direction: column;
@@ -58,4 +67,17 @@
   background: black;
   opacity: 0;
   height: 10px;
+}
+
+.card-image-results {
+  padding-top: 20px;
+
+}
+
+.card-image-index {
+  height: 250px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
 }

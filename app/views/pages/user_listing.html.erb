@@ -1,45 +1,112 @@
 <div class="container">
-  <h1>My items to rent</h1>
-  <div class="row">
-    <% @items.each do |item| %>
-      <% if item.user == current_user %>
-        <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-          <div class="card mw">
-            <%= link_to item_path(item) do %>
-              <div class="card-image" style="background-image: url(<%= image_tag = item.photo %>)"></div>
-            <% end %>
-            <div class="card-description">
-              <h3><%= link_to item.name, item_path(item), class: "name-item" %></h3>
+
+  <div class="items-div">
+    <div class="my-listing-title">
+      <h1>My items to rent</h1>
+    </div>
+    <div>
+      <div class="row add-item">
+        <%= link_to 'add an item', new_item_path(@item), class: "add-item-btn" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="items-and-calendar">
+
+
+
+
+    <div class="row">
+      <% @items.each do |item| %>
+        <% if item.user == current_user %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="card mw">
+              <%= link_to item_path(item) do %>
+                <div class="my-listing-card-image" style="background-image: url(<%= image_tag = item.photo %>)">
+                </div>
+              <% end %>
+              <div class="card-description">
+                <h3><%= item.name %></h3>
+                <%= link_to item_path(item), method: :delete do %>
+                  <i class="fas fa-trash-alt delete-bin js-click"></i>
+                <% end %>
+                <p><strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
+              </div>
+
+              <div class="listing-status">
+                <div>
+                  <p class="listing-status-items">Availability:</p>
+                </div>
+
+                <% if @available_items.include?(item) %>
+                  <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
+                  <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
+                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
+
+                <% elsif @pending_items.include?(item) %>
+                  <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
+                  <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
+                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a></div>
+
+                <% elsif @accepted_items.include?(item) %>
+                  <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
+                  <div class="item-status"><p class="green listing-status-items">Booked</p></div>
+                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
+
+                <% elsif @pendingandbooked.include?(item) %>
+                  <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
+                  <div class="item-status"><p class="green listing-status-items">Booked</p></div>
+                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click" data-blabla="<%= item.id %>"></i></a></div>
+
+                <% end %>
+              </div>
             </div>
-            <div class="card-rating">
+
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <div class="calendar-my-listing">
+      <div id="calendar">
+        <div>
+          <%= simple_form_for(@item, url: user_listing_path, method: :get) do |f| %>
+            <%= f.input :name, label: false, collection: @user_items, prompt: "Select item", input_html: { class: "hidden" } %>
+          <% end %>
+
+          <div class="calendar-container">
+            <div class="calendar">
+              <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: @bookings)  do |date, bookings| %>
+                <%= date.day %>
+                  <% bookings.each do |booking| %>
+                  <div>
+
+                    <%= booking.item.name %>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
-
-      <div class="listing-status">
-        <p class="listing-status-items">Availability:</p>
-        <% if @available_items.include?(item) %>
-          <p class="grey listing-status-items">Pending</p>
-          <p class="grey listing-status-items">Booked</p>
-          <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
-        <% elsif @pending_items.include?(item) %>
-          <p class="orange listing-status-items">Pending</p>
-          <p class="grey listing-status-items">Booked</p>
-          <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a>
-        <% elsif @accepted_items.include?(item) %>
-          <p class="grey listing-status-items">Pending</p>
-          <p class="green listing-status-items">Booked</p>
-          <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
-        <% elsif @pendingandbooked.include?(item) %>
-          <p class="orange listing-status-items">Pending</p>
-          <p class="green listing-status-items">Booked</p>
-          <a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a>
-        <% end %>
         </div>
       </div>
-      <% end %>
-    <% end %>
+    </div>
+
   </div>
-  <div class="row">
-    <%= link_to 'add an item', new_item_path(@item)%>
-  </div>
+
 </div>
+
+<script>
+  const calendars = document.querySelectorAll('.js-click');
+  let selectedCal = 0;
+  calendars.forEach( function (calendar) {
+    calendar.addEventListener("click", (event) => {
+      selectedCal = calendar.dataset.calendarId;
+      const form = document.getElementById('new_item')
+      const dropdown = document.getElementById('item_name')
+      dropdown.value = Number.parseInt(selectedCal)
+      form.submit();
+    });
+  });
+</script>

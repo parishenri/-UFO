@@ -9,7 +9,7 @@
       <div class="item-show-details">
         <p class=""><strong> Description: </strong><%= @item.description %></p>
         <div class="item-show-buying-renting">
-        <p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price) %></p>
+<p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price) %></p>
       </div>
       <div>  
         <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price) %></p>
@@ -18,7 +18,7 @@
         <% if @item.availability %>
         <p class="item-available">Available</p>
         <% else %>
-        <p class="item-not-available">Not Available</p>  
+        <p class="item-not-available">Not Available</p>
         <% end %>
 
       <div class="request-booking-box">
@@ -45,7 +45,7 @@
         </div>
       </div>
 
-      
+
 
 <!--       <div class="btn input-btn">
         <%= link_to 'book it', new_item_booking_path(@item), class: "btn input-btn-ontop" %>
@@ -60,12 +60,12 @@
         <h2> Catalina Boex: from BARCELONA </h2>
           <p>I have bought many dresses from this user and he is very helpful all the time. The delivery is always on time.</p>
         <h2> Arthur Wagon: from PARIS </h2>
-          <p>The items sometimes are true to their size but sometimes they fit a big bigger. I think I would try to talk in detail to the owner of the apparel in order to make a final decision</p>  
+          <p>The items sometimes are true to their size but sometimes they fit a big bigger. I think I would try to talk in detail to the owner of the apparel in order to make a final decision</p>
         <h2> Leonard Percival: from GREECE </h2>
-          <p>I have only have great experiences with this user. They always have excellent custome service and I have no complaints with them.</p> 
-      </div> 
+          <p>I have only have great experiences with this user. They always have excellent custome service and I have no complaints with them.</p>
+      </div>
       <div class="show-google-map" id="map" style="width: 590px; height: 400px;" data-markers="<%= @markers.to_json %>">
       </div>
     </div>
-  </div>  
+  </div>
 </div>

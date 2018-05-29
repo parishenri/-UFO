@@ -1,0 +1,36 @@
+<div id="calendar" class="tab-pane fade">
+  <div>
+    <div class="drop-down-see-item">
+      <div class="dropdown-div">
+        <div class="dropdown">
+          <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown trigger
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <% @items_listing.each do |item| %>
+              <li><a class="dropdown-item" href="#"><%= item.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="calendar-view-item-button">
+         <span><%= link_to 'view item'  %></span>
+      </div>
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar">
+        <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: @bookings)  do |date, bookings| %>
+          <%= date.day %>
+            <% bookings.each do |booking| %>
+            <div>
+              <%= booking.item.name %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
