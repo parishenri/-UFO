@@ -4,8 +4,10 @@
     <div class="my-listing-title">
       <h1>My items to rent</h1>
     </div>
-    <div class="row add-item">
-      <%= link_to 'add an item', new_item_path(@item)%>
+    <div>
+      <div class="row add-item">
+        <%= link_to 'add an item', new_item_path(@item), class: "add-item-btn" %>
+      </div>
     </div>
   </div>
 
@@ -27,7 +29,6 @@
               <div class="card-description">
                 <h3><%= item.name %></h3>
                 <p> <strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
-                <p>This is the rating and comments</p>
               </div>
 
               <div class="listing-status">
@@ -53,7 +54,7 @@
                 <% elsif @pendingandbooked.include?(item) %>
                   <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
                   <div class="item-status"><p class="green listing-status-items">Booked</p></div>
-                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
+                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click" data-blabla="<%= item.id %>"></i></a></div>
 
                 <% end %>
               </div>
@@ -69,7 +70,7 @@
       <div id="calendar">
         <div>
           <%= simple_form_for(@item, url: user_listing_path, method: :get) do |f| %>
-            <%= f.input :name, collection: @user_items %>
+            <%= f.input :name, label: false, collection: @user_items, prompt: "Select item", input_html: { class: "hidden" } %>
           <% end %>
 
           <div class="calendar-container">
@@ -93,9 +94,15 @@
 </div>
 
 <script>
-  const form = document.getElementById('new_item')
-  const dropdown = document.getElementById('item_name')
-  dropdown.addEventListener('change', (event) => {
-    form.submit();
-  })
+  const calendars = document.querySelectorAll('.js-click');
+  let selectedCal = 0;
+  calendars.forEach( function (calendar) {
+    calendar.addEventListener("click", (event) =>  {
+      selectedCal = calendar.dataset.calendarId;
+      const form = document.getElementById('new_item')
+      const dropdown = document.getElementById('item_name')
+      dropdown.value = Number.parseInt(selectedCal)
+      form.submit();
+    });
+  });
 </script>
