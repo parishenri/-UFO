@@ -1,0 +1,54 @@
+.items-div {
+  display: flex;
+}
+
+.add-item {
+  margin: 0px 0px;
+  padding: 10px 10px;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.items-and-calendar {
+  display: flex;
+  justify-content: space-between
+
+}
+
+.calendar-my-listing {
+  margin: 2%;
+  justify-content: space-around;
+  width: 400px;
+  height: 400px;
+}
+
+
+.my-listing-cards-container {
+  display: flex;
+}
+
+
+.listing-status {
+  display: flex;
+  p {
+    font-size: 14px;
+  }
+  a {
+    font-size: 14px;
+  }
+}
+
+.calendar-div {
+  margin: 0px 5px;
+  display: flex;
+}
+
+
+.my-listing-card-image {
+  height: 250px;
+  min-width: 220px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+}
