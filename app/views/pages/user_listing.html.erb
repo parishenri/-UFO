@@ -28,7 +28,10 @@
               <% end %>
               <div class="card-description">
                 <h3><%= item.name %></h3>
-                <p> <strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
+                <%= link_to item_path(item), method: :delete do %>
+                  <i class="fas fa-trash-alt delete-bin js-click"></i>
+                <% end %>
+                <p><strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
               </div>
 
               <div class="listing-status">
@@ -79,6 +82,7 @@
                 <%= date.day %>
                   <% bookings.each do |booking| %>
                   <div>
+
                     <%= booking.item.name %>
                   </div>
                 <% end %>
@@ -97,7 +101,7 @@
   const calendars = document.querySelectorAll('.js-click');
   let selectedCal = 0;
   calendars.forEach( function (calendar) {
-    calendar.addEventListener("click", (event) =>  {
+    calendar.addEventListener("click", (event) => {
       selectedCal = calendar.dataset.calendarId;
       const form = document.getElementById('new_item')
       const dropdown = document.getElementById('item_name')

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'calendar/:id', to: 'pages#calendar', as: :calendar
   get 'users/:id/user_profile', to: 'pages#user_profile', as: :user_profile
   get '/user_listing', to: 'pages#user_listing', as: :user_listing
+  get '/user_booking', to: 'pages#user_booking', as: :user_booking
 
   resources :users, only: [:edit, :update] do
     resources :bookings, only: :index

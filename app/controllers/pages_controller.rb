@@ -7,17 +7,18 @@ class PagesController < ApplicationController
   end
 
   def user_listing
-    @items = Item.all
+    @items = current_user.items
     @user = current_user
-    @bookings = current_user.bookings
+    @bookings = @items.map(&:bookings).flatten
 
-    @bookings = @bookings.where(item_id: params[:item][:name]) if params[:item] && params[:item][:name]
+    @bookings = @bookings.select { |booking| booking.item_id == params[:item][:name].to_i } if params[:item] && params[:item][:name]
     @item = Item.new
     @items_listing = Item.where(user_id: current_user).to_a
     @available_items = []
     @pending_items = []
     @accepted_items = []
     @pendingandbooked = []
+
     @bookings_listing = Booking.all
     # there is not a booking across all users
     if (@bookings_listing.length == 0)
@@ -27,7 +28,6 @@ class PagesController < ApplicationController
     else
       @bookings_listing.each do |booking|
         @items_listing.each do |item|
-
           #if its included in any array don`t push it in again
           if (@available_items.include?(item) == false && @pending_items.include?(item) == false && @accepted_items.include?(item) == false && @pendingandbooked.include?(item) == false)
             if (booking.item_id != item.id)
