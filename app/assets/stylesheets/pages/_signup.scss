@@ -1,8 +1,58 @@
+
+
 .login-box {
   border-style: ridge;
-  border-width: 2px;
-  border-color: black;
+  border-width: 1px;
+  border-color: #eeeeee;
   background: white;
-  padding: 20px;
-  margin: 10px;
+  padding: 0px 20px 15px 20px;
+  width: 400px;
+  position: absolute;
+  top: 40px;
+} h2{
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+} a{
+	font-size: 12px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+} .form-check-label{
+	margin: 0px 5px;
+} .user_email{
+	margin-bottom: 2px;
+} .user_password {
+	margin-bottom: 2px;
+} label{
+	font-size: 12px;
+}
+
+
+
+.remember-me{
+	margin-left: 10px;
+}
+
+.login-container{
+	min-height: 500px;	
+	position: relative;
+}
+
+.login-btn{
+	background-color: black;
+	border-radius: 3px;
+	color: white;
+	height: 30px;
+	width: 60%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	font-size: 12px;	
+
+}
+
+.login-btn:hover{
+	opacity: 0.9;
 }

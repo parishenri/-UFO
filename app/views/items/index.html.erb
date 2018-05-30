@@ -17,12 +17,27 @@
 
   <!-- 1) Cards -->
     <div class="row">
-      <div class="col-xs-12 col-sm-6" id="results">
-        <%= render 'card_results', items: @items %>
+      <div class="col-xs-12 col-sm-7">
+        <% @items.each do |item| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-image-results">
+              <%= link_to item_path(item.id) do %>
+                <div class="card-image-index" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
+              <% end %>
+              <div class="card-description">
+                <h3><%= item.name %></h3>
+                <p> <strong>Rent per day: $<%= item.rental_price %></strong>Buy it for: $<%= item.buying_price %></p>
+                <p>This is the rating and comments</p>
+              </div>
+              <div class="card-rating">
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
       <!-- 2) Map -->
-      <div class="col-xs-12 col-sm-6 map-index">
-        <div id="map" style="margin-left: 45px; width: 85%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
+      <div class="col-xs-12 col-sm-5 map-index hidden-xs">
+        <div id="map" style= "width: 93%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
       </div>
     </div>
   </div>

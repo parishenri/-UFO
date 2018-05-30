@@ -138,6 +138,29 @@
 	text-decoration: none;
 }
 
+.request-booking-btn{
+	background-color: black;
+	border-radius: 3px;
+	color: white;
+	height: 30px;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;	
 
+}
+
+.request-booking-btn:hover{
+	background-color: #fd9ab9;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;	
+
+}
+
+.booking_start_date .form-control .flatpickr-input{
+	margin: 30px;
+}
 
 

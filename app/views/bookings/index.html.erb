@@ -1,20 +1,71 @@
 <div class="container">
-<h1>My bookings</h1>
-  <div class="row">
-    <% @bookings.each do |booking| %>
-      <div class="col-xs-6 col-sm-3">
-        <div class="card mw">
-          <%= link_to item_path(booking.item) do %>
-            <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)"></div>
-          <% end %>
-          <div class="card-description">
-            <h3><%= booking.item.name %></h3>
-            <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+
+  <div class="items-div">
+    <div class="my-booking-title">
+      <h1>My bookings</h1>
+    </div>
+  </div>
+
+
+  <div class="items-and-calendar">
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card mw">
+            <%= link_to item_path(booking.item) do %>
+              <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)">
+              </div>
+            <% end %>
+            <div class="card-description">
+              <h3><%= booking.item.name %></h3>
+              <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+              <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= booking.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
+            </div>
+            <div class="card-rating">
+            </div>
           </div>
-          <div class="card-rating">
+        </div>
+      <% end %>
+    </div>
+
+    <div class="calendar-my-listing">
+      <div id="calendar">
+        <div>
+          <%= simple_form_for(@booking, url: user_bookings_path, method: :get) do |f| %>
+            <%= f.input :item, label: false, collection: @bookings, prompt: "Select item", input_html: { class: "hidden" } %>
+          <% end %>
+
+          <div class="calendar-container">
+            <div class="calendar">
+              <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: @user_bookings)  do |date, bookings| %>
+                <%= date.day %>
+                  <% bookings.each do |booking| %>
+                  <div>
+                    <%= booking.item.name %>
+                  </div>
+
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
+
+
+<script>
+  const calendars = document.querySelectorAll('.js-click');
+  let selectedCal = 0;
+  calendars.forEach( function (calendar) {
+    calendar.addEventListener("click", (event) =>  {
+      selectedCal = calendar.dataset.calendarId;
+      console.log(selectedCal)
+      const form = document.getElementById('new_booking')
+      const dropdown = document.getElementById('booking_item')
+      dropdown.value = Number.parseInt(selectedCal)
+      form.submit();
+    });
+  });
+</script>

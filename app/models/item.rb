@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates :name, presence: true
   validates :description, presence: true
   validates :rental_price, presence: true
@@ -9,16 +9,15 @@ class Item < ApplicationRecord
   validates :color, presence: true
 
   mount_uploader :photo, PhotoUploader
+  monetize :rental_price_cents
+  monetize :buying_price_cents
   include PgSearch
 
 
   pg_search_scope :global_search,
-    against: [ :name, :description, :size, :buying_price, :rental_price],
-    associated_against: {
-      user: [ :address ]
-    },
+    against: [ :name, :description ],
     using: {
-      tsearch: { prefix: true }
+    tsearch: { prefix: true }
     }
 
   def self.filter(args)

@@ -17,6 +17,9 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
+    @user_bookings = @bookings
+    @user_bookings = @bookings.where(id: params[:booking][:item]) if params[:booking] && params[:booking][:item]
+    @booking = Booking.new
   end
 
   def create
@@ -25,6 +28,7 @@ class BookingsController < ApplicationController
     @booking.status = "pending"
     @booking.item = Item.find(params[:item_id])
     @booking.save
+    flash[:notice] = 'Your request has been sent'
     redirect_to user_bookings_path(current_user)
   end
 

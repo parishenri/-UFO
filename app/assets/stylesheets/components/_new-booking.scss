@@ -37,11 +37,38 @@
 	height: 30px;
 	font-size: 12px;
 	color: #232323;
-	margin: 0px 6px 5px 6px;
 }
 
 .new-booking-link{
 	font-size: 12px;
 	color: black;
 	margin-left: 30px;
+}
+
+.request-booking-box{
+	border-style: solid;
+	border-color: #DDDDDD;
+	border-radius: 2px;
+	padding: 10px;
+	border-width: 1px;
+	display: flex;
+} p{
+	color: gray;
+	font-family: 'Montserrat', sans-serif;	
+}
+
+
+.calendar-icon{
+	margin-bottom: 5px;
+}
+
+.input-group {
+	position: relative;
+}
+
+.fa-calendar-alt {
+    position: absolute;
+    top: 22%;
+    right: 10%;
+    color: gray;
 }

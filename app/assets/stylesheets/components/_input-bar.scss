@@ -97,6 +97,40 @@ label{
 	font-size: 12px;
 }
 
+.booking_start_date .form-control-label{
+	font-size: 12px;	
+}
+
+.booking_end_date .form-control-label{
+	font-size: 12px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.flatpickr-input{
+	font-size: 12px;
+
+}
+
+#end_date{
+	height: 25px;
+	margin: 0px 0px 5px 5px;
+	background-color: transparent;
+	font-size: 12px;
+	color: #717373;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.booking_start_date .flatpickr-input {
+	height: 25px;
+	margin: 0px 0px 5px 5px;
+	background-color: transparent;
+	color: #717373;
+}
+
+// #new_booking .booking_end_date {
+// 	margin-left: px;
+// }
+
 .calendar-container {
 	display: flex;
 	flex-direction: row;
