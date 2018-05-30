@@ -2,6 +2,14 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+    order = Order.find(params[:order_id])
+    if order.dry_cleaning == true
+      # if item.name == "dress"
+      #   order.amount = order.amount + 500
+      # end
+    elsif order.shipping == true
+
+    end
   end
 
 def create

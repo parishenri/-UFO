@@ -77,6 +77,7 @@ class ItemsController < ApplicationController
   def show
     @user = @item.user
     @booking = Booking.new
+    @review = Review.new
     @order = Order.new
     @booking_dates = []
     @available_dates = []
