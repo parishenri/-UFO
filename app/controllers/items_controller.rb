@@ -3,13 +3,14 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @prices = ["1K", "2K", "3K"]
-    @sizes = ["Tiny", "medium", "Massive"]
-    @colors = ["Pink", "Blue", "white"]
+    @prices = ["0..20", "21..100", "100..1000"]
+    @sizes = ["xs", "s", "m", "l", "xl"]
+    @colors = ["red", "green", "blue", "black", "white", "yellow", "pink"]
     @item = Item.new
 
     if params[:item].nil?
       @items = Item.all
+      # raise
     else
       @items = Item.filter(item_params)
     end
