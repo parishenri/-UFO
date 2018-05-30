@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :booking
   belongs_to :user
+  belongs_to :item
 
   validates :description, presence: true
   validates_format_of :description, with: /^(?:\b\w+\b[\s\r\n]*){5,100}$/, multiline: true

@@ -9,7 +9,7 @@
       <div class="item-show-details">
         <p class=""><strong> Description: </strong><%= @item.description %></p>
         <div class="item-show-buying-renting">
-<p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price) %></p>
+        <p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price) %></p>
       </div>
       <div>  
         <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price) %></p>
@@ -21,10 +21,12 @@
         <p class="item-not-available">Not Available</p>
         <% end %>
 
+    <div class="big-box" style="display: flex;">
       <div class="request-booking-box">
         <div class="form-wrapper">
-            <p>Booking Date:</p>
+          <div class="rent">
             <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
+                <p>Booking Date:</p>
                 <div class="input-group">
                   <i class="far fa-calendar-alt calendar-icon"></i>
                   <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
@@ -36,34 +38,44 @@
                 <div id="bookedDates" data-dates="<%= @booking_dates.to_json %>"></div>
                 <%= t.submit "Request Booking", class: "request-booking-btn" %>
               <% end %>
+          </div>
+        </div> 
+      </div>
 
+      <div class="request-booking-box" style="display: flex;">
+        <div class="form-wrapper">
+          <div class="buy">
             <%= form_tag orders_path do %>
+            <div style= "display: block;">
+              <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
+              <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "info"} %>
+            </div>
+            </div>
+            <div style= "display: block;">
+              <%= label_tag(:shipping, "Shipping:") %>
+              <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "info"} %>
+            </div>
                 <%= hidden_field_tag 'item_id', @item.id %>
                 <%= hidden_field_tag 'type', "buying" %>
-                <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+                <%= submit_tag 'Purchase', class: 'request-booking-btn' %>
             <% end %> 
+          </div>
         </div>
       </div>
-
-
-
-<!--       <div class="btn input-btn">
-        <%= link_to 'book it', new_item_booking_path(@item), class: "btn input-btn-ontop" %>
-      </div>   -->
-      </div>
-
+      
       <div class="item-show-links">
         <%= link_to 'back', items_path %>
       </div>
+
+</div>
+
       <div class="item-show-influencer-box">
-        <h3> REVIEWS </h3>
-        <h2> Catalina Boex: from BARCELONA </h2>
-          <p>I have bought many dresses from this user and he is very helpful all the time. The delivery is always on time.</p>
-        <h2> Arthur Wagon: from PARIS </h2>
-          <p>The items sometimes are true to their size but sometimes they fit a big bigger. I think I would try to talk in detail to the owner of the apparel in order to make a final decision</p>
-        <h2> Leonard Percival: from GREECE </h2>
-          <p>I have only have great experiences with this user. They always have excellent custome service and I have no complaints with them.</p>
+        <%= simple_form_for [@item, @review] do |f| %>
+        <%= f.input :description %>
+        <%= f.submit "Add a review", class: "btn btn-primary" %>
+        <% end %>
       </div>
+
       <div class="show-google-map" id="map" style="width: 590px; height: 400px;" data-markers="<%= @markers.to_json %>">
       </div>
     </div>
