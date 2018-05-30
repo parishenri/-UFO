@@ -89,6 +89,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    @item_date = []
+    @item_date << { from: @item.available_start_date, to: @item.available_end_date }
     if @item.save
       redirect_to item_path(@item)
     else
@@ -135,6 +137,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
   end
 end
