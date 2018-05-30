@@ -27,6 +27,9 @@
                 <%= link_to item_path(item), method: :delete do %>
                   <i class="fas fa-trash-alt delete-bin js-click"></i>
                 <% end %>
+                <%= link_to edit_item_path(item) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
                 <p><strong>Rent per day: £<%= item.rental_price %></strong>    Buy it for: £<%= item.buying_price %></p>
               </div>
 
