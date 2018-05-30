@@ -1,0 +1,92 @@
+<div class="container-profile-page">
+
+  <%= image_tag "https://images.unsplash.com/photo-1518838439236-2b73ceb4638a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=64bd8894bf239804b5f7b87c99a803da&auto=format&fit=crop&w=1867&q=80", class: "edit-user-image"%>
+
+  <h1>Welcome <%= current_user.first_name %></h1>
+
+  <div class="container">
+    <div class="edit-user">
+      <h2 class="header-edit">Edit User</h2>
+      <%= simple_form_for(@user) do |f| %>
+        <%= f.error_notification %>
+        <div class="details-container">
+          <div class="edit-user-name-and-email">
+            <%= f.input :first_name, input_html: {class: "input-bar"} %>
+            <%= f.input :last_name, input_html: {class: "input-bar"}%>
+            <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
+          </div>
+
+          <%# if devise_mapping.confirmable? && @user.pending_reconfirmation? %>
+            <!-- <p>Currently waiting confirmation for: <%#= @user.unconfirmed_email %></p> -->
+          <%# end %>
+
+          <div class="edit-user-address">
+            <%= f.input :address, required: false, input_html: {class: "input-bar"}%>
+            <%= f.input :city, required: false, input_html: {class: "input-bar"} %>
+            <%= f.input :phone_number, required: false, input_html: {class: "input-bar"}%>
+          </div>
+
+          <div class="edit-user-other">
+            <%= f.input :age, required: false, input_html: {class: "input-bar"} %>
+            <%= f.input :gender, required: false, input_html: {class: "input-bar"} %>
+            <%= f.input :id_document, required: false, input_html: {class: "input-bar"} %>
+          </div>
+        </div>
+
+        <div class="details-container-two">
+          <input type="submit" name="commit" value="Update" input_html="{&quot;class&quot;=>&quot;btn input-btn&quot;}" class="input-btn-ontop" data-disable-with="Update">
+        </div>
+      <% end %>
+
+
+      <h2 class="header-editu">Cancel my account</h2>
+      <p>Unhappy? <%= link_to "Cancel my account", cancel_user_registration_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <p><%= link_to "Back", :back, input_html: {class: "back-link"} %></p>
+    </div>
+  </div>
+  <div class="activity_overview">
+    <div>
+      <h2>Activity overview</h2>
+      <p>Revenues: £500 in 2018</p>
+      <p>Listing reviewed/30 days: 50</p>
+      <p>Overall rating: 4.5*</p>
+      <p>Total reviews: 22</p>
+      <p>5 star reviews: 80%</p>
+      <p>Order history</p>
+    </div>
+
+    <h2>Share your passion for renting</h2>
+    <p>Refer a friend and get £45 when they rent there first item</p>
+
+    <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Refer a friend
+    </button>
+  </div>
+</div>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Refer a friend</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Share and get £45</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

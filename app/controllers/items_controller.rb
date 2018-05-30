@@ -1,42 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_variables, only: [:new, :index]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @prices = ["0..20", "21..100", "100..1000"]
-    @sizes = ["xs", "s", "m", "l", "xl"]
-    @colors = ["red", "green", "blue", "black", "white", "yellow", "pink"]
     @item = Item.new
-
-    if params[:item].nil?
-      @items = Item.all
-      # raise
-    else
-      @items = Item.filter(item_params)
-    end
-
-
-    # @location = request.location.data['city']
-    # if @location.empty?
-    #   user_location = "London UK"
-    # else
-    #   user_location = [request.location.data['latitude'], request.location.data['longitude']]
-    # end
-
-    # near_items = User.near(user_location, 5)
-
-    # if params[:query] || params[:place] || params[:location] #query = item name & des, location = geolocalisation, place = search function
-    #   if params[:place]
-    #     @items = @items.global_search("#{params[:query]} #{params[:place]}") if params[:query].present?
-    #   else
-    #     @items = @items.global_search(params[:query]).where(user_id: near_items.map(&:id))
-    #   end
-    # end
-
-    # if @items.nil?
-    #   @items = Item.all
-    # end
-
 
     @location = request.location.data['city']
 
@@ -56,8 +24,7 @@ class ItemsController < ApplicationController
 
      near_items = User.near(user_location, 15)
 
-
-      @items = Item.includes(:user).where(user_id: near_items.map(&:id))
+    @items = Item.includes(:user).where(user_id: near_items.map(&:id))
 
     if params[:query].present?
       @search = Item.global_search(params[:query])
@@ -66,7 +33,9 @@ class ItemsController < ApplicationController
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
 
-
+    if params[:item]
+      @items = @items.filter(item_params)
+    end
 
     @markers = @items.map do |item|
       {
@@ -80,7 +49,6 @@ class ItemsController < ApplicationController
       format.js
     end
   end
-
 
   def new
     @item = Item.new
@@ -109,6 +77,7 @@ class ItemsController < ApplicationController
   def show
     @user = @item.user
     @booking = Booking.new
+    @review = Review.new
     @order = Order.new
     @booking_dates = []
     @available_dates = []
@@ -150,5 +119,11 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
+  end
+
+  def set_variables
+    @prices = ["0-20", "21-100", "100-1000"]
+    @sizes = ["xs", "s", "m", "l", "xl"]
+    @colors = ["red", "green", "blue", "black", "white", "yellow", "pink"]
   end
 end

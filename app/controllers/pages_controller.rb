@@ -16,12 +16,4 @@ class PagesController < ApplicationController
 
     @user_items = Item.where(user: current_user)
   end
-
-  def user_listing_edit
-    @item = Item.find(params[:item_id])
-  end
-
-  def user_profile
-    @user = User.find(params[:id])
-  end
 end

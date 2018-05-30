@@ -3,37 +3,19 @@
 
     <%= simple_form_for @item, url: items_path, remote: true, method: :get, html: { class: 'form-inline' } do |f| %>
       <%= f.error_notification %>
-
-        <td class="select-form"><%= f.input :size, collection: @sizes, label: false, prompt: "Size" %></td>
-
-        <td class="select-form"><%= f.input :buying_price, collection: @prices, label: false, prompt: "Buy price" %></td>
-
-        <td class="select-form"><%= f.input :rental_price, collection: @prices, label: false, prompt: "Rent price" %></td>
-
-        <td class="select-form"><%= f.input :color, collection: @colors, label: false, prompt: "Colour" %></td>
-
-        <td class="select-form"><%= f.submit "Apply", id: "filter-button" %></td>
+      <%= f.input :size, collection: @sizes, label: false, include_blank: "Size", input_html: {class: 'filter-btn'} %>
+      <%= f.input :buying_price, collection: @prices, label: false, include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
+      <%= f.input :rental_price, collection: @prices, label: false, include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
+      <%= f.input :color, collection: @colors, label: false, include_blank: "Colour", input_html: {class: 'filter-btn'} %>
+      <%= f.submit "Apply", id: "filter-button" %>
     <% end %>
 
   <!-- 1) Cards -->
     <div class="row">
       <div class="col-xs-12 col-sm-7">
-        <% @items.each do |item| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card-image-results">
-              <%= link_to item_path(item.id) do %>
-                <div class="card-image-index" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
-              <% end %>
-              <div class="card-description">
-                <h3><%= item.name %></h3>
-                <p> <strong>Rent per day: $<%= item.rental_price %></strong>Buy it for: $<%= item.buying_price %></p>
-                <p>This is the rating and comments</p>
-              </div>
-              <div class="card-rating">
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <div id="results">
+          <%= render 'card_results', items: @items %>
+        </div>
       </div>
       <!-- 2) Map -->
       <div class="col-xs-12 col-sm-5 map-index hidden-xs">

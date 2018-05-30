@@ -145,3 +145,10 @@ border-radius: 4px;
   margin-left: 20%;
 }
 
+.toggle.android { border-radius: 0px;}
+
+.toggle.android .toggle-handle { border-radius: 0px; }
+
+.purchase-button {
+   display: block;
+}
