@@ -5,6 +5,9 @@
   <%= f.input :buying_price %>
   <%= f.input :size, :as => :select, collection: @sizes, label: false, include_blank: "size"%>
   <%= f.input :color, :as => :select, collection: @colors, label: false, include_blank: "colour" %>
+  <%= f.input :availability, :as => :select, :label => "Available?"%>
+  <%= f.input :available_start_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>
+  <%= f.input :available_end_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit %>

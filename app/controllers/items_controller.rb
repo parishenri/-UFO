@@ -57,6 +57,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    @item_date = []
+    @item_date << { from: @item.available_start_date, to: @item.available_end_date }
     if @item.save
       redirect_to item_path(@item)
     else
@@ -77,10 +79,22 @@ class ItemsController < ApplicationController
     @booking = Booking.new
     @order = Order.new
     @booking_dates = []
+    @available_dates = []
+    @unavailable_dates = []
+    (@item.available_start_date..@item.available_end_date).each do |day|
+      @available_dates << { from: day, to: day }
+    end
     @item.bookings.each do |booking|
-      @booking_dates << { from: booking.start_date, to: booking.end_date }
+      (booking.start_date..booking.end_date).each do |day|
+        @unavailable_dates << { from: day, to: day }
+      end
     end
 
+    @unavailable_dates.each do |day_hash|
+      if @available_dates.include?(day_hash)
+        @available_dates.delete(day_hash)
+      end
+    end
 
     @markers = [@user].map do |u|
       {
@@ -103,7 +117,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
   end
 
   def set_variables
