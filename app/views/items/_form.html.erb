@@ -6,6 +6,8 @@
   <%= f.input :size %>
   <%= f.input :color %>
   <%= f.input :availability, :as => :select, :label => "Available?"%>
+  <%= f.input :available_start_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>
+  <%= f.input :available_end_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit %>
