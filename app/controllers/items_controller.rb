@@ -111,10 +111,22 @@ class ItemsController < ApplicationController
     @booking = Booking.new
     @order = Order.new
     @booking_dates = []
+    @available_dates = []
+    @unavailable_dates = []
+    (@item.available_start_date..@item.available_end_date).each do |day|
+      @available_dates << { from: day, to: day }
+    end
     @item.bookings.each do |booking|
-      @booking_dates << { from: booking.start_date, to: booking.end_date }
+      (booking.start_date..booking.end_date).each do |day|
+        @unavailable_dates << { from: day, to: day }
+      end
     end
 
+    @unavailable_dates.each do |day_hash|
+      if @available_dates.include?(day_hash)
+        @available_dates.delete(day_hash)
+      end
+    end
 
     @markers = [@user].map do |u|
       {

@@ -5,10 +5,20 @@ import "flatpickr/dist/themes/material_blue.css";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 
+// const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
+
+// flatpickr("#start_date", {
+// 	altInput: true,
+// 	disable: dates,
+// 	plugins: [new rangePlugin({ input: "#end_date"})]
+// });
+
+
+
 const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
 
 flatpickr("#start_date", {
-	altInput: true,
-	disable: dates,
-	plugins: [new rangePlugin({ input: "#end_date"})]
+ altInput: true,
+ enable: dates,
+ plugins: [new rangePlugin({ input: "#end_date"})]
 });
