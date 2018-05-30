@@ -7,8 +7,8 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
 
-flatpickr("#start_date", {
+const calendar = flatpickr("#start_date", {
 	altInput: true,
-	disable: dates,
+	disable: [dates]
 	plugins: [new rangePlugin({ input: "#end_date"})]
 });
