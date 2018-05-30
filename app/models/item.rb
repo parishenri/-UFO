@@ -4,9 +4,9 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :rental_price, presence: true
-  validates :size, presence: true
+  validates :size, presence: true, inclusion: { in: %w(xs s m l xl) }
   validates :photo, presence: true
-  validates :color, presence: true
+  validates :color, presence: true, inclusion: { in: %w(red green blue black white yellow pink) }
 
   mount_uploader :photo, PhotoUploader
   monetize :rental_price_cents
@@ -26,7 +26,7 @@ class Item < ApplicationRecord
 
     if args[:rental_price].present?
       rental_price = args[:rental_price]
-      arr = rental_price.split("..")
+      arr = rental_price.split("-")
       rental_range = arr[0].to_i..arr[1].to_i
     end
 
