@@ -66,8 +66,6 @@ class ItemsController < ApplicationController
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
 
-
-
     @markers = @items.map do |item|
       {
         lat: item.user.latitude,
@@ -89,6 +87,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    @item_date = []
+    @item_date << { from: @item.start_date, to: @item.end_date }
     if @item.save
       redirect_to item_path(@item)
     else
@@ -114,6 +114,7 @@ class ItemsController < ApplicationController
     end
 
 
+
     @markers = [@user].map do |u|
       {
         lat: u.latitude,
@@ -135,6 +136,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :start_date, :end_date, :rental_only, :photo, :color)
   end
 end

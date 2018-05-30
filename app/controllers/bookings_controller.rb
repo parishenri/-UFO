@@ -15,10 +15,20 @@ class BookingsController < ApplicationController
     # see before action
   end
 
+  # need to not allow people to book it when its unavailable
+
   def index
     @bookings = current_user.bookings
     @user_bookings = @bookings
     @user_bookings = @bookings.where(id: params[:booking][:item]) if params[:booking] && params[:booking][:item]
+    # @calendar_dates = []
+    # @user_bookings.each do |booking|
+    #   @calendar_dates << booking
+    # end
+    @items = Item.all
+    # @items.each do |item|
+    #   @calendar_dates << item
+    # end
     @booking = Booking.new
   end
 
