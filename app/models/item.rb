@@ -5,9 +5,9 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :rental_price, presence: true
-  validates :size, presence: true
+  validates :size, presence: true, inclusion: { in: %w(xs s m l xl) }
   validates :photo, presence: true
-  validates :color, presence: true
+  validates :color, presence: true, inclusion: { in: %w(red green blue black white yellow pink) }
 
   mount_uploader :photo, PhotoUploader
   monetize :rental_price_cents
@@ -23,25 +23,35 @@ class Item < ApplicationRecord
 
   def self.filter(args)
     size = args[:size] if args[:size].present?
-    rental_price = args[:rental_price] if args[:rental_price].present?
-    buying_price = args[:buying_price] if args[:buying_price].present?
     color = args[:color] if args[:color].present?
 
-    return where(size: size, rental_price: rental_price, buying_price: buying_price, color: color) if size && rental_price && buying_price && color
-    return where(size: size, rental_price: rental_price, buying_price: buying_price) if size && rental_price && buying_price
-    return where(size: size, rental_price: rental_price, color: color) if size && rental_price && color
-    return where(size: size, buying_price: buying_price, color: color) if size && buying_price && color
-    return where(size: size, rental_price: rental_price, buying_price: buying_price) if size && rental_price && buying_price
-    return where(size: size, rental_price: rental_price, buying_price: buying_price) if size && rental_price && buying_price
-    return where(size: size, rental_price: rental_price) if size && rental_price
-    return where(size: size, buying_price: buying_price) if size && buying_price
-    return where(rental_price: rental_price, buying_price: buying_price, color: color) if color && rental_price && buying_price
-    return where(rental_price: rental_price, buying_price: buying_price) if rental_price && buying_price
-    return where(rental_price: rental_price, buying_price: buying_price, color: color) if rental_price && buying_price && color
-    return where(rental_price: rental_price, color: color) if rental_price && color
-    return where(buying_price: buying_price, color: color) if color && buying_price
-    return where(buying_price: rental_price) if rental_price
-    return where(buying_price: buying_price) if buying_price
+    if args[:rental_price].present?
+      rental_price = args[:rental_price]
+      arr = rental_price.split("-")
+      rental_range = arr[0].to_i..arr[1].to_i
+    end
+
+    if args[:buying_price].present?
+      buying_price = args[:buying_price]
+      arr2 = buying_price.split("..")
+      buying_range = arr2[0].to_i..arr2[1].to_i
+    end
+
+    return where(size: size, rental_price: rental_range, buying_price: buying_range, color: color) if size && rental_price && buying_price && color
+    return where(size: size, rental_price: rental_range, buying_price: buying_range) if size && rental_price && buying_price
+    return where(size: size, rental_price: rental_range, color: color) if size && rental_price && color
+    return where(size: size, buying_price: buying_range, color: color) if size && buying_price && color
+    return where(size: size, rental_price: rental_range, buying_price: buying_range) if size && rental_price && buying_price
+    return where(size: size, rental_price: rental_range, buying_price: buying_range) if size && rental_price && buying_price
+    return where(size: size, rental_price: rental_range) if size && rental_price
+    return where(size: size, buying_price: buying_range) if size && buying_price
+    return where(rental_price: rental_range, buying_price: buying_range, color: color) if color && rental_price && buying_price
+    return where(rental_price: rental_range, buying_price: buying_range) if rental_price && buying_price
+    return where(rental_price: rental_range, buying_price: buying_range, color: color) if rental_price && buying_price && color
+    return where(rental_price: rental_range, color: color) if rental_price && color
+    return where(buying_price: buying_range, color: color) if color && buying_price
+    return where(rental_price: rental_range) if rental_price
+    return where(buying_price: buying_range) if buying_price
     return where(size: size) if size
     return where(color: color) if color
     return all

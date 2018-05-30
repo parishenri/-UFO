@@ -24,7 +24,7 @@ gem 'pg_search'
 gem 'geocoder'
 gem 'simple_calendar'
 gem 'momentjs-rails'
-gem 'mailboxer'
+
 gem 'money-rails'
 gem 'stripe'
 

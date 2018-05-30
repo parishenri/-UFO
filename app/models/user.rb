@@ -11,14 +11,4 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  acts_as_messageable
-
-  def name
-    "User #{:id}"
-  end
-
-  def mailboxer_email(object)
-    nil
-  end
-
 end

@@ -13,10 +13,6 @@
 
 
   <div class="items-and-calendar">
-
-
-
-
     <div class="row">
       <% @items.each do |item| %>
         <% if item.user == current_user %>
@@ -31,7 +27,7 @@
                 <%= link_to item_path(item), method: :delete do %>
                   <i class="fas fa-trash-alt delete-bin js-click"></i>
                 <% end %>
-                <p><strong>Rent per day: $<%= item.rental_price %></strong>    Buy it for: $<%= item.buying_price %></p>
+                <p><strong>Rent per day: £<%= item.rental_price %></strong>    Buy it for: £<%= item.buying_price %></p>
               </div>
 
               <div class="listing-status">
@@ -39,26 +35,22 @@
                   <p class="listing-status-items">Availability:</p>
                 </div>
 
-                <% if @available_items.include?(item) %>
-                  <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
-                  <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
-                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
-
-                <% elsif @pending_items.include?(item) %>
+                <% if item.bookings.map(&:status).include?("pending") %>
                   <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
                   <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
                   <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a></div>
-
-                <% elsif @accepted_items.include?(item) %>
+                <% elsif item.bookings.map(&:status).include?("accepted") %>
                   <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
                   <div class="item-status"><p class="green listing-status-items">Booked</p></div>
                   <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
-
-                <% elsif @pendingandbooked.include?(item) %>
+                <% elsif item.bookings.map(&:status).include?("pending & booked") %>
                   <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
                   <div class="item-status"><p class="green listing-status-items">Booked</p></div>
                   <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click" data-blabla="<%= item.id %>"></i></a></div>
-
+                <% else %>
+                  <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
+                  <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
+                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
                 <% end %>
               </div>
             </div>
