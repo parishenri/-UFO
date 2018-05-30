@@ -34,7 +34,7 @@
           <%= image_tag "https://www.biography.com/.image/t_share/MTM5MjE5MzAzODUyNDE4Mzk5/pablo-escobar-gettyimages-452490135_621jpg.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to edit_user_registration_path do %>
+              <%= link_to edit_user_path(current_user) do %>
               <i class="fas fa-user-alt"></i>  <%= t(".", default: "Profile") %>
               <% end %>
             </li>
