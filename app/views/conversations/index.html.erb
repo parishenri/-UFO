@@ -1,18 +1,2 @@
-  
-  <h2 class="h2messages">Messages <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_conversation_path, class: "new-convo-link" %>
-  </h2>
-<div class="message-container">
-  
 
-	<div class="message-box">
-	  <% @conversations.each do |conversation| %>
-	    <div class="message-title">
-	      <p>Message Title: <%= link_to conversation.subject, conversation_path(conversation), input_html: {class: "message-link"}%></p>
-	    </div>
-	  <% end %>
-	</div>
 
-	<div>
-	<%= image_tag "https://images.pexels.com/photos/261706/pexels-photo-261706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "message-image"%>
-	</div>
-</div>

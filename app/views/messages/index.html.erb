@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="messages-container">
+    <div><%= @messages.first.content %></div>
+    <div><%= @messages.first.conversation.booking.status %></div>
+    <div><%= @messages.first.conversation.booking.user.id %></div>
+    <div><%= cl_image_tag @messages.first.conversation.booking.item.photo, class: "conversation-image-card" %></div>
+    <% @messages.each do |message| %>
+    <p><%= message.user.first_name %><%= message.content %></p>
+
+     <% end %>
+
+    <div class=“message-box”>
+     <%= simple_form_for [@conversation, @message] do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit "Send" %>
+
+   </div>
+
+    <% end %>
+  </div>
+
+</div>

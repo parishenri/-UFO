@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_05_30_162827) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +27,17 @@ ActiveRecord::Schema.define(version: 2018_05_30_162827) do
     t.string "status", default: "available"
     t.index ["item_id"], name: "index_bookings_on_item_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "booking_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.index ["booking_id"], name: "index_conversations_on_booking_id"
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -55,6 +68,17 @@ ActiveRecord::Schema.define(version: 2018_05_30_162827) do
     t.date "available_start_date"
     t.date "available_end_date"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+
+  create_table "messages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "content"
+    t.bigint "conversation_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|

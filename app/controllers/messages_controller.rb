@@ -1,15 +1,27 @@
 class MessagesController < ApplicationController
-  before_action :set_conversation
+
+  def index
+    @message = Message.new
+    @conversation = Conversation.find(params[:conversation_id])
+    @messages = @conversation.messages
+  end
 
   def create
-    receipt = current_user.reply_to_conversation(@conversation, body)
-    redirect_to conversation_path(receipt.conversation)
+    @message = Message.new(params_message)
+    @message.conversation_id = params[:conversation_id]
+    @message.user_id = current_user.id
+    if @message.save
+      redirect_to conversation_messages_path(@message.conversation.id)
+    else
+      raise
+    end
   end
+
 
   private
 
-  def set_conversation
-    @conversation = current_user.mailbox.conversations.find(params[:conversation_id])
+  def params_message
+    params.require(:message).permit(:content, :user_id)
   end
 
 end

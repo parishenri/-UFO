@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :items do
     resources :bookings, except: [:index]
     resources :reviews, only: [ :new, :create]
+
     # resources :orders, only: [ :show, :create] do
     #   resources :payments, only: [:new, :create]
-    # end
   end
 
 
@@ -29,8 +29,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
-
-
 end
 
 
