@@ -1,10 +1,195 @@
 .conversation-image-card {
-  height: 10%;
-  width: 10%;
+  height: 300px;
   margin: 3%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
 .messages-container {
   margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.messages {
+  display: flex;
+  margin: 10px 0px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.user-name-in-messages {
+  color: black;
+  font-weight: bold;
+  margin: 2px 0px;
+  width: 100px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.content-of-messages {
+  font-weight: 300;
+  margin-left: 30px;
+  margin: 2px 0px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.send-message-btn {
+  background: #fd9ab9;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#message_content {
+  width: 550px;
+  margin: 5px 0px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.time-of-message-creation {
+  font-weight: 300;
+  color: black;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.messages-date-and-name {
+ margin: 0px 10px;
+ font-family: 'Montserrat', sans-serif;
+}
+
+.accept-decline-btn {
+  background: #fd9ab9;
+  color: white;
+  padding: 3px;
+  margin: 2px;
+  width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.accept-decline-btn-div {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cash-from-booking {
+  color: #fd9ab9;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.display-booking-content {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.booking-details {
+  margin: 0px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.start-date-end-date {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rental-price-per-day {
+  color: #fd9ab9;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container-conversations-box {
+  justify-content: space-between;
+  border: #dce0e0;
+  border-style: solid;
+  border-width: thin;
+  margin: 0% 12%;
+  margin-bottom: 2%;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.conversations-container {
+  display: flex;
+  justify-content: space-between;
+  border: #dce0e0;
+  margin: 10px 15px;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  p {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.conversation-btn {
+  text-decoration: none;
+  background: black;
+  color: white;
+  border-radius: 2px;
+  padding: 10px 10px;
+  margin: 0 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+.conversation-btn:hover {
+  color: black;
+  text-decoration: none;
+  background: #dce0e0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tabs-messages {
+  display: flex;
+  margin: 5px 12%;
+  margin-top: 60px;
+  margin-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tabs-messages-format {
+  color: #dce0e0;
+  margin-right: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  margin-right: 24px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tabs-messages-format:hover {
+  color: black;
+  font-weight: bold;
+  border-bottom: black;
+  border-bottom: 5px solid black;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.name-and-date-of-convo {
+  color: black;
+  font-weight: thin;
+  font-family: 'Montserrat', sans-serif;
+  flex: 0 0 100px;
+  margin: 0 40px;
+  font-size: 14px;
+}
+
+.start-of-message {
+  align-items: center;
+  flex: 1 0 400px;
+  font-size: 14px;
+}
+
+.conversations-container {
+  align-items: center;
+}
+
+.booking-status-conversations {
+ margin: 0 40px;
+ font-size: 14px;
 }

@@ -46,15 +46,27 @@
 }
 
 .request-booking-box{
+	margin: 0px 10px;
+	width: 200px;
+	height: 150px;
 	border-style: solid;
 	border-color: #DDDDDD;
 	border-radius: 2px;
 	padding: 10px;
 	border-width: 1px;
 	display: flex;
-} p{
-	color: gray;
-	font-family: 'Montserrat', sans-serif;	
+}
+
+.request-buying-box{
+	margin: 0px 10px;
+	width: 200px;
+	height: 150px;
+	border-style: solid;
+	border-color: #DDDDDD;
+	border-radius: 2px;
+	padding: 10px;
+	border-width: 1px;
+	display: flex;
 }
 
 
