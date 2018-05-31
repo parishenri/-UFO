@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_05_31_113424) do
+ActiveRecord::Schema.define(version: 2018_05_31_202404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +60,6 @@ ActiveRecord::Schema.define(version: 2018_05_31_113424) do
     t.integer "rental_price_cents", default: 0, null: false
     t.integer "buying_price_cents", default: 0, null: false
     t.string "sku"
-    t.boolean "shipping"
     t.string "category"
     t.date "available_start_date"
     t.date "available_end_date"
@@ -118,7 +116,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_113424) do
   create_table "users", force: :cascade do |t|
     t.string "description"
     t.string "address"
-    t.integer "phone_number"
+    t.bigint "phone_number"
     t.string "id_document"
     t.string "city"
     t.string "country"
