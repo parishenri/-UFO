@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     @user.save
-    redirect_to user_profile_path(current_user)
+    redirect_to edit_user_path(current_user)
   end
 
   def show
