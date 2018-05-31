@@ -1,8 +1,8 @@
 <%= simple_form_for item do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :rental_price %>
-  <%= f.input :buying_price %>
+  <%= f.input :rental_price_cents %>
+  <%= f.input :buying_price_cents %>
   <%= f.input :size, :as => :select, collection: @sizes, label: false, include_blank: "size"%>
   <%= f.input :color, :as => :select, collection: @colors, label: false, include_blank: "colour" %>
   <%= f.input :available_start_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>

@@ -4,8 +4,8 @@
     <%= simple_form_for @item, url: items_path, remote: true, method: :get, html: { class: 'form-inline' } do |f| %>
       <%= f.error_notification %>
       <%= f.input :size, collection: @sizes, label: false, include_blank: "Size", input_html: {class: 'filter-btn'} %>
-      <%= f.input :buying_price, collection: @prices, label: false, include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
-      <%= f.input :rental_price, collection: @prices, label: false, include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
+      <%= f.input :buying_price_cents, collection: @prices, label: false, include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
+      <%= f.input :rental_price_cents, collection: @prices, label: false, include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
       <%= f.input :color, collection: @colors, label: false, include_blank: "Colour", input_html: {class: 'filter-btn'} %>
       <%= f.submit "Apply", id: "filter-button" %>
     <% end %>

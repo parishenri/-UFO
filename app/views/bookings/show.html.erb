@@ -15,8 +15,8 @@
   <p><%= link_to "Delete booking", item_booking_path(@item, @booking), method: :delete %></p>
   <p><%= @booking.start_date.strftime("%d/%m/%Y - ") %></p>
   <p><%= @booking.end_date.strftime("%d/%m/%Y") %></p>
-      <p>Price per day £<%= @booking.item.rental_price %></p>
-      <p>Price to buy £<%= @booking.item.buying_price %></p>
+      <p>Price per day £<%= @booking.item.rental_price_cents / 100 %></p>
+      <p>Price to buy £<%= @booking.item.buying_price_cents / 100 %></p>
     <p> description </p>
     <p><%= @item.description %></p>
     <p>Size: <%= @item.size %></p>
