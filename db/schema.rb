@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_161500) do
-
+ActiveRecord::Schema.define(version: 2018_05_30_162827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +51,9 @@ ActiveRecord::Schema.define(version: 2018_05_30_161500) do
     t.integer "rental_price_cents", default: 0, null: false
     t.integer "buying_price_cents", default: 0, null: false
     t.string "sku"
-    t.string "color"
     t.string "category"
     t.date "available_start_date"
     t.date "available_end_date"
-
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
