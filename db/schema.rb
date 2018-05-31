@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2018_05_31_113424) do
     t.integer "rental_price_cents", default: 0, null: false
     t.integer "buying_price_cents", default: 0, null: false
     t.string "sku"
-    t.boolean "shipping"
     t.string "category"
     t.date "available_start_date"
     t.date "available_end_date"
