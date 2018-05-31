@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_messages_path(@message.conversation.id)
     else
-      raise
     end
   end
 

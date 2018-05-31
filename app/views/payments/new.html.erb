@@ -6,6 +6,28 @@
   <p>Please review your order before submitting payment</p>
 
   <h3>Your Item:</h3>
+  <%= @order.item.name %>
+  <p>Description: <%= @order.item.description %></p>
+  
+  <% if @order.shipping  %>
+    <p>Shipping Cost:  £<%= @shipping_cost %></p>
+  <% else %>
+    <p>No Shipping Included</p>
+  <% end %>
+
+  <% if @order.dry_cleaning  %>
+    <p>Dry Cleaning: £<%= @dry_cleaning_cost %></p>
+  <% else %>
+    <p>No Dry Clean Included</p>
+  <% end %>
+
+<!--   <% if @order.shipping  %>
+    <p>Shipping Cost:  £<%= @shipping_cost %></p>
+  <% else %>
+    <p>No Inlcuded Included</p>
+  <% end %>   -->
+
+
 
   <%= form_tag order_payments_path(@order) do %>
     <article>

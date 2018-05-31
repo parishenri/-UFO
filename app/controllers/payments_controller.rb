@@ -2,13 +2,20 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
-    order = Order.find(params[:order_id])
-    if order.dry_cleaning == true
-      # if item.name == "dress"
-      #   order.amount = order.amount + 500
-      # end
-    elsif order.shipping == true
-
+    @order = Order.find(params[:order_id])
+    if @order.dry_cleaning 
+      @dry_cleaning_cost = 10
+      @order.amount_cents = @order.amount_cents + 1200  
+    elsif @order.dry_cleaning && @order.category == "Jacket"
+      @dry_cleaning_cost = "£2000"
+      @order.amount_cents = @order.amount_cents + 2000
+    elsif @order.dry_cleaning && @order.category == 'Dress'
+      @dry_cleaning_cost = "£3000"
+      @order.amount_cents = @order.amount_cents + 3000
+    end
+    if @order.shipping
+      @shipping_cost = 12
+      @order.amount_cents = @order.amount_cents + 1200
     end
   end
 

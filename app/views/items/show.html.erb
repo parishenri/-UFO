@@ -52,20 +52,16 @@
               <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
               <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "info"} %>
             </div>
-            </div>
             <div style= "display: block;">
               <%= label_tag(:shipping, "Shipping:") %>
               <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "info"} %>
             </div>
                 <%= hidden_field_tag 'item_id', @item.id %>
                 <%= hidden_field_tag 'type', "buying" %>
-
-
-
                 <%= submit_tag 'Purchase', class: 'request-booking-btn' %>
             <% end %> 
           </div>
-
+    </div>
         </div>
       </div>
       
