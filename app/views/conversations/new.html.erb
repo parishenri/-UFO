@@ -1,16 +1,1 @@
-<div class="container">
-  <h2>New Conversation</h2>
 
-  <%= form_tag conversations_path, method: :post do %>
-    <div>
-      <%= select_tag :user, options_from_collection_for_select(User.all, :id, :first_name) %>
-    </div>
-    <div>
-      <%= text_field_tag :subject, nil, placeholder: "Subject" %>
-    </div>
-    <div>
-      <%= text_area_tag :body, nil, placeholder: "Comment" %>
-    </div>
-    <%= submit_tag "Send" %>
-  <% end %>
-</div>

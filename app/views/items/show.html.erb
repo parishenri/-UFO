@@ -11,9 +11,9 @@
         <div class="item-show-buying-renting">
 <p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price) %></p>
       </div>
-      <div>  
+      <div>
         <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price) %></p>
-      </div>  
+      </div>
         <p class="">Size: <%= @item.size %></p>
         <% if @item.availability %>
         <p class="item-available">Available</p>
@@ -37,11 +37,16 @@
                 <%= t.submit "Request Booking", class: "request-booking-btn" %>
               <% end %>
 
+
+
+
+
+
             <%= form_tag orders_path do %>
                 <%= hidden_field_tag 'item_id', @item.id %>
                 <%= hidden_field_tag 'type', "buying" %>
                 <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-            <% end %> 
+            <% end %>
         </div>
       </div>
 

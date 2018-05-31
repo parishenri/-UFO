@@ -105,6 +105,7 @@ class ItemsController < ApplicationController
   def show
     @user = @item.user
     @booking = Booking.new
+    @conversation = Conversation.new
     @order = Order.new
     @booking_dates = []
     @item.bookings.each do |booking|
@@ -119,6 +120,9 @@ class ItemsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
+
+
+
   end
 
   def destroy
