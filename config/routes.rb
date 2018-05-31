@@ -25,7 +25,9 @@ Rails.application.routes.draw do
 
 
   resources :conversations do
-    resources :messages
+    resources :messages do
+      get 'bookings/accept', to: 'bookings#accept'
+    end
   end
 
   root to: 'pages#home'

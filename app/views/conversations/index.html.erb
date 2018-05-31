@@ -1,9 +1,34 @@
-<div class="container">
-  <h1>My messages</h1>
 
-  <% @conversations.each do |conversation| %>
-  <p>This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %> about <%= conversation.booking.item.name %>
-    <%= link_to "message", conversation_messages_path(conversation) %></p>
+<div class="tabs-messages">
+  <div class="tabs-messages-format">My listings</div>
+  <div class="tabs-messages-format">My bookings</div>
+</div>
+
+
+<div class="container-conversations-box">
+
+  <% @conversations.reverse_each do |conversation| %>
+  <div class="conversations-container">
+    <div>
+      <%= image_tag "favicon.ico", height: 35 %>
+    </div>
+
+    <div class="name-and-date-of-convo">
+      <p ><%= conversation.sender.first_name %></p>
+      <p><%= conversation.booking.created_at.time.to_date %></p>
+    </div>
+
+    <div class="start-of-message">
+      This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %> about <%= conversation.booking.item.name %>
+    </div>
+
+    <div class="booking-status-conversations">
+      <p><%= conversation.booking.status %></p>
+      <p>£<%= conversation.booking.days_range * conversation.booking.item.rental_price_cents / 100 %></p>
+    </div>
+      <%= link_to "conversation", conversation_messages_path(conversation), class: "conversation-btn" %>
+  </div>
+  <hr width="95%">
   <% end %>
 
 </div>
