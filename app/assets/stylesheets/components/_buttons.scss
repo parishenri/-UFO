@@ -143,12 +143,15 @@
 	border-radius: 3px;
 	color: white;
 	height: 30px;
-	width: 100%;
+	width: 153px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: lighter;
 	letter-spacing: 2px;
-
+	position: absolute;
+	bottom: 10px;
+	margin-left: 4px;	
 }
+
 
 .request-booking-btn:hover{
 	background-color: #fd9ab9;
@@ -156,7 +159,30 @@
 	font-family: 'Montserrat', sans-serif;
 	font-weight: lighter;
 	letter-spacing: 2px;
+}
 
+
+.request-purchase-btn{
+	background-color: black;
+	border-radius: 3px;
+	color: white;
+	height: 30px;
+	width: 153px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	position: absolute;
+	bottom: 10px;
+	margin-top: 30px;
+	width: 100%;
+}
+
+.request-purchase-btn:hover{
+	background-color: #fd9ab9;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
 }
 
 .booking_start_date .form-control .flatpickr-input{

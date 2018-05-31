@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
     if @order.dry_cleaning 
       @dry_cleaning_cost = 10
       @order.amount_cents = @order.amount_cents + 1200  
-    elsif @order.dry_cleaning && @order.category == "Jacket"
+    elsif @order.dry_cleaning && ["Jacket",   "Shirt"].include?(@order.category)
       @dry_cleaning_cost = "£2000"
       @order.amount_cents = @order.amount_cents + 2000
     elsif @order.dry_cleaning && @order.category == 'Dress'
