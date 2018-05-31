@@ -3,6 +3,8 @@ import flatpickr from 'flatpickr';
 import "flatpickr/dist/flatpickr.min.css";
 import "flatpickr/dist/themes/material_blue.css";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
+import { loadDynamicBannerText } from '../components/banner';
+loadDynamicBannerText();
 
 
 // const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
@@ -14,11 +16,19 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 // });
 
 
+const div = document.getElementById('bookedDates')
+if (div) {
+  const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
 
-const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
+  flatpickr("#start_date", {
+    altInput: true,
+    enable: dates,
+    plugins: [new rangePlugin({ input: "#end_date"})]
+  });
+}
 
-flatpickr("#start_date", {
+flatpickr("#available_start_date", {
  altInput: true,
- enable: dates,
- plugins: [new rangePlugin({ input: "#end_date"})]
+ plugins: [new rangePlugin({ input: "#available_end_date"})]
 });
+
