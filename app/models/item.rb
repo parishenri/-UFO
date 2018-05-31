@@ -23,14 +23,17 @@ class Item < ApplicationRecord
 
 # Filter by date
 
-  # def self.date_filter(args)
-  #   start_date = args[:start_date] if args[:start_date].present?
-  #   end_date = args[:end_date] if args[:end_date].present?
-  #   bookings = args[:]
+# Would like to access date range - maybe create 'range' variable?
 
-  #   joins(:bookings).merge()
 
-  # end
+  def self.date_filter(args)
+    if args[:start_date].present? && args[:end_date].present?
+      start_date = args[:start_date]
+      end_date = args[:end_date]
+      date_range = Item.joins(bookings: :start_date, :end_date)
+      date_range.include?(start_date || end_date)
+    end
+  end
 
   def self.filter(args)
     size = args[:size] if args[:size].present?
