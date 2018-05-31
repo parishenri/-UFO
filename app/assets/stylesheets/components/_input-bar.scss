@@ -1,9 +1,9 @@
 .input-bar{
-	width: 220px;
+	width: 240px;
 	height: 30px;
 	font-size: 12px;
 	color: #232323;
-	margin: 0px 6px 0px 6px;
+  margin-right: 50px;
 }
 
 
@@ -118,7 +118,7 @@ input.form-control.string.optional.flatpickr-input.input {
   font-size: 12px;
   border-radius: 5px;
   margin-left: 6px;
-  width: 100px;
+  width: 117px;
   height: 29px;
   background-color: white;
 }
@@ -132,7 +132,7 @@ input#available_end_date.form-control.string.optional {
   color: rgb(0,0,0);
   border-radius: 5px;
   margin-left: 6px;
-  width: 114px;
+  width: 117px;
   height: 29px;
   background-color: white;
 }
@@ -173,4 +173,8 @@ input#available_end_date.form-control.string.optional::placeholder {
 
 .calendar-container p {
 	font-size: 12px;
+}
+
+a {
+  color: #616668
 }
