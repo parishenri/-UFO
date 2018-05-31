@@ -1,2 +1,9 @@
+<div class="container">
+  <h1>My messages</h1>
 
+  <% @conversations.each do |conversation| %>
+  <p>This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %> about <%= conversation.booking.item.name %>
+    <%= link_to "message", conversation_messages_path(conversation) %></p>
+  <% end %>
 
+</div>
