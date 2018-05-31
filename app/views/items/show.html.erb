@@ -3,79 +3,131 @@
   <div class="item-show-card" style="background-image: url('<%= cl_image_path @item.photo%>');">
   </div>
 
+
+
   <div class="item-description">
     <div class="map_and_itemdescription">
-        <h1 class=""><%= @item.name %></h1>
+        <h1><%= @item.name %></h1>
       <div class="item-show-details">
-        <p class=""><strong> Description: </strong><%= @item.description %></p>
-        <div class="item-show-buying-renting">
-        <p><strong> Rental Price: </strong><%= humanized_money_with_symbol(@item.rental_price) %></p>
-      </div>
       <div>
-        <p><strong> Buying Price: </strong><%= humanized_money_with_symbol(@item.buying_price) %></p>
-      </div>
-        <p class=""><strong>Size: </strong><%= @item.size %></p>
-        <p class=""><strong>Color: </strong><%= @item.color %></p>
-
-    <div class="big-box" style="display: flex;">
-      <div class="request-booking-box">
-        <div class="form-wrapper">
-          <div class="rent">
-            <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
-                <p><strong>Available Dates: </strong></p>
-                <div class="input-group">
-                  <i class="far fa-calendar-alt calendar-icon"></i>
-                  <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
-                </div>
-                <div class="input-group">
-                  <i class="far fa-calendar-alt"></i>
-                  <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
-                </div>
-                <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
-                <%= t.submit "Request Booking", class: "request-booking-btn" %>
-              <% end %>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="request-booking-box" style="display: flex;">
-        <div class="form-wrapper">
-          <div class="buy">
-
-            <%= form_tag orders_path do %>
-            <div style= "display: block;">
-              <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
-              <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "info"} %>
-            </div>
-            <div style= "display: block;">
-              <%= label_tag(:shipping, "Shipping:") %>
-              <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "info"} %>
-            </div>
-                <%= hidden_field_tag 'item_id', @item.id %>
-                <%= hidden_field_tag 'type', "buying" %>
-                <%= submit_tag 'Purchase', class: 'request-booking-btn' %>
-            <% end %>
-          </div>
     </div>
+
+    <div class="big-box">
+      <div class="tabs" style="display: flex;">
+        <a id="booking-tab" class="tabactive">Book</a>
+        <a id="buying-tab">Buy</a>
+      </div>
+      <div class="form-boxes" style="display: flex;">
+        <div class="request-booking-box">
+          <div class="form-wrapper">
+            <div class="rent">
+              <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
+                  <p style="text-align: center;"> Available Dates:</p>
+                  <div class="input-group">
+                    <i class="far fa-calendar-alt calendar-icon"></i>
+                    <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
+                  </div>
+                  <div class="input-group">
+                    <i class="far fa-calendar-alt"></i>
+                    <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
+                  </div>
+                  <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
+                  <%= t.submit "Request Booking", class: "request-booking-btn" %>
+                <% end %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="request-buying-box hide-form">
+          <div class="form-wrapper">
+            <div class="buy">
+              <%= form_tag orders_path do %>
+              
+              <div style= "display: block;" onclick="myFunction()">
+                <%= label_tag(:shipping, "Shipping:") %>
+                <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
+              </div>
+              <div id="myDIV" style= "display: none";>
+                <div style= "display: block;">
+                  <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
+                  <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
+                </div>
+              </div>
+                  <%= hidden_field_tag 'item_id', @item.id %>
+                  <%= hidden_field_tag 'type', "buying" %>
+                  <%= submit_tag 'Purchase', class: 'request-purchase-btn' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="item-show-buying-renting" id:"item-show-p">
+          <p> Description:<%= @item.description %></p>
+          <p> Rental Price:<%= humanized_money_with_symbol(@item.rental_price) %></p>
+          <p> Buying Price:<%= humanized_money_with_symbol(@item.buying_price) %></p>
+          <p> Size:<%= @item.size %></p>
+          <p> Color:<%= @item.color %></p>
         </div>
       </div>
+    </div>
 
+</div>
       <div class="item-show-links">
         <%= link_to 'back', items_path %>
       </div>
 
+      <div class="map-border">
+        <div class="show-google-map" id="map" style="width: 590px; height: 300px;" data-markers="<%= @markers.to_json %>">
+        </div>
+      </div>  
+    </div>
+  </div>
 </div>
 
-      <div class="item-show-influencer-box">
+<script>
+
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+  }
+
+  bookingTab = document.getElementById("booking-tab");
+  buyingTab = document.getElementById("buying-tab");
+  bookingBox = document.querySelector(".request-booking-box");
+  buyingBox = document.querySelector(".request-buying-box");
+  bookingTab.addEventListener("click", function() {
+    // console.log("hello");
+    bookingTab.classList.toggle("tabactive");
+    buyingTab.classList.toggle("tabactive");
+    if (bookingBox.classList.contains("hide-form")) {
+      bookingBox.classList.remove("hide-form");
+    } if (!buyingBox.classList.contains("hide-form")) {
+      buyingBox.classList.add("hide-form");
+    }
+  });
+  buyingTab.addEventListener("click", function() {
+    bookingTab.classList.toggle("tabactive");
+    buyingTab.classList.toggle("tabactive");
+    if (buyingBox.classList.contains("hide-form")) {
+      buyingBox.classList.remove("hide-form");
+    } if (!bookingBox.classList.contains("hide-form")) {
+      bookingBox.classList.add("hide-form");
+    }
+  });
+
+
+
+</script>
+
+
+<!--       <div class="item-show-influencer-box">
         <%= simple_form_for [@item, @review] do |f| %>
         <%= f.input :description %>
         <%= f.submit "Add a review", class: "request-booking-btn" %>
         <% end %>
-      </div>
+      </div> -->
 
-      <div class="show-google-map" id="map" style="width: 590px; height: 400px;" data-markers="<%= @markers.to_json %>">
-      </div>
-    </div>
-  </div>
-</div>
