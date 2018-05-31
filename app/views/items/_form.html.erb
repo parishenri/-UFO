@@ -1,14 +1,47 @@
-<%= simple_form_for item do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :rental_price %>
-  <%= f.input :buying_price %>
-  <%= f.input :size, :as => :select, collection: @sizes, label: false, include_blank: "size"%>
-  <%= f.input :color, :as => :select, collection: @colors, label: false, include_blank: "colour" %>
-  <%= f.input :available_start_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>
-  <%= f.input :available_end_date, as: :date, order: [:day, :month, :year], input_html: {class: "booking-input-bar"} %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit %>
-<% end %>
-  <%= link_to 'back', items_path %> |
+<div class="container">
+  <%= link_to 'back', items_path %>
+  <div class="sign-up-details-container">
+    <%= simple_form_for item do |f| %>
+      <div class="details-container">
+        <div class="form-inputs">
+          <div class="edit-user-name-and-email">
+            <%= f.input :name, input_html: { class: "input-bar" } %>
+            <%= f.input :description, input_html: { class: "input-bar"} %>
+          </div>
+          <div class="edit-user-name-and-email">
+            <%= f.input :rental_price, :label => "Rental Price", input_html: { class: "input-bar" } %>
+            <%= f.input :buying_price, :label => "Buying Price", input_html: { class: "input-bar" } %>
+          </div>
+          <div class="edit-user-name-and-email">
+            <%= f.input :size, :as => :select, collection: @sizes, label: false, include_blank: "Size", input_html: { class: "input-bar" } %>
+            <%= f.input :color, :as => :select, collection: @colors, label: false, include_blank: "Colour", input_html: { class: "input-bar" } %>
+          </div>
+          <div class="item-date-inline">
+            <div class="input-group">
+              <i class="far fa-calendar-alt calendar-icon"></i>
+              <%= f.input :available_start_date, as: :string, input_html: { id: "available_start_date" }, label: false, placeholder: "Start Date"  %>
+            </div>
+            <div class="input-group">
+              <i class="far fa-calendar-alt"></i>
+              <%= f.input :available_end_date, as: :string, input_html: { id: "available_end_date" },label: false, placeholder: "End Date" %>
+            </div>
+          </div>
+
+
+
+          <div class="edit-user-name-and-email">
+            <%= f.input :photo, input_html: { class: "input-bar" } %>
+            <%= f.input :photo_cache, as: :hidden %>
+          </div>
+          <div class="form-actions btn input-btn">
+            <input type="submit" name="commit" class="input-btn-ontop">
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="details-container-two">
+      <%= image_tag "https://images.pexels.com/photos/905247/pexels-photo-905247.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", class: "sign-up-image"%>
+    </div>
+  </div>
+</div>
+

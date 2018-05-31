@@ -1,5 +1,5 @@
 .input-bar{
-	width: 200px;
+	width: 220px;
 	height: 30px;
 	font-size: 12px;
 	color: #232323;
@@ -98,7 +98,7 @@ label{
 }
 
 .booking_start_date .form-control-label{
-	font-size: 12px;	
+	font-size: 12px;
 }
 
 .booking_end_date .form-control-label{
@@ -109,6 +109,48 @@ label{
 .flatpickr-input{
 	font-size: 12px;
 
+}
+
+.item-date-inline {
+  display: flex;
+  i {
+    z-index: 3;
+    color: rgb(100,100,100);
+    font-size: 12px;
+    margin-top: 3px;
+  }
+}
+
+input.form-control.string.optional.flatpickr-input.input {
+  font-size: 12px;
+  border-radius: 5px;
+  margin-left: 6px;
+  width: 100px;
+  height: 29px;
+  background-color: white;
+}
+
+input.form-control.string.optional.flatpickr-input.input::placeholder {
+  color: rgb(0,0,0);
+}
+
+input#available_end_date.form-control.string.optional {
+  font-size: 12px;
+  color: rgb(0,0,0);
+  border-radius: 5px;
+  margin-left: 6px;
+  width: 114px;
+  height: 29px;
+  background-color: white;
+}
+
+input#available_end_date.form-control.string.optional::placeholder {
+  color: rgb(0,0,0);
+}
+
+.flatpickr-style {
+  width: 200px;
+  background-color: rgb(255,255,255);
 }
 
 #end_date{
