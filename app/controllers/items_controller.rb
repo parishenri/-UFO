@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update, :destroy]
-  before_action :set_variables, only: [:new, :index]
+  before_action :set_variables, only: [:new, :index, :edit]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -67,6 +67,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -127,6 +128,7 @@ class ItemsController < ApplicationController
   end
 
   def set_variables
+    @categories = ["Jacket", "Long Sleeve Shirt", "Shirt", "Dress"]
     @prices = ["0-20", "21-100", "100-1000"]
     @sizes = ["xs", "s", "m", "l", "xl"]
     @colors = ["red", "green", "blue", "black", "white", "yellow", "pink"]

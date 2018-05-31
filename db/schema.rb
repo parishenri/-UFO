@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_05_31_113424) do
 
   # These are extensions that must be enabled in order to support this database
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_113424) do
     t.integer "rental_price_cents", default: 0, null: false
     t.integer "buying_price_cents", default: 0, null: false
     t.string "sku"
+    t.boolean "shipping"
     t.string "category"
     t.date "available_start_date"
     t.date "available_end_date"
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(version: 2018_05_31_113424) do
     t.datetime "updated_at", null: false
     t.boolean "dry_cleaning"
     t.boolean "shipping"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_113424) do
   add_foreign_key "bookings", "items"
   add_foreign_key "bookings", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "users"
