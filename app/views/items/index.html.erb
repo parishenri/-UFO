@@ -1,6 +1,6 @@
 <div class="container-results-main">
-  <div class="container-results">
-
+  <div class="container-min-height" style="min-height: 700px">
+    
     <%= form_tag items_path, remote: true, method: :get do %>
       <div class="custom-inline-form">
         <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'filter-btn'} %>
@@ -14,7 +14,6 @@
 
       <div id="allDates" data-dates="<%= @dates_for_search.to_json %>"></div>
       <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
-
     <% end %>
 
   <!-- 1) Cards -->
@@ -25,10 +24,16 @@
         </div>
       </div>
       <!-- 2) Map -->
-      <div class="col-xs-12 col-sm-5 map-index hidden-xs">
+      <div class="col-xs-12 col-sm-5 map-index hidden-xs items-results-map">
         <div id="map" style= "width: 93%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
+      <div class="col-xs-12 col-sm-5 map-index hidden-xs">
+        <div id="map"
+        style= "width: 93%;
+        height: 590px;"
+        data-markers="<%= @markers.to_json %>"
+        data-userimage="<%= image_path('black.png') %>"
+        ></div>
       </div>
     </div>
   </div>
 </div>
-

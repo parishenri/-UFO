@@ -1,0 +1,41 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  a {
+  text-align: center;
+  font-size: 15px;
+  color: white
+}
+}
+
+.nav-link{
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  background-color: #FF99B9;
+  color: white;
+}
+
+.nav-link.active {
+  background-color: white;
+  color: #FF99B9;
+}
+
+#profile-tab {
+  border-radius: 10px 0 0 0;
+}
+
+
+#activity-tab {
+  border-radius: 0 10px 0 0;
+}
+
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}

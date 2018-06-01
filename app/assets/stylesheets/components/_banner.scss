@@ -68,9 +68,10 @@
 
 .banner h1 {
   font-size: 36px;
-  font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   color: #FF99B9;
+  font-family: 'Heebo', sans-serif;
+  margin-bottom: 40px;
 }
 .banner p {
   font-size: 15px;
@@ -78,4 +79,9 @@
   color: rgb(255, 255, 255);
   opacity: 0.6;
   margin-bottom: 30px;
+  font-family: 'Heebo', sans-serif;
+}
+
+#banner-typed-text{
+  font-size: 20px;
 }

@@ -1,13 +1,13 @@
 <!-- Landing Page -->
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/175696/pexels-photo-175696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
     <div class="banner-content">
-      <h1>Change the World, Join UFO</h1>
-      <%= form_tag items_path, method: :get, class: "form-inline" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "What item?" %>
-        <%= text_field_tag :place, params[:place], class: "form-control", placeholder: "Where?" %>
-        <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>">
-        <%= submit_tag :submit, class: "hidden" %>
-      <% end %>
+      <h1><span id="banner-typed-text"></span></h1>
+     <%#= form_tag items_path, method: :get, class: "form-inline" do %>
+        <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "What item?" %>
+        <%#= text_field_tag :place, params[:place], class: "form-control", placeholder: "Where?" %>
+        <!-- <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>"> -->
+        <%#= submit_tag :submit, class: "hidden" %>
+     <%# end %>
     </div>
   </div>
 </div>
@@ -16,7 +16,7 @@
 <div class="container">
 
 
-  <h2 class="page-header">Just In</h2>
+  <h2 class="page-header-h2">Just In</h2>
   <div class="cards-container">
     <% @items.first(4).each do |item| %>
       <div class="card">
@@ -75,7 +75,7 @@
     <%= image_tag("https://images.pexels.com/photos/46244/girl-portrait-carnival-retro-46244.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class:"info-banner-picture" ) %>
     <div class="info-text">
             <h3>Find Out How Much your could earn uploading your items</h3>
-            <h4>Turn your extra sapce into extra income</h4>
+            <h4>Turn your extra space into extra income</h4>
             <a class="btn info-banner-button">Find out More</a>
     </div>
   </div>

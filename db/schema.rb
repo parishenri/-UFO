@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_100535) do
+ActiveRecord::Schema.define(version: 2018_05_31_202404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(version: 2018_05_31_100535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "booking_id"
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
+    t.integer "sender_id"
+    t.integer "receiver_id"
     t.index ["booking_id"], name: "index_conversations_on_booking_id"
-    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
-    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -90,6 +88,8 @@ ActiveRecord::Schema.define(version: 2018_05_31_100535) do
     t.datetime "updated_at", null: false
     t.boolean "dry_cleaning"
     t.boolean "shipping"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_100535) do
   create_table "users", force: :cascade do |t|
     t.string "description"
     t.string "address"
-    t.integer "phone_number"
+    t.bigint "phone_number"
     t.string "id_document"
     t.string "city"
     t.string "country"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_100535) do
   add_foreign_key "bookings", "items"
   add_foreign_key "bookings", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "users"

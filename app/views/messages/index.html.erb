@@ -1,22 +1,51 @@
 <div class="container">
   <div class="messages-container">
-    <div><%= @messages.first.content %></div>
-    <div><%= @messages.first.conversation.booking.status %></div>
-    <div><%= @messages.first.conversation.booking.user.id %></div>
-    <div><%= cl_image_tag @messages.first.conversation.booking.item.photo, class: "conversation-image-card" %></div>
-    <% @messages.each do |message| %>
-    <p><%= message.user.first_name %><%= message.content %></p>
 
+      <div class="display-booking-content">
+        <%= link_to item_path(@messages.first.conversation.booking.item) do %>
+          <div class="my-listing-card-image" style="background-image: url(<%= image_tag = @messages.first.conversation.booking.item.photo %>)">
+          </div>
+        <% end %>
+
+
+        <div class="booking-details">
+          <div><strong><%= @messages.first.conversation.booking.item.name %></strong></div>
+          <div><strong>Description: </strong><%= @messages.first.conversation.booking.item.description %></div>
+          <div class="start-date-end-date">
+            <div><strong>Start date: </strong><%= @messages.first.conversation.booking.start_date %></div>
+            <div><strong>End date: </strong><%= @messages.first.conversation.booking.end_date %></div>
+          </div>
+          <div><strong>Number of days: </strong><%= @messages.first.conversation.booking.days_range %></div>
+          <div><strong>I will make: </strong><span class="cash-from-booking"> £<%=  @messages.first.conversation.booking.item.rental_price_cents / 100 * @messages.first.conversation.booking.days_range %></span><span class="rental-price-per-day"> (£<%= @messages.first.conversation.booking.item.rental_price_cents / 100 %>/day)</span></div>
+
+          <div><strong>Status: </strong><%= @messages.first.conversation.booking.status %></div>
+          <div class="accept-decline-btn-div">
+            <%= link_to "accept", conversation_message_bookings_accept_path(@messages.first.conversation, @messages.first.id), class: "accept-decline-btn" %>
+
+            <%= link_to "decline", conversation_message_bookings_decline_path(@messages.first.conversation, @messages.first.id), class: "accept-decline-btn" %>
+          </div>
+        </div>
+      </div>
+
+
+
+    <% @messages.reverse_each do |message| %>
+    <div class="messages">
+      <div>
+        <div class="user-name-in-messages"><%= message.user.first_name %></div>
+        <div class="time-of-message-creation"><%= message.created_at.time.to_date %></div>
+      </div>
+      <div class="content-of-messages"><%= message.content %></div>
+    </div>
      <% end %>
 
+
     <div class=“message-box”>
-     <%= simple_form_for [@conversation, @message] do |f| %>
-        <%= f.text_area :content %>
-        <%= f.submit "Send" %>
+      <%= simple_form_for [@conversation, @message] do |f| %>
+        <div><%= f.text_area :content %></div>
+        <div><%= f.submit "Send", class: "send-message-btn"%></div>
+      <% end %>
+    </div>
 
-   </div>
-
-    <% end %>
   </div>
-
 </div>

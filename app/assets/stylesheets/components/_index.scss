@@ -6,7 +6,6 @@
 @import "footer";
 @import "buttons";
 @import "date_form";
-@import "back_links";
 @import "form_style";
 @import "calendar";
 @import "booking_status";
@@ -18,6 +17,9 @@
 @import "messages";
 @import "orders-summary";
 @import "payments-summary";
+@import "your_order";
+@import "home_page";
+@import "dashboard";
 
 body{
   background-color: #ffffff;
@@ -27,12 +29,17 @@ body{
 	font-size: 12px;
 }
 
-.new-header{
-	font-size: 20px;
-	text-decoration: underline;
+
+
+label {
+	font-size: 16px;
+	font-family: 'Heebo', sans-serif;
+	color: #373737;
+	padding: 0px;
+	font-weight: lighter;
 }
 
-.page-header {
-  font-family: 'Heebo', sans-serif;
-  font-size: 14px;
+.container-min-height {
+  min-height: 80vh;
+  padding: 20px;
 }
