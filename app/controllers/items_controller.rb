@@ -33,21 +33,31 @@ class ItemsController < ApplicationController
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
 
-    if params[:item]
-      @items = @items.filter(item_params)
+    # for when you first get to index page
+    @dates_for_search = []
+
+    if params[:size] || params[:buying_price_cents] || params[:rental_price_cents] || params[:color]
+      @items = @items.filter(form_tag_params)
+      if params[:start_date].present? && params[:end_date].present?
+        @items = Item.filter_dates(@items, params[:start_date], params[:end_date])
+      end
     end
 
-    @markers = @items.map do |item|
-      {
-        lat: item.user.latitude,
-        lng: item.user.longitude#,
-      }
+    if @items == []
+    else
+      @markers = @items.map do |item|
+        {
+          lat: item.user.latitude,
+          lng: item.user.longitude#,
+        }
+      end
     end
 
     respond_to do |format|
       format.html { render 'items/index' }
       format.js
     end
+
   end
 
   def new
@@ -108,8 +118,6 @@ class ItemsController < ApplicationController
       }
     end
 
-
-
   end
 
   def destroy
@@ -124,7 +132,11 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price_cents, :buying_price_cents, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
+  end
+
+  def form_tag_params
+     params.permit(:rental_price_cents, :buying_price_cents, :size, :color, :start_date, :end_date)
   end
 
   def set_variables
@@ -133,4 +145,6 @@ class ItemsController < ApplicationController
     @sizes = ["xs", "s", "m", "l", "xl"]
     @colors = ["red", "green", "blue", "black", "white", "yellow", "pink"]
   end
+
+
 end

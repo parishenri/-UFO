@@ -9,13 +9,12 @@
     <div class="map_and_itemdescription">
         <h1><%= @item.name %></h1>
       <div class="item-show-details">
+        <p class=""><strong> Description: </strong><%= @item.description %></p>
+        <div class="item-show-buying-renting">
+        <p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price_cents) %></p>
+      </div>
       <div>
-    </div>
-
-    <div class="big-box">
-      <div class="tabs" style="display: flex;">
-        <a id="booking-tab" class="tabactive">Book</a>
-        <a id="buying-tab">Buy</a>
+        <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price_cents) %></p>
       </div>
       
       <div class="form-boxes" style="display: flex;">
@@ -120,6 +119,16 @@
     }
   });
 
+                <%= submit_tag 'Purchase', class: 'request-booking-btn' %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="item-show-links">
+        <%= link_to 'back', items_path %>
+      </div>
 
 
 </script>
