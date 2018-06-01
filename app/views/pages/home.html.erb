@@ -2,12 +2,12 @@
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url('https://images.pexels.com/photos/175696/pexels-photo-175696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
     <div class="banner-content">
       <h1><span id="banner-typed-text"></span></h1>
-      <%= form_tag items_path, method: :get, class: "form-inline" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "What item?" %>
-        <%= text_field_tag :place, params[:place], class: "form-control", placeholder: "Where?" %>
-        <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>">
-        <%= submit_tag :submit, class: "hidden" %>
-      <% end %>
+     <%#= form_tag items_path, method: :get, class: "form-inline" do %>
+        <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "What item?" %>
+        <%#= text_field_tag :place, params[:place], class: "form-control", placeholder: "Where?" %>
+        <!-- <input type="hidden" name="location" value="<%= @location.empty? ? 'London' : @location %>"> -->
+        <%#= submit_tag :submit, class: "hidden" %>
+     <%# end %>
     </div>
   </div>
 </div>
@@ -16,7 +16,7 @@
 <div class="container">
 
 
-  <h2 class="page-header">Just In</h2>
+  <h2 class="page-header-h2">Just In</h2>
   <div class="cards-container">
     <% @items.first(4).each do |item| %>
       <div class="card">

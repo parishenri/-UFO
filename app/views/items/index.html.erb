@@ -1,5 +1,5 @@
 <div class="container-results-main">
-  <div class="container-min-height">
+  <div class="container-min-height" style="min-height: 700px">
 
     <%= simple_form_for @item, url: items_path, remote: true, method: :get, html: { class: 'form-inline' } do |f| %>
       <%= f.error_notification %>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <!-- 2) Map -->
-      <div class="col-xs-12 col-sm-5 map-index hidden-xs">
+      <div class="col-xs-12 col-sm-5 map-index hidden-xs items-results-map">
         <div id="map" style= "width: 93%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
       </div>
     </div>

@@ -1,5 +1,14 @@
 .payment-summary-container{
 	height:500px;
+} span {
+	font-size: 10px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 
+}
+
+.payment-summary-details{
+	display: flex;
+	flex-direction: row;
 }
 
 .payment-summary-box{
@@ -7,6 +16,107 @@
 	border-width: 1px;
 	border-radius: 4px;
 	border-color: #dddddd;
-	margin: 30px;
-	padding: 20px;
+	margin: 20px;
+	padding: 0px 20px 20px 20px;
+	display: flex;
+	flex-direction: column;
+	min-width: 900px;
+	max-width: 950px;
+} h3{
+	font-size: 14px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 	
+} p{
+	font-size: 10px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 
 }
+
+.payments-summary-h1{
+	font-size: 16px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 
+	color: #fd9ab9;	
+}
+
+.payments-summary-h2{
+	font-size: 14px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 
+	margin: 0px;
+	margin-bottom: 10px;	
+}
+
+.payments-summary-p{
+	font-size: 12px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter;
+}
+
+.image-test {
+	 height: 200px !important;
+	 width: 150px !important;
+	 margin: 0px 20px;
+
+}
+
+.user-details{
+	margin: 0px 30px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	padding: 20px;
+
+}
+
+.user-details{
+	margin: 0px 30px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	padding: 20px;
+	margin: 0px;
+
+}
+
+.payment-details{
+	margin: 0px 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	padding: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.payment-info{
+	margin: 0px 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dddddd;
+	border-radius: 5px;
+	padding: 20px;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+.additional-costs{
+	font-size: 8px;
+	color: gray;
+	padding-bottom: 0px;
+}
+
+.customer-service-details-box{
+	width: 300px;
+}
+
+.order-details-box{
+	width: 300px;
+}
+
+// .additional-costs{
+// 	text-decoration: underline;
+// }
