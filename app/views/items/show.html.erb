@@ -16,7 +16,7 @@
       <div>
         <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price_cents) %></p>
       </div>
-      
+
       <div class="form-boxes" style="display: flex;">
         <div class="request-booking-box">
           <div class="form-wrapper">
@@ -43,7 +43,7 @@
           <div class="form-wrapper">
             <div class="buy">
               <%= form_tag orders_path do %>
-              
+
               <div style= "display: block;" onclick="myFunction()">
                 <%= label_tag(:shipping, "Shipping:") %>
                 <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
@@ -79,7 +79,7 @@
       <div class="map-border">
         <div class="show-google-map" id="map" style="width: 590px; height: 300px;" data-markers="<%= @markers.to_json %>">
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </div>
@@ -132,12 +132,4 @@
 
 
 </script>
-
-
-<!--       <div class="item-show-influencer-box">
-        <%= simple_form_for [@item, @review] do |f| %>
-        <%= f.input :description %>
-        <%= f.submit "Add a review", class: "request-booking-btn" %>
-        <% end %>
-      </div> -->
 
