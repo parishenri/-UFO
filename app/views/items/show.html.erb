@@ -3,25 +3,23 @@
   <div class="item-show-card" style="background-image: url('<%= cl_image_path @item.photo%>');">
   </div>
 
-
-
   <div class="item-description">
     <div class="map_and_itemdescription">
-        <h1><%= @item.name %></h1>
+      <h1><%= @item.name %></h1>
       <div class="item-show-details">
         <p class=""><strong> Description: </strong><%= @item.description %></p>
         <div class="item-show-buying-renting">
-        <p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price_cents) %></p>
-      </div>
-      <div>
-        <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price_cents) %></p>
-      </div>
+          <p><strong> Rental Price:</strong>   <%= humanized_money_with_symbol(@item.rental_price_cents) %></p>
+        </div>
+        <div>
+          <p><strong> Buying Price:</strong>   <%= humanized_money_with_symbol(@item.buying_price_cents) %></p>
+        </div>
 
-      <div class="form-boxes" style="display: flex;">
-        <div class="request-booking-box">
-          <div class="form-wrapper">
-            <div class="rent">
-              <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
+        <div class="form-boxes" style="display: flex;">
+          <div class="request-booking-box">
+            <div class="form-wrapper">
+              <div class="rent">
+                <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
                   <p style="text-align: center;"> Available Dates:</p>
                   <div class="input-group">
                     <i class="far fa-calendar-alt calendar-icon"></i>
@@ -34,9 +32,9 @@
                   <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
                   <%= t.submit "Request Booking", class: "request-booking-btn" %>
                 <% end %>
+              </div>
             </div>
           </div>
-        </div>
 
 
         <div class="request-buying-box hide-form">
@@ -118,6 +116,9 @@
       bookingBox.classList.add("hide-form");
     }
   });
+
+
+
 
 </script>
 
