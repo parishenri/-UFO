@@ -2,14 +2,48 @@
   display: flex;
 }
 
+.listing-status-items {
+  padding: 2px 0px;
+}
+
 .grey {
   color: lightgrey;
 }
 
 .orange {
-  color: orange;
+  background: orange;
+  color: white;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-left: 10px;
 }
 
 .green {
-  color: green;
+  background: green;
+  color: white;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-left: 10px;
 }
+
+.red {
+  background: red;
+  color: white;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-left: 10px;
+}
+
+.card-description-edit-delete {
+  display: flex;
+  vertical-align: middle;
+  justify-content: space-between
+}
+
+.margin-of-card-edit {
+  margin: 10px 0px;
+  vertical-align: middle;
+}
+
+
+
