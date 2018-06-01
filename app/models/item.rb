@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+
   validates :name, presence: true
   validates :description, presence: true
-  validates :rental_price, presence: true
+  validates :rental_price_cents, presence: true
   validates :size, presence: true, inclusion: { in: %w(xs s m l xl) }
   validates :photo, presence: true
   validates :color, presence: true, inclusion: { in: %w(red green blue black white yellow pink) }
