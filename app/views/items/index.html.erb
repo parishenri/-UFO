@@ -1,13 +1,22 @@
 <div class="container-results-main">
   <div class="container-results">
 
-    <%= simple_form_for @item, url: items_path, remote: true, method: :get, html: { class: 'form-inline' } do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :size, collection: @sizes, label: false, include_blank: "Size", input_html: {class: 'filter-btn'} %>
-      <%= f.input :buying_price_cents, collection: @prices, label: false, include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
-      <%= f.input :rental_price_cents, collection: @prices, label: false, include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
-      <%= f.input :color, collection: @colors, label: false, include_blank: "Colour", input_html: {class: 'filter-btn'} %>
-      <%= f.submit "Apply", id: "filter-button" %>
+    <%= form_tag items_path, remote: true, method: :get, html: { class: 'form-inline' } do %>
+      <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'filter-btn'} %>
+      <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
+      <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
+      <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
+      <div class="input-group">
+        <i class="far fa-calendar-alt calendar-icon"></i>
+        <%= text_field_tag 'start_date', as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
+      </div>
+      <div class="input-group">
+        <i class="far fa-calendar-alt"></i>
+        <%= text_field_tag 'end_date', as: :string, input_html: { id: "end_date"},label: false, placeholder: "End date" %>
+      </div>
+      <div id="allDates" data-dates="<%= @dates_for_search.to_json %>"></div>
+      <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
+      <%= submit_tag 'Apply', id: "filter-button" %>
     <% end %>
 
   <!-- 1) Cards -->

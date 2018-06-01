@@ -22,3 +22,11 @@ flatpickr("#start_date", {
  enable: dates,
  plugins: [new rangePlugin({ input: "#end_date"})]
 });
+
+
+const datesForSearch = JSON.parse(document.getElementById('allDates').dataset.dates);
+flatpickr("#start_date", {
+ altInput: true,
+ disable: datesForSearch,
+ plugins: [new rangePlugin({ input: "#end_date"})]
+});
