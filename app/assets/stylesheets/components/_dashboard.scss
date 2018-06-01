@@ -20,10 +20,11 @@
   color: white;
 }
 
-.nav-link.active {
-  background-color: white;
-  color: #FF99B9;
-}
+// .nav-link.active {
+//   // background-color: white;
+//    background-color: #FF99B9;
+//   color: #FF99B9;
+// }
 
 #profile-tab {
   border-radius: 10px 0 0 0;
@@ -32,10 +33,4 @@
 
 #activity-tab {
   border-radius: 0 10px 0 0;
-}
-
-.tabs a:hover {
-  cursor: pointer;
-  text-decoration: none;
-  opacity: 0.8;
 }
