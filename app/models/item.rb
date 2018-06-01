@@ -42,7 +42,6 @@ class Item < ApplicationRecord
         end
       end
 
-
       @correct_format_start_date = Date.parse(start_date.split.first).strftime('%B%e, %Y')
 
       (Date.parse(@correct_format_start_date)..Date.parse(end_date)).each do |day|

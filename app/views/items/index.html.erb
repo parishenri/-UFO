@@ -1,22 +1,20 @@
 <div class="container-results-main">
   <div class="container-results">
 
-    <%= form_tag items_path, remote: true, method: :get, html: { class: 'form-inline' } do %>
-      <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'filter-btn'} %>
-      <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
-      <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
-      <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
-      <div class="input-group">
-        <i class="far fa-calendar-alt calendar-icon"></i>
-        <%= text_field_tag 'start_date', as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
+    <%= form_tag items_path, remote: true, method: :get do %>
+      <div class="custom-inline-form">
+        <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'filter-btn'} %>
+        <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
+        <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
+        <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
+        <%= text_field_tag 'start_date', as: :string, input_html: { id: "start_date" }, label: false, placeholder: "Start Date" %>
+        <%= text_field_tag 'end_date', as: :string, input_html: { id: "end_date" }, label: false, placeholder: "End date" %>
+        <%= submit_tag 'Apply', id: "filter-button" %>
       </div>
-      <div class="input-group">
-        <i class="far fa-calendar-alt"></i>
-        <%= text_field_tag 'end_date', as: :string, input_html: { id: "end_date"},label: false, placeholder: "End date" %>
-      </div>
+
       <div id="allDates" data-dates="<%= @dates_for_search.to_json %>"></div>
       <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
-      <%= submit_tag 'Apply', id: "filter-button" %>
+
     <% end %>
 
   <!-- 1) Cards -->
