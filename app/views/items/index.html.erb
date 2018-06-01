@@ -19,9 +19,13 @@
       </div>
       <!-- 2) Map -->
       <div class="col-xs-12 col-sm-5 map-index hidden-xs">
-        <div id="map" style= "width: 93%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
+        <div id="map"
+        style= "width: 93%;
+        height: 590px;"
+        data-markers="<%= @markers.to_json %>"
+        data-userimage="<%= image_path('black.png') %>"
+        ></div>
       </div>
     </div>
   </div>
 </div>
-
