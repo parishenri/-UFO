@@ -1,9 +1,31 @@
 
-<div class="order-container">
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.state %></li>
-  <li>Item: <%= @order.item_sku %></li>
-  <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-</ul>
+
+
+<div class="container-min-height">
+	<div class="your-order-container">
+		<h1 class="your-order-title">Thank you <%= @order.user.first_name %> !</h1>
+		<div class="your-order-box">
+			<div class="order-details-box">
+				<h1 class="your-order-h1">Your Order Details:</h1>
+				<ul class="your-order-ul">
+				  <li>Status: <%= @order.state %></li>
+				  <li>Item: <%= @order.item.name %></li>
+				  <li>Amount Paid: <%= humanized_money_with_symbol(@order.amount) %></li>
+				  <li> Credit Card: ****-****-5732</li>
+				  <li> Your Order Number: <%= @order.id %></li>
+				</ul>
+			</div>
+			<div>	
+				<img  class="your-order-image" src="https://images.pexels.com/photos/37862/musician-rockstar-band-music-37862.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+			</div>
+		</div>
+			<div class="customer-service-details-box">
+				<h1 class="your-order-h1">Customer Service:</h1>
+				<ul class="your-order-ul">
+				  <li>Please Call Us At: +44 07463 423 6371</li>
+				  <li>Email Us: customer-service@ufo.com</li>
+				  <li>Than you for supporting us!</li>
+				</ul>
+			</div>
+	</div>	
 </div>

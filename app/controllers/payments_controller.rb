@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
 
   def new
     @order = Order.find(params[:order_id])
+    @user = User.new
     if @order.dry_cleaning 
       @dry_cleaning_cost = 10
       @order.amount_cents = @order.amount_cents + 1200  

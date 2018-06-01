@@ -1,50 +1,68 @@
 <!-- app/views/payments/new.html.erb -->
 
 <div class="payment-summary-container">
-  <div class="payment-summary-box">
-  <h1>Your Purchase Summary <%= @order.item_sku %></h1>
-  <p>Please review your order before submitting payment</p>
+    <div class="payment-summary-box">
+      <h1 class="payments-summary-h1">Your Purchase Summary <%= @order.item_sku %></h1>
+    <div class="payment-summary-details">
+      <div class="user-details">
+        <h1 class="payments-summary-h2"><i class="fas fa-tshirt"></i> Product Information:</h1>
+        <p>* Please review your order before submitting payment</p>
+        <p>1. Your Item: <%= @order.item.name %> </p>
+        <p>2. Description: <%= @order.item.description %></p>
+        <p>2. Size: <%= @order.item.size.capitalize %></p>
+        <p>2. Item Sku: <%= @order.item.sku %></p>
+      </div>
 
-  <h3>Your Item:</h3>
-  <%= @order.item.name %>
-  <p>Description: <%= @order.item.description %></p>
-  
-  <% if @order.shipping  %>
-    <p>Shipping Cost:  £<%= @shipping_cost %></p>
-  <% else %>
-    <p>No Shipping Included</p>
-  <% end %>
+      <div class="payment-details">
+        <h1 class="payments-summary-h2"> <i class="fas fa-user"></i> User Details:</h1>
+        <p>*Please review your details before submitting payment</p>
+        <p>1. First Name:<%= @order.user.first_name %> </p>
+        <p>2. Last Name: <%= @order.user.last_name %></p>
+        <p>3. User ID: <%= @order.user.id %></p>
+        <p>4. Mobile Number: <%= @order.user.phone_number %></p>
+        <p>5. Your Address: <%= @order.user.address %></p>
+        <p>6. Your Email: <%= @order.user.email %></p>
+      </div>
 
-  <% if @order.dry_cleaning  %>
-    <p>Dry Cleaning: £<%= @dry_cleaning_cost %></p>
-  <% else %>
-    <p>No Dry Clean Included</p>
-  <% end %>
+      <div class="payment-info">
+        <h1 class="payments-summary-h2"> <i class="fas fa-money-bill-alt"></i> Amount to Pay:</h1>
+        <p> 1. Item Price:<%= humanized_money_with_symbol(@order.item.buying_price) %></p>
+        <p> 2. Additional Costs: </p>
+          <% if @order.shipping  %>
+        <p>*Shipping Cost:  £<%= @shipping_cost %></p>
+        <% else %>
+          <p class="additional-costs">*No Shipping Included</p>
+        <% end %>
 
-<!--   <% if @order.shipping  %>
-    <p>Shipping Cost:  £<%= @shipping_cost %></p>
-  <% else %>
-    <p>No Inlcuded Included</p>
-  <% end %>   -->
+        <% if @order.dry_cleaning  %>
+          <p>*Dry Cleaning: £<%= @dry_cleaning_cost %></p>
+        <% else %>
+          <p class="additional-costs">*No Dry Clean Included</p>
+        <% end %>
+        
 
+        <%= form_tag order_payments_path(@order) do %>
+        <article>
+          <label class="amount">
+            <span>3. Total Amount to Pay:  <%= humanized_money_with_symbol(@order.amount) %></span>
+          </label>
+        </article>
+        <br>
+        <!-- # Commented for the lecture, remove comments. -->
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="My Order"
+          data-email="<%= current_user.email %>"
+          data-description="Item <%= @order.item_sku %>"
+          data-amount="<%= @order.amount_cents %>"
+          data-currency="<%= @order.amount.currency %>">    
+         </script>
+        
+        <% end %>
+      
 
+      </div>
 
-  <%= form_tag order_payments_path(@order) do %>
-    <article>
-      <label class="amount">
-        <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-      </label>
-    </article>
-
-    <!-- # Commented for the lecture, remove comments. -->
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-name="My Order"
-      data-email="<%= current_user.email %>"
-      data-description="Item <%= @order.item_sku %>"
-      data-amount="<%= @order.amount_cents %>"
-      data-currency="<%= @order.amount.currency %>"></script>
-   
-  <% end %>
+    </div>
   </div>
 </div>

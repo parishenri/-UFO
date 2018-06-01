@@ -1,0 +1,53 @@
+.your-order-h1{
+	font-size: 16px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 	
+}
+
+.your-order-ul{
+	font-size: 12px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter;
+	border-style: solid;
+	padding: 10px 60px 10px 20px;
+	border-width: 1px;
+	border-radius: 6px;
+	border-color: #dddddd;
+}
+
+.your-order-title{
+	font-size: 22px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: lighter; 
+	// color: #fd9ab9;	
+	color: black;		
+}
+
+.your-order-image{
+	height: 400px !important;
+	width: 600px !important;
+	margin-left: 100px;
+	border-radius: 2px;
+	opacity: 0.9;
+	position: absolute;
+	right: 20px;
+	top: -45px;
+}
+
+.your-order-box{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.your-order-container{
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+	padding: 5px;
+	padding-bottom: 240px;
+	padding-left: 30px;
+	height: 450px
+}
+
+
