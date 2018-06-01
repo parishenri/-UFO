@@ -4,8 +4,7 @@
     <div class="my-listing-title">
       <h1>My items to rent</h1>
     </div>
-    <div>
-    </div>
+    <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_item_path(@item) %>
   </div>
 
 
@@ -20,33 +19,41 @@
                 </div>
               <% end %>
               <div class="card-description">
-                <h3><%= item.name %></h3>
-                <%= link_to item_path(item), method: :delete do %>
-                  <i class="fas fa-trash-alt delete-bin js-click"></i>
-                <% end %>
-                <%= link_to edit_item_path(item) do %>
-                  <i class="far fa-edit js-click"></i>
-                <% end %>
-                <p><strong>Rent per day: £<%= item.rental_price %></strong>    Buy it for: £<%= item.buying_price %></p>
+                <div class="card-description-edit-delete">
+                  <div class="margin-of-card-edit">
+                    <%= item.name %>
+                  </div>
+                  <div class="margin-of-card-edit">
+                    <%= link_to item_path(item), method: :delete do %>
+                      <i class="fas fa-trash-alt delete-bin js-click"></i>
+                    <% end %>
+                    <%= link_to edit_item_path(item) do %>
+                      <i class="far fa-edit js-click"></i>
+                    <% end %>
+                  </div>
+
+                </div>
+                <p> <span class="rent-price">£<%= item.rental_price %>/day </span><span class="buy-price"> | £<%= item.buying_price %> retail</span></p>
+
               </div>
 
               <div class="listing-status">
                 <div>
-                  <p class="listing-status-items">Availability:</p>
+                  <p class="listing-status-items">Booking status:</p>
                 </div>
 
                 <% if item.bookings.map(&:status).include?("pending") %>
-                  <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
-                  <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
+                  <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
                   <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a></div>
                 <% elsif item.bookings.map(&:status).include?("accepted") %>
-                  <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
                   <div class="item-status"><p class="green listing-status-items">Booked</p></div>
                   <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
                 <% elsif item.bookings.map(&:status).include?("pending & booked") %>
-                  <div class="item-status"><p class="orange listing-status-items">Pending</p></div>
+                  <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
                   <div class="item-status"><p class="green listing-status-items">Booked</p></div>
                   <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click" data-blabla="<%= item.id %>"></i></a></div>
+                  <% elsif item.bookings.map(&:status).include?("declined") %>
+                  <div class="item-status"><p class="red listing-status-items">Declined</p></div>
                 <% else %>
                   <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
                   <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
@@ -58,9 +65,6 @@
           </div>
         <% end %>
       <% end %>
-      <div>
-        <%= link_to 'Add an item', new_item_path(@item), class: "btn info-banner-button" %>
-      </div>
     </div>
 
 

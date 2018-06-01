@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages do
       get 'bookings/accept', to: 'bookings#accept'
+      get 'bookings/decline', to: 'bookings#decline'
     end
   end
 

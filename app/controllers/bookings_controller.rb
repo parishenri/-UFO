@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :show, :update, :destroy]
-  before_action :set_item, except: [:index, :accept]
+  before_action :set_item, except: [:index, :accept, :decline]
   before_action :set_user, only: :index
 
   def new
@@ -56,6 +56,13 @@ class BookingsController < ApplicationController
   def accept
     booking = Conversation.find(params[:conversation_id]).booking
     booking.status = "accepted"
+    booking.save
+    redirect_back(fallback_location: root_path)
+  end
+
+  def decline
+    booking = Conversation.find(params[:conversation_id]).booking
+    booking.status = "declined"
     booking.save
     redirect_back(fallback_location: root_path)
   end
