@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
           lng: item.user.longitude#,
         }
       end
+      @markers.uniq!
     end
 
     respond_to do |format|

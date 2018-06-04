@@ -4,25 +4,30 @@ import { autocomplete } from '../components/autocomplete';
 var mapElement = document.getElementById('map');
 let map
 
-if (mapElement) { // don't try to build a map if there's no div#map to inject in
+if (mapElement) {
   map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const markers = JSON.parse(mapElement.dataset.markers);
-  map.addMarkers(markers);
-  if (markers.length === 0) {
-    map.setZoom(2);
-  } else if (markers.length === 1) {
-    map.setCenter(markers[0].lat, markers[0].lng);
-    map.setZoom(13);
+  if (markers != null) {
+    map.addMarkers(markers);
+    if (markers.length === 1) {
+      map.setCenter(markers[0].lat, markers[0].lng);
+      map.setZoom(13);
+    } else {
+      map.fitLatLngBounds(markers);
+    }
   } else {
-    map.fitLatLngBounds(markers);
+    map.setZoom(2);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(pos.lat, pos.lng);
+      map.setZoom(13);
+    });
   }
 }
 autocomplete();
-
-  const userIcon = {
-    url: document.getElementById('map').dataset.userimage,
-    scaledSize: new google.maps.Size(20, 20),
-    };
 
 if (navigator.geolocation) {
 
@@ -34,7 +39,7 @@ if (navigator.geolocation) {
 
     const userIcon = {
       url: document.getElementById('map').dataset.userimage,
-      scaledSize: new google.maps.Size(40, 40),
+      scaledSize: new google.maps.Size(55, 55),
     };
 
     var marker = new google.maps.Marker({
@@ -44,8 +49,6 @@ if (navigator.geolocation) {
       map: map.map,
       icon: userIcon
     });
-
-    console.log('user position:', pos)
 
   }, function(error) {
     console.error(error)
