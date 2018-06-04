@@ -87,6 +87,7 @@
 	margin: 0px 30px 0px 5px;
 } 
 
+
 .item-show-details{
 	display: flex;
 	margin: 1px;
@@ -123,6 +124,8 @@
 }
 
 .container {
+  min-height: 80vh;
+  padding: 20px;
   h2 {
     font-size: 28px;
     font-weight: bold;
@@ -149,7 +152,7 @@
 
 
 .toggle.android .toggle-handle {
- border-radius: 0px; 
+ border-radius: 0px;
 }
 
 .toggle.btn {
