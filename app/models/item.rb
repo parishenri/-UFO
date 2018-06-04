@@ -21,6 +21,15 @@ class Item < ApplicationRecord
     tsearch: { prefix: true }
     }
 
+
+  def counter=(number)
+    @counter = number
+  end
+
+  def counter
+    @counter
+  end
+
   def self.filter_dates(items, start_date, end_date)
     @unavailable_dates = []
     @available_dates = []

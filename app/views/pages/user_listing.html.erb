@@ -9,59 +9,63 @@
 
 
   <div class="items-and-calendar">
-    <div class="row">
+    <div class="flex-cards">
+      <% count = 0 %>
       <% @items.each do |item| %>
         <% if item.user == current_user %>
-          <div class="col-xs-12 col-sm-4">
-            <div class="card mw">
-              <%= link_to item_path(item) do %>
-                <div class="my-listing-card-image" style="background-image: url(<%= image_tag = item.photo %>)">
-                </div>
-              <% end %>
-              <div class="card-description">
-                <div class="card-description-edit-delete">
-                  <div class="margin-of-card-edit">
-                    <%= item.name %>
-                  </div>
-                  <div class="margin-of-card-edit">
-                    <%= link_to item_path(item), method: :delete do %>
-                      <i class="fas fa-trash-alt delete-bin js-click"></i>
-                    <% end %>
-                    <%= link_to edit_item_path(item) do %>
-                      <i class="far fa-edit js-click"></i>
-                    <% end %>
-                  </div>
-
-                </div>
-                <p> <span class="rent-price">£<%= item.rental_price %>/day </span><span class="buy-price"> | £<%= item.buying_price %> retail</span></p>
+            <% count += 1 %>
+            <% item.counter = count %>
+          <div class="card mw">
+            <div class="item-counter text-center">
+              <%= count %>
+            </div>
+            <%= link_to item_path(item) do %>
+              <div class="my-listing-card-image" style="background-image: url(<%= image_tag = item.photo %>)">
               </div>
-
-              <div class="listing-status">
-                <div>
-                  <p class="listing-status-items">Booking status:</p>
+            <% end %>
+            <div class="card-description">
+              <div class="card-description-edit-delete">
+                <div class="margin-of-card-edit">
+                  <%= item.name %>
                 </div>
-
-                <% if item.bookings.map(&:status).include?("pending") %>
-                  <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
-                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a></div>
-                <% elsif item.bookings.map(&:status).include?("accepted") %>
-                  <div class="item-status"><p class="green listing-status-items">Booked</p></div>
-                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
-                <% elsif item.bookings.map(&:status).include?("pending & booked") %>
-                  <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
-                  <div class="item-status"><p class="green listing-status-items">Booked</p></div>
-                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click" data-blabla="<%= item.id %>"></i></a></div>
-                  <% elsif item.bookings.map(&:status).include?("declined") %>
-                  <div class="item-status"><p class="red listing-status-items">Declined</p></div>
-                <% else %>
-                  <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
-                  <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
-                  <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
-                <% end %>
+                <div class="margin-of-card-edit">
+                  <%= link_to item_path(item), method: :delete do %>
+                    <i class="fas fa-trash-alt delete-bin js-click"></i>
+                  <% end %>
+                  <%= link_to edit_item_path(item) do %>
+                    <i class="far fa-edit js-click"></i>
+                  <% end %>
+                </div>
               </div>
+              <p> <span class="rent-price">£<%= item.rental_price %>/day </span><span class="buy-price"> | £<%= item.buying_price %> retail</span></p>
             </div>
 
+            <div class="listing-status">
+              <div class="listing-status-items">
+                <p>Booking status:</p>
+              </div>
+
+              <% if item.bookings.map(&:status).include?("pending") %>
+                <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
+                <div class="calendar-div" style="margin-bottom: 5px"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>"class="fa fa-calendar-alt js-click"></i></a></div>
+              <% elsif item.bookings.map(&:status).include?("accepted") %>
+                <div class="item-status"><p class="green listing-status-items">Booked</p></div>
+                <div class="calendar-div" style="margin-bottom: 5px"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
+              <% elsif item.bookings.map(&:status).include?("pending & booked") %>
+                <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
+                <div class="item-status"><p class="green listing-status-items">Booked</p></div>
+                <div class="calendar-div" style="margin-bottom: 5px"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click" data-blabla="<%= item.id %>"></i></a></div>
+                <% elsif item.bookings.map(&:status).include?("declined") %>
+                <div class="item-status"><p class="red listing-status-items">Declined</p></div>
+              <% else %>
+                <div class="item-status"><p class="grey listing-status-items">Pending</p></div>
+                <div class="item-status"><p class="grey listing-status-items">Booked</p></div>
+                <div class="calendar-div" style="margin-bottom: 5px"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= item.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
+              <% end %>
+            </div>
           </div>
+
+
         <% end %>
       <% end %>
     </div>
@@ -80,8 +84,7 @@
                 <%= date.day %>
                   <% bookings.each do |booking| %>
                   <div>
-
-                    <%= booking.item.name %>
+                    <%= booking.item.counter %>
                   </div>
                 <% end %>
               <% end %>

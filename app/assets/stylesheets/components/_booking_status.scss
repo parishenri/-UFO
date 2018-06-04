@@ -1,5 +1,6 @@
 .listing-status {
   display: flex;
+  align-items: center;
 }
 
 .listing-status-items {
@@ -37,7 +38,11 @@
 .card-description-edit-delete {
   display: flex;
   vertical-align: middle;
-  justify-content: space-between
+  justify-content: space-between;
+}
+
+.card-description {
+  margin: 10px 0px;
 }
 
 .margin-of-card-edit {
@@ -45,5 +50,21 @@
   vertical-align: middle;
 }
 
+.name-and-rating {
+  display: flex;
+  justify-content: space-between;
+}
 
+.edit-and-calendar {
+  display: flex;
+  align-items: center;
+ }
 
+.name-and-dates {
+  h3 {
+    margin: 0px 0px;
+  }
+  p {
+   margin: 5px 0px;
+  }
+}
