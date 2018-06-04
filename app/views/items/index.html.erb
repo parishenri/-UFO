@@ -1,19 +1,16 @@
 <div class="container-results-main">
   <div class="container-min-height" style="min-height: 700px">
-    
+
     <%= form_tag items_path, remote: true, method: :get do %>
       <div class="custom-inline-form">
         <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'filter-btn'} %>
         <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
         <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
         <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
-        <%= text_field_tag 'start_date', as: :string, input_html: { id: "start_date" }, label: false, placeholder: "Start Date" %>
-        <%= text_field_tag 'end_date', as: :string, input_html: { id: "end_date" }, label: false, placeholder: "End date" %>
+        <%= text_field_tag 'start_date', as: :string, input_html: { id: "start_date_search" }, label: false, placeholder: "Start Date" %>
+        <%= text_field_tag 'end_date', as: :string, input_html: { id: "end_date_search" }, label: false, placeholder: "End date" %>
         <%= submit_tag 'Apply', id: "filter-button" %>
       </div>
-
-      <div id="allDates" data-dates="<%= @dates_for_search.to_json %>"></div>
-      <div id="bookedDates" data-dates="<%= @available_dates.to_json %>"></div>
     <% end %>
 
   <!-- 1) Cards -->
@@ -23,15 +20,12 @@
           <%= render 'card_results', items: @items %>
         </div>
       </div>
-      <!-- 2) Map -->
-      <div class="col-xs-12 col-sm-5 map-index hidden-xs items-results-map">
-        <div id="map" style= "width: 93%; height: 590px;" data-markers="<%= @markers.to_json %>"></div>
       <div class="col-xs-12 col-sm-5 map-index hidden-xs">
         <div id="map"
         style= "width: 93%;
         height: 590px;"
         data-markers="<%= @markers.to_json %>"
-        data-userimage="<%= image_path('black.png') %>"
+        data-userimage="<%= image_path('blue.png') %>"
         ></div>
       </div>
     </div>
