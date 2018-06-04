@@ -3,7 +3,7 @@
   <!-- Logo -->
   <div class="ufo-logo">
   <%= link_to root_path, class: "navbar-ufo-brand" do %>
-    <%= image_tag "UFOlogocropped.png", height: 30 %>
+    <%= image_tag "UFOlogocropped.png" %>
   <% end %>
   </div>
 
@@ -44,10 +44,10 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-ufo-item">
         <div class="dropdown">
-          <% if current_user.photo  %>
+          <% if current_user.photo?  %>
             <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-ufo-menu", "data-toggle" => "dropdown" %>
           <% else %>
-            <%= image_tag "skull.jpg", class: "avatar dropdown-toggle", id: "navbar-ufo-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag "profile.png", class: "avatar dropdown-toggle", id: "navbar-ufo-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-ufo-dropdown-menu">
             <li>
@@ -166,28 +166,26 @@
             
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
-      <div class="details-container">
-        <div class="form-inputs">
-          <div class="edit-user-name-and-email">
-            <%= f.input :first_name, input_html: {class: "input-bar"} %>
-            <%= f.input :last_name, input_html: {class: "input-bar"} %>
-          </div> 
-          <div class="edit-user-name-and-email">
-            <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
-            <%= f.input :address, input_html: {class: "input-bar"} %>
-          </div>
-          <div class="edit-user-name-and-email">
-            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: {class: "input-bar"} %>
-            <%= f.input :password_confirmation, required: true, input_html: {class: "input-bar"} %>
-          </div>
+        <div class="details-container">
+          <div class="form-inputs">
+            <div class="edit-user-name-and-email">
+              <%= f.input :first_name, input_html: {class: "input-bar"} %>
+              <%= f.input :last_name, input_html: {class: "input-bar"} %>
+            </div> 
+            <div class="edit-user-name-and-email">
+              <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
+              <%= f.input :address, input_html: {class: "input-bar"} %>
+            </div>
+            <div class="edit-user-name-and-email">
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: {class: "input-bar"} %>
+              <%= f.input :password_confirmation, required: true, input_html: {class: "input-bar"} %>
+            </div>
+            <div class="edit-user-name-and-email">
+              <%= f.input :photo, input_html: { class: "input-bar" } %>
+              <%= f.input :photo_cache, as: :hidden %>
+            </div>
+        </div> 
 
-           <div class="edit-user-name-and-email">
-            <%= f.input :photo, input_html: { class: "input-bar" } %>
-            <%= f.input :photo_cache, as: :hidden %>
-          </div>
-
-
-     </div>   
         <div class="details-container-two">  
           <%= image_tag "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "sign-up-image"%>
         </div>
