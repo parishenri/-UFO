@@ -133,7 +133,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price_cents, :buying_price_cents, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
   end
 
   def form_tag_params

@@ -25,7 +25,7 @@
           <% end %>
           <div class="card-description">
             <h3><%= item.name %></h3>
-            <p> <strong>Rent per day: $<%= item.rental_price_cents %></strong>    Buy it for: $<%= item.buying_price_cents %></p>
+            <p> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong>    Buy it for: <%= humanized_money_with_symbol(item.buying_price) %></p>
             <p>This is the rating and comments</p>
           </div>
           <div class="card-rating">
@@ -43,7 +43,7 @@
           <% end %>
           <div class="card-description">
             <h3><%= item.name %></h3>
-            <p> <strong>Rent per day: $<%= item.rental_price_cents %></strong>    Buy it for: $<%= item.buying_price_cents %></p>
+            <p> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong>    Buy it for: <%= humanized_money_with_symbol(item.buying_price) %></p>
             <p>This is the rating and comments</p>
           </div>
           <div class="card-rating">
