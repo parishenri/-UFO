@@ -30,12 +30,19 @@
 .details-container-two {
 	font-size: 12px;
 	color: #373737;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  	padding-top: 20px;
+  	padding-bottom: 20px;
 }
 
 .details-container h2{
  	font-size: 16px;
+	color: #373737;
+	font-family: 'Heebo', sans-serif;
+}
+
+.modal-title{
+	padding-top: 5px;
+	font-size: 22px;
 	color: #373737;
 	font-family: 'Heebo', sans-serif;
 }
@@ -77,10 +84,10 @@
 }
 
 .sign-up-image{
-	height: 40vh;
+	height: 50vh;
 	border-radius: 3px;
-	margin: 10px 60px 0px 150px;
-	opacity: 0.6;
+	margin: 30px 10px 10px 10px;
+	opacity: 0.8;
 }
 
 .datebar {
@@ -155,16 +162,14 @@ input#available_end_date.form-control.string.optional::placeholder {
 	font-family: 'Montserrat', sans-serif;
 }
 
+
 .booking_start_date .flatpickr-input {
 	height: 25px;
+	width: 150px !important;
 	margin: 0px 0px 5px 5px;
 	background-color: transparent;
 	color: #717373;
 }
-
-// #new_booking .booking_end_date {
-// 	margin-left: px;
-// }
 
 .calendar-container {
 	display: flex;
@@ -173,8 +178,6 @@ input#available_end_date.form-control.string.optional::placeholder {
 
 .calendar-container p {
 	font-size: 12px;
-}
-
-a {
+} a {
   color: #616668
 }

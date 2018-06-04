@@ -21,6 +21,11 @@
       <div class="form-actions btn input-btn">
         <input type="submit" name="commit" value="Sign up" class="input-btn-ontop" data-disable-with="Sign up">
       </div>
+
+      <div class="edit-user-name-and-email">
+        <%= f.input :photo, input_html: { class: "input-bar" } %>
+        <%= f.input :photo_cache, as: :hidden %>
+      </div>
     
     </div>
     <div class="details-container-two">  

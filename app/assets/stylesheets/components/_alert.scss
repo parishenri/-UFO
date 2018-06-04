@@ -3,12 +3,18 @@
 * ------------------------------------- */
 
 .alert {
-  margin: 0;
-  text-align: center;
-  color: white;
-}
+ 	margin: 0;
+ 	text-align: center;
+ 	color: white;
+ 	border-color: transparent;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+ 	padding-bottom: 10px;
+} 
+
 .alert-info {
-  background: $green;
+  background: #42CE81;
 }
 .alert-warning {
   background: $red;
