@@ -3,6 +3,18 @@
   align-items: center;
 }
 
+.item-counter {
+  background: #2F3030;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  position: absolute;
+  top: -1;
+  margin: 5px 5px;
+}
+
 .add-item {
   margin: 20px 0px;
   padding: 10px 10px;
@@ -22,7 +34,7 @@
   margin-top: 20px;
   h1 {
     align-items: center;
-    margin: 10px 5px;
+    margin: 10px 0px;
   }
 }
 
@@ -36,6 +48,15 @@
 .items-and-calendar {
   display: flex;
   justify-content: space-between;
+}
+
+.flex-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-show {
+ flex: 1 0 auto;
 }
 
 .calendar-my-listing {
@@ -54,21 +75,35 @@
 
 .listing-status {
   display: flex;
+  vertical-align: middle;
   p {
-    font-size: 14px;
+    font-size: 10px;
+    margin: 0px 0px;
   }
   a {
-    font-size: 14px;
+    font-size: 12px;
   }
+}
+
+.item-status {
+  margin: 2px 2px;
+}
+
+.listing-status-items {
+  margin: 2px 0px;
 }
 
 .calendar-div {
   margin: 0px 5px;
-  display: flex;
 }
 
 #calendar {
   margin-right: 0px;
+}
+
+.mw {
+  flex: 0 0 30%;
+  position: relative;
 }
 
 .my-listing-card-image {
@@ -83,6 +118,7 @@
 .js-click {
   color: #d3d3d4;
   z-index: 5; position:relative;
+  margin: 0px 0px;
 }
 
 .js-click:hover {

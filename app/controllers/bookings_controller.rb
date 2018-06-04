@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
     @user_bookings = @bookings
-    @user_bookings = @bookings.where(id: params[:booking][:item]) if params[:booking] && params[:booking][:item]
+    @user_bookings = @bookings.select { |booking| booking.id == params[:booking][:item].to_i } if params[:booking] && params[:booking][:item]
     @booking = Booking.new
   end
 
@@ -44,6 +44,11 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
+    @conversation = Conversation.find_by(booking_id: @booking)
+    @message = Message.new(content: "#{User.find_by(id: @conversation.sender_id).first_name} requested for new booking dates as follow: #{@booking.start_date} until #{@booking.end_date}")
+    @message.user = current_user
+    @message.conversation = @conversation
+    @message.save
     redirect_to item_booking_path(@item, @booking)
   end
 

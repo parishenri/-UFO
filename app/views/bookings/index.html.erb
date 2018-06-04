@@ -1,4 +1,4 @@
-  <div class="container-min-height">
+  <div class="container">
 
   <div class="items-div">
     <div class="my-booking-title">
@@ -8,23 +8,75 @@
 
 
   <div class="items-and-calendar">
-    <div class="row">
+    <div class="flex-cards">
+      <% count = 0 %>
       <% @bookings.each do |booking| %>
-        <div class="col-xs-12 col-sm-4">
+          <% count += 1 %>
+          <% booking.counter = count %>
           <div class="card mw">
+            <div class="item-counter text-center">
+              <%= count %>
+            </div>
             <%= link_to item_path(booking.item) do %>
               <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)">
               </div>
             <% end %>
             <div class="card-description">
-              <h3><%= booking.item.name %></h3>
-              <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
-              <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= booking.id %>" class="fa fa-calendar-alt js-click"></i></a></div>
-            </div>
-            <div class="card-rating">
+              <div class="name-and-rating">
+                <div class="name-and-dates">
+                  <h3><%= booking.item.name %></h3>
+                  <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+                </div>
+                <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <div class="edit-and-calendar">
+                <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= booking.id %>" class="fa fa-calendar-alt js-click"></i></a>
+                </div>
+                <div class="remove-box">
+                  <button data-toggle="modal" data-target="#edit-modal-<%= booking.id %>" class="fa fa-edit">
+                  </button>
+                </div>
+                <div class="margin-of-card-edit">
+                  <%= link_to item_booking_path(booking.item, booking), method: :delete do %>
+                    <i class="fas fa-trash-alt delete-bin js-click"></i>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div id="edit-modal-<%= booking.id %>" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Booking for <%= booking.item.name %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="date_form">
+                        <%= simple_form_for([booking.item, booking]) do |f| %>
+                          <%= f.input :start_date, as: :date, order: [:day, :month, :year], input_html: { class: "form_style" }%>
+                          <%= f.input :end_date, as: :date, order: [:day, :month, :year],input_html: { class: "form_style" } %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <%= f.submit "update", class: "btn btn-primary btn-xs" %>
+                    <% end %>
+                  </div>
+              </div>
+            </div>
+          </div>
+
       <% end %>
     </div>
 
@@ -41,9 +93,8 @@
                 <%= date.day %>
                   <% bookings.each do |booking| %>
                   <div>
-                    <%= booking.item.name %>
+                    <%= booking.counter %>
                   </div>
-
                 <% end %>
               <% end %>
             </div>
