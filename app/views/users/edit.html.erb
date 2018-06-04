@@ -31,6 +31,10 @@
               <%= f.input :age, required: false, input_html: {class: "input-bar"} %>
               <%= f.input :gender, input_html: {class: "input-bar"}%>
               <%= f.input :id_document, required: false, input_html: {class: "input-bar"} %>
+
+            <%= f.input :photo, input_html: { class: "input-bar" } %>
+            <%= f.input :photo_cache, as: :hidden %>
+
             </div>
             <div class="edit-user-address">
               <%= image_tag "https://images.pexels.com/photos/914664/pexels-photo-914664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", class: "sign-up-image"%>

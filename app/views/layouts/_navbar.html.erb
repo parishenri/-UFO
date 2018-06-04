@@ -3,7 +3,7 @@
   <!-- Logo -->
   <div class="ufo-logo">
   <%= link_to root_path, class: "navbar-ufo-brand" do %>
-    <%= image_tag "ufologonew.png", height: 50 %>
+    <%= image_tag "UFOlogocropped.png", height: 30 %>
   <% end %>
   </div>
 
@@ -44,7 +44,11 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-ufo-item">
         <div class="dropdown">
-          <%= image_tag "https://www.biography.com/.image/t_share/MTM5MjE5MzAzODUyNDE4Mzk5/pablo-escobar-gettyimages-452490135_621jpg.jpg", class: "avatar dropdown-toggle", id: "navbar-ufo-menu", "data-toggle" => "dropdown" %>
+          <% if current_user.photo  %>
+            <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-ufo-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag "skull.jpg", class: "avatar dropdown-toggle", id: "navbar-ufo-menu", "data-toggle" => "dropdown" %>
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-ufo-dropdown-menu">
             <li>
               <%= link_to edit_user_path(current_user) do %>
@@ -71,15 +75,63 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to "Nearby Items", items_path, class: "navbar-ufo-item navbar-ufo-link" %>
+      <div>
+        <%= link_to "Nearby Items", items_path, class: "navbar-ufo-item navbar-ufo-link" %>
+      </div>
+
+      <div>
       <%= link_to "Groups", "#", class: "navbar-ufo-item navbar-ufo-link" %>
-      <%= link_to t(".sign_in", default: "Log In"), new_user_session_path, class: "navbar-wagon-item navbar-ufo-link" %>
+      </div>
+
+      <div>
+       <!-- Button trigger modal -->
+      <div data-toggle="modal" data-target="#myModal2">
+        <a class="navbar-ufo-item navbar-ufo-link">Log In</a>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title login-title" id="myModalLabel">Log In</h4>
+            </div>
+            <div class="modal-body">
+              
+              <!--Log In Content -->
+              <div class="login-container">
+                <div>
+                  <div class="login-box">
+
+                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                      <div class="form-inputs">
+                        <%= f.input :email, required: false, autofocus: true, input_html: {class: "input-bar"} %>
+                        <%= f.input :password, required: false, input_html: {class: "input-bar"} %>
+                        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                      </div>
       
-      <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-ufo-link" %>
+                    <%= render "devise/shared/links" %>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="form-actions">
+                  <input type="submit" name="commit" value="Log in" class="login-btn" data-disable-with="Log in">
+                  <% end %>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-      </button>
+      <div data-toggle="modal" data-target="#myModal">
+        <a class="navbar-ufo-item navbar-ufo-link">Sign up</a>
+      </div>
     <% end %>
   </div>
 
@@ -108,7 +160,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up </h4>
+        <h4 class="modal-title login-title" id="myModalLabel">Sign Up </h4>
       </div>
       <div class="modal-body">
             
@@ -128,20 +180,29 @@
             <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: {class: "input-bar"} %>
             <%= f.input :password_confirmation, required: true, input_html: {class: "input-bar"} %>
           </div>
-          <div class="form-actions btn input-btn">
-          <input type="submit" name="commit" value="Sign up" class="input-btn-ontop" data-disable-with="Sign up">
-        </div>
+
+           <div class="edit-user-name-and-email">
+            <%= f.input :photo, input_html: { class: "input-bar" } %>
+            <%= f.input :photo_cache, as: :hidden %>
+          </div>
+
+
      </div>   
+        <div class="details-container-two">  
+          <%= image_tag "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "sign-up-image"%>
+        </div>
     
     </div>
 
-    <% end %>
+    
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="form-actions">
+          <input type="submit" name="commit" value="Sign up" class="login-btn" data-disable-with="Sign up">
+          </div>
+          <% end %>
       </div>
     </div>
   </div>
