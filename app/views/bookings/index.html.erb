@@ -36,8 +36,13 @@
                 </div>
               </div>
               <div class="edit-and-calendar">
-                <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= booking.id %>" class="fa fa-calendar-alt js-click"></i></a>
-                </div>
+
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= booking.id %>">
+                  <i data-calendar-id="<%= booking.id %>"class="far fa-calendar-plus"></i>
+                </button>
+
+
                 <div class="remove-box">
                   <button data-toggle="modal" data-target="#edit-modal-<%= booking.id %>" class="fa fa-edit">
                   </button>
@@ -77,31 +82,56 @@
             </div>
           </div>
 
-      <% end %>
-    </div>
+        <div class="modal fade" id="exampleModal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> <%= booking.item.name %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-    <div class="calendar-my-listing">
-      <div id="calendar">
-        <div>
-          <%= simple_form_for(@booking, url: user_bookings_path, method: :get) do |f| %>
-            <%= f.input :item, label: false, collection: @bookings, prompt: "Select item", input_html: { class: "hidden" } %>
-          <% end %>
-
-          <div class="calendar-container">
-            <div class="calendar">
-              <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: @user_bookings)  do |date, bookings| %>
-                <%= date.day %>
-                  <% bookings.each do |booking| %>
+              <div class="calendar-my-listing">
+                <div id="calendar">
                   <div>
-                    <%= booking.counter %>
+                    <%= simple_form_for(@booking, url: user_bookings_path, method: :get) do |f| %>
+                      <%= f.input :item, label: false, collection: @bookings, prompt: "Select item", input_html: { class: "hidden" } %>
+                    <% end %>
+
+                    <div class="calendar-container">
+                      <div class="calendar">
+                        <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: [booking])  do |date, bookings| %>
+                          <%= date.day %>
+                            <% bookings.each do |booking| %>
+                            <div>
+                              <%= booking.counter %>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
                   </div>
-                <% end %>
-              <% end %>
+                </div>
+              </div>
+
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+
             </div>
           </div>
         </div>
-      </div>
+
+      <% end %>
     </div>
+
+
+
+
   </div>
 </div>
 
