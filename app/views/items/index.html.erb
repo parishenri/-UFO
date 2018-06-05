@@ -7,7 +7,7 @@
         <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btns'} %>
         <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btns'} %>
         <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btns'} %>
-        <%= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, placeholder: "Date" %>
+        <%#= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, placeholder: "Date" %>
         <%= submit_tag 'Apply', id: "filter-button" %>
       </div>
     <% end %>

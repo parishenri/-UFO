@@ -16,18 +16,6 @@
             <%= f.input :size, :as => :select, collection: @sizes, label: false, include_blank: "Size", input_html: { class: "input-bar" } %>
             <%= f.input :color, :as => :select, collection: @colors, label: false, include_blank: "Colour", input_html: { class: "input-bar" } %>
           </div>
-          <div class="item-date-inline">
-            <div class="input-group">
-              <i class="far fa-calendar-alt calendar-icon"></i>
-              <%= f.input :available_start_date, as: :string, input_html: { id: "available_start_date" }, label: false, placeholder: "Start Date"  %>
-            </div>
-            <div class="input-group">
-              <i class="far fa-calendar-alt"></i>
-              <%= f.input :available_end_date, as: :string, input_html: { id: "available_end_date" },label: false, placeholder: "End Date" %>
-            </div>
-          </div>
-
-
 
           <div class="edit-user-name-and-email">
             <%= f.input :photo, input_html: { class: "input-bar" } %>

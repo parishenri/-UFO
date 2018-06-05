@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_202404) do
+ActiveRecord::Schema.define(version: 2018_06_05_142842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,6 @@ ActiveRecord::Schema.define(version: 2018_05_31_202404) do
     t.string "sku"
     t.boolean "shipping"
     t.string "category"
-    t.date "available_start_date"
-    t.date "available_end_date"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -139,6 +137,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_202404) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
