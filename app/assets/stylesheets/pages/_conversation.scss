@@ -2,24 +2,11 @@
   font-size: 24px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  margin-left: 76px;
 }
 
 .conversation-image-card {
   height: 300px;
   margin: 3%;
-  font-family: 'Montserrat', sans-serif;
-}
-
-
-.messages-container {
-  margin: 20px;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.messages {
-  display: flex;
-  margin: 10px 0px;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -31,24 +18,18 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.content-of-messages {
-  font-weight: 300;
-  margin-left: 30px;
-  margin: 2px 0px;
-  font-family: 'Montserrat', sans-serif;
-}
+// .content-of-messages-left {
+//   font-weight: 300;
+//   margin-left: 30px;
+//   margin: 2px 0px;
+//   font-family: 'Montserrat', sans-serif;
+// }
 
 .send-message-btn {
   background: #fd9ab9;
   border: none;
   border-radius: 3px;
   color: white;
-  font-family: 'Montserrat', sans-serif;
-}
-
-#message_content {
-  width: 550px;
-  margin: 5px 0px;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -64,49 +45,17 @@
  font-family: 'Montserrat', sans-serif;
 }
 
-.accept-decline-btn {
-  background: #fd9ab9;
-  color: white;
-  padding: 3px;
-  margin: 2px;
-  width: 100px;
-  text-align: center;
-  vertical-align: middle;
-  font-family: 'Montserrat', sans-serif;
-  text-decoration: none;
-}
-
-.accept-decline-btn:hover {
-  text-decoration: none;
-  color: #fd9ab9;
-  background: white;
-}
-
-.accept-decline-btn-div {
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.accept-decline-btn-div:hover {
- text-decoration: none;
- color: white;
-}
-
 .cash-from-booking {
   color: #fd9ab9;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
 }
 
-.display-booking-content {
+.request-container {
   display: flex;
   font-family: 'Montserrat', sans-serif;
 }
 
-.booking-details {
-  margin: 0px 20px;
-  font-family: 'Montserrat', sans-serif;
-}
 
 .start-date-end-date {
   display: flex;
@@ -121,7 +70,7 @@
 .container-conversations-box {
   justify-content: space-between;
   border: #dce0e0;
-  margin: 0% 12%;
+  margin: 0 12% 0 0;
   margin-bottom: 2%;
   padding: 15px;
   font-family: 'Montserrat', sans-serif;
@@ -161,9 +110,9 @@
 
 .tabs-messages {
   display: flex;
-  margin: 5px 12%;
   margin-top: 34px;
   margin-bottom: 5px;
+  margin-left: -38px;
   font-family: 'Montserrat', sans-serif;
 }
 

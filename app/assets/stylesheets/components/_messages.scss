@@ -1,37 +1,6 @@
-.message-box{
-	display: flex;
-	margin-left: 5px;
-	align-content: center;
-	border-style: solid;
-	border-width: 1px;
-	width: 500px;
-	height: 50px;
-	border-radius: 5px;
-	margin-top: 10px;
-	padding: 10px;
-	border-color: #bfc3c7;
-}
-
-.h2messages{
-	font-size: 20px;
-	font-family: 'Quicksand', sans-serif;
-	margin-left: 20px;
-}
-
-.message-box p{
-	font-size: 14px;
-}
-
-.message-box a{
-	font-color: red;
-}
-
-.message-container{
+.request-msg-container {
  	min-height: 500px;
- 	margin-left: 12px;
- 	display: flex;
- 	flex-direction: row;
-
+  margin: 20px 100px;
 }
 
 .new-convo-link {
@@ -53,7 +22,7 @@
 }
 
 
-.message-image{
+.message-image {
 	height: 40vh;
 	width: 60vh;
 	border-radius: 4px;
@@ -62,3 +31,167 @@
 	margin-left: 80px;
 }
 
+.messages {
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  h2 {
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
+  }
+}
+
+.request-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 300px;
+  margin: 30px 225px 30px;
+}
+
+.booking-details {
+  width: 40%;
+  margin: 0px 60px;
+}
+
+.request-avatar {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  h3 {
+    margin-right: 15px;
+  }
+  img {
+    margin-right: 10px;
+  }
+}
+
+.avatar-request-message {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.messages-cards {
+  background-color: white;
+}
+
+.request-photo {
+  width: 20%;
+  margin: 0px 80px;
+}
+
+
+.speech-bubble {
+  position: relative;
+  text-align: left;
+  min-height: 100px;
+  display: flex;
+  justify-content:space-around;
+  margin-bottom: 30px;
+  margin-right: 70px;
+  p {
+    background: white;
+    font-size: 14px;
+    box-shadow: 1px 1px 1px #e2e2e2;
+    width: 90%;
+    padding: 25px 15px;
+    color: grey;
+  }
+  h3 {
+    margin: 0;
+  }
+}
+
+.speech-bubble-r {
+  position: relative;
+  text-align: left;
+  min-height: 100px;
+  display: flex;
+  justify-content:space-around;
+  margin-bottom: 30px;
+  margin-left: 70px;
+    p {
+      background: white;
+      width: 90%;
+      padding: 25px 15px;
+      color: grey;
+      font-size: 14px;
+    box-shadow: 1px 1px 1px #e2e2e2;
+  }
+    h3 {
+    margin: 0;
+  }
+}
+
+.avatar-message {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+.msg-container {
+  margin: 40px 100px;
+}
+
+.avatar-message-div {
+  margin: 0 50px;
+}
+
+.btn-mess-margin {
+  margin-left: 78%;
+  margin-bottom: 35px;
+}
+
+.message-content {
+    width: 83% !important;
+    margin-left: 7% !important;
+    font-size: 14px !important;
+    border: none !important;
+    box-shadow: 1px 1px 1px #d6d5d5 !important;
+    min-height: 80px;
+    font-style: italic;
+    padding-left: 20px;
+    color: grey;
+    font-weight: lighter;
+    margin: 5px 0px 20px;
+    &:focus{
+      outline: none;
+    }
+}
+
+.duration-margin {
+  margin-top: 15px;
+}
+
+.messages-info-label {
+  width: 50px;
+}
+
+.banner-messages {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.accept-decline-btn-div {
+  display: flex;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.owner-margin {
+  margin-right: 16px;
+}
+
+.duration-margin {
+  margin-right: 16px;
+}
+
+.total-price-margin {
+  margin-right: 4px;
+}
+
+.status-margin {
+  margin-right: 28px;
+}
