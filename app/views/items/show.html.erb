@@ -17,67 +17,71 @@
           <p> 5. Color:<%= @item.color %></p>
         </div>
 
-        <div class="all-tabs-content">
-          <div class="booking-buying-tab">
-            <div id="booking-tab">
-              <p>Booking</p>
-            </div>
-            <div id="buying-tab">
-              <p>Buying</p>
-            </div>
-          </div>
+        <% if @item.user == current_user %>
+          <p>you can't book your own item</p>
 
-          <div class="form-boxes" style="display: flex;">
-            <div class="request-booking-box">
-              <div class="form-wrapper">
-                <div class="rent">
-                  <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
-                    <p style="text-align: center;"> Available Dates:</p>
-
-                    <div class="input-group">
-                      <i class="far fa-calendar-alt"></i>
-                      <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
-                    </div>
-
-                    <div class="input-group">
-                      <i class="far fa-calendar-alt"></i>
-                      <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
-                    </div>
-
-                    <div id="bookedDates" data-dates="<%= @unavailable_dates.to_json %>">
-                    </div>
-                    <%= t.submit "Request Booking", class: "request-booking-btn" %>
-                  <% end %>
-
-                </div>
+        <% else %>
+          <div class="all-tabs-content">
+            <div class="booking-buying-tab">
+              <div id="booking-tab">
+                <p>Booking</p>
+              </div>
+              <div id="buying-tab">
+                <p>Buying</p>
               </div>
             </div>
-          </div>
 
+            <div class="form-boxes" style="display: flex;">
+              <div class="request-booking-box">
+                <div class="form-wrapper">
+                  <div class="rent">
+                    <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
+                      <p style="text-align: center;"> Available Dates:</p>
 
-          <div class="request-buying-box hide-form">
-            <div class="form-wrapper">
-              <div class="buy">
-                <%= form_tag orders_path do %>
+                      <div class="input-group">
+                        <i class="far fa-calendar-alt"></i>
+                        <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
+                      </div>
 
-                <div style= "display: block;" onclick="myFunction()">
-                  <%= label_tag(:shipping, "Shipping:") %>
-                  <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
-                </div>
-                <div id="myDIV" style= "display: none";>
-                  <div style= "display: block;">
-                    <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
-                    <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
+                      <div class="input-group">
+                        <i class="far fa-calendar-alt"></i>
+                        <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
+                      </div>
+
+                      <div id="bookedDates" data-dates="<%= @unavailable_dates.to_json %>">
+                      </div>
+                      <%= t.submit "Request Booking", class: "request-booking-btn" %>
+                    <% end %>
+
                   </div>
                 </div>
-                    <%= hidden_field_tag 'item_id', @item.id %>
-                    <%= hidden_field_tag 'type', "buying" %>
-                    <%= submit_tag 'Purchase', class: 'request-purchase-btn' %>
-                <% end %>
+              </div>
+            </div>
+
+            <div class="request-buying-box hide-form">
+              <div class="form-wrapper">
+                <div class="buy">
+                  <%= form_tag orders_path do %>
+
+                  <div style= "display: block;" onclick="myFunction()">
+                    <%= label_tag(:shipping, "Shipping:") %>
+                    <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
+                  </div>
+                  <div id="myDIV" style= "display: none";>
+                    <div style= "display: block;">
+                      <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
+                      <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
+                    </div>
+                  </div>
+                      <%= hidden_field_tag 'item_id', @item.id %>
+                      <%= hidden_field_tag 'type', "buying" %>
+                      <%= submit_tag 'Purchase', class: 'request-purchase-btn' %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
 
         </div>
       </div>
