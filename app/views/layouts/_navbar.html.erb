@@ -175,6 +175,7 @@
             <div class="edit-user-name-and-email">
               <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
               <%= f.input :address, input_html: {class: "input-bar"} %>
+              <ul id="autocomp"></ul>
             </div>
             <div class="edit-user-name-and-email">
               <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: {class: "input-bar"} %>
@@ -205,3 +206,4 @@
     </div>
   </div>
 </div>
+

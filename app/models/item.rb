@@ -4,9 +4,9 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :rental_price_cents, presence: true
-  validates :size, presence: true, inclusion: { in: %w(xs s m l xl) }
+  validates :size, presence: true, inclusion: { in: %w(XS S M L XL) }
   validates :photo, presence: true
-  validates :color, presence: true, inclusion: { in: %w(red green blue black white yellow pink) }
+  validates :color, presence: true, inclusion: { in: %w(Red Green Blue Black White Yellow Pink) }
 
   mount_uploader :photo, PhotoUploader
   monetize :rental_price_cents
