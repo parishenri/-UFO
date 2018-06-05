@@ -46,7 +46,8 @@
 }
 
 .margin-of-card-edit {
-  margin: 10px 0px;
+  margin: 0px 0px;
+  padding: 0px 2px;
   vertical-align: middle;
 }
 
@@ -58,6 +59,7 @@
 .edit-and-calendar {
   display: flex;
   align-items: center;
+  padding: 5px 0px;
  }
 
 .name-and-dates {
@@ -67,4 +69,13 @@
   p {
    margin: 5px 0px;
   }
+}
+
+.btn-xs {
+  background: #2F3030;
+  color: white;
+  padding: 2px 8px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: none;
 }

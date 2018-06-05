@@ -3,6 +3,37 @@
 }
 
 .remove-box {
+  outline: none !important;
+  box-shadow: none !important;
+  background: white !important;
+  border: none !important;
+  color: #D3D3D4;
+  padding: 0px 2px;
+}
+
+.remove-box:hover {
+  outline: none !important;
+  border: none !important;
+  background: white;
   border: none;
-  margin: 0px;
+  color: #FD9AB9;
+}
+
+
+.fa-edit {
+  outline: none !important;
+  box-shadow: none !important;
+  background: white !important;
+  border: none !important;
+  color: #D3D3D4;
+  padding: 0px;
+}
+
+.fa-edit:hover {
+  outline: none !important;
+  border: none !important;
+  background: white;
+  border: none;
+  color: #FD9AB9;
+  padding: 0px;
 }

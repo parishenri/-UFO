@@ -37,9 +37,9 @@
               </div>
               <div class="edit-and-calendar">
 
-
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= booking.id %>">
+                <button type="button" class="btn-primary" data-toggle="modal" data-target="#exampleModal-<%= booking.id %>">
                   <i data-calendar-id="<%= booking.id %>"class="far fa-calendar-plus"></i>
+
                 </button>
 
 
@@ -61,26 +61,29 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Booking for <%= booking.item.name %></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                 </div>
+
+
                   <div class="row">
                     <div class="col-xs-6">
                       <div class="date_form">
+
+
                         <%= simple_form_for([booking.item, booking]) do |f| %>
                           <%= f.input :start_date, as: :date, order: [:day, :month, :year], input_html: { class: "form_style" }%>
                           <%= f.input :end_date, as: :date, order: [:day, :month, :year],input_html: { class: "form_style" } %>
                       </div>
                     </div>
                   </div>
+
                   <div class="modal-footer">
-                    <%= f.submit "update", class: "btn btn-primary btn-xs" %>
+                    <%= f.submit "update", class: "btn-xs" %>
                     <% end %>
                   </div>
               </div>
             </div>
           </div>
+
 
         <div class="modal fade" id="exampleModal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
