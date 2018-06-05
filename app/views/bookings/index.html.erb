@@ -6,7 +6,6 @@
     </div>
   </div>
 
-
   <div class="items-and-calendar">
     <div class="flex-cards">
       <% count = 0 %>
@@ -17,7 +16,6 @@
             <div class="item-counter text-center">
               <%= count %>
             </div>
-
 
             <%= link_to item_booking_path(booking.item, booking) do %>
               <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)">
