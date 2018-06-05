@@ -3,12 +3,35 @@
 
     <%= form_tag items_path, remote: true, method: :get do %>
       <div class="custom-inline-form">
-        <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'filter-btns'} %>
-        <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btns'} %>
-        <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btns'} %>
-        <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btns'} %>
-        <%#= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, placeholder: "Date" %>
-        <%= submit_tag 'Apply', id: "filter-button" %>
+
+
+
+
+
+        <div class="size-button">
+        <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'hitest'} %>
+        </div>
+
+        <div class="size-button">
+          <%= select_tag "buying_price_cents", options_for_select(@prices), include_blank: "Buy price", input_html: {class: 'filter-btn'} %>
+        </div>
+
+        <div class="size-button">
+          <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
+        </div>
+
+        <div class="size-button">
+          <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
+        </div>
+
+        <div class="size-button">
+           <%= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, placeholder: "Date" %>
+        </div>
+
+        <div class="item-results-submit-button">
+          <%= submit_tag 'Apply', id: "filter-button" %>
+        </div>
+
       </div>
     <% end %>
 
@@ -22,7 +45,7 @@
       <div class="col-xs-12 col-sm-5 map-index hidden-xs">
         <div id="map"
         style= "width: 93%;
-        height: 590px;"
+        height: 500px;"
         data-markers="<%= @markers.to_json %>"
         data-userimage="<%= image_path('blue.png') %>"
         ></div>
@@ -30,3 +53,6 @@
     </div>
   </div>
 </div>
+
+
+<%= javascript_pack_tag "flatpickr" %>

@@ -168,16 +168,16 @@
       <%= f.error_notification %>
         <div class="details-container">
           <div class="form-inputs">
-            <div class="edit-user-name-and-email">
+            <div class="sign-up-edit-user-name-and-email">
               <%= f.input :first_name, input_html: {class: "input-bar"} %>
               <%= f.input :last_name, input_html: {class: "input-bar"} %>
             </div> 
-            <div class="edit-user-name-and-email">
+            <div class="sign-up-email-address">
               <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
               <%= f.input :address, input_html: {class: "input-bar"} %>
               <ul id="autocomp"></ul>
             </div>
-            <div class="edit-user-name-and-email">
+            <div class="sign-up-password">
               <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: {class: "input-bar"} %>
               <%= f.input :password_confirmation, required: true, input_html: {class: "input-bar"} %>
             </div>
@@ -187,9 +187,9 @@
             </div>
         </div> 
 
-        <div class="details-container-two">  
-          <%= image_tag "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "sign-up-image"%>
-        </div>
+<!--         <div class="details-container-two">  
+          <%#= image_tag "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "sign-up-image"%>
+        </div> -->
     
     </div>
 

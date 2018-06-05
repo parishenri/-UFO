@@ -26,23 +26,25 @@ class ItemsController < ApplicationController
     near_items = User.near(user_location, 15)
 
     any_field_from_form = params[:size] || params[:buying_price_cents] || params[:rental_price_cents] || params[:color]
-
     # both search in nav and filter in index
     if params[:query].present? && any_field_from_form
       items_searched = Item.global_search(params[:query])
       items_filtered = Item.filter(params)
       @items = items_searched & items_filtered
     # only search in nav
+    elsif params[:start_date_search].present?
+      start_date = Date.parse(params[:start_date_search].split("to").first)
+      end_date = Date.parse(params[:start_date_search].split("to").last)
+      @items = Item.filter_dates(start_date, end_date)
     elsif params[:query].present?
       @items = Item.global_search(params[:query])
     # only filters
     elsif any_field_from_form
-      Item.filter(params)
+      @items = Item.filter(params)
     # none
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
-
 
     @markers = @items.map do |item|
       {
@@ -96,18 +98,6 @@ class ItemsController < ApplicationController
       end
     end
 
-
-    # @booking_dates = []
-    # @available_dates = []
-    # (@item.available_start_date..@item.available_end_date).each do |day|
-    #   @available_dates << { from: day, to: day }
-    # end
-
-    # @unavailable_dates.each do |day_hash|
-    #   if @available_dates.include?(day_hash)
-    #     @available_dates.delete(day_hash)
-    #   end
-    # end
     @markers = { lat: @user.latitude, lng: @user.longitude}
 
 

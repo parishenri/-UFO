@@ -5,7 +5,6 @@
         <div class="card-image-index" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
       <% end %>
       <div class="card-description">
-        <h3><%= item.name %></h3>
         <p> <strong>Rent per day: $<%= item.rental_price_cents / 100 %></strong>Buy it for: $<%= item.buying_price_cents / 100 %></p>
         <p>This is the rating and comments</p>
       </div>

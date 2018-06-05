@@ -30,11 +30,9 @@ class Item < ApplicationRecord
   end
 
 
-  def self.filter_dates(items, start_date, end_date)
-    # binding.pry
-    joins(:bookings)
-      .where("bookings.start_date > :start_date AND bookings.start_date < :end_date OR bookings.end_date > :start_date AND bookings.end_date < :end_date OR bookings.start_date < :start_date AND bookings.end_date > :end_date", start_date: start_date, end_date: end_date).uniq
-      # .where
+  def self.filter_dates(start_date, end_date)
+    array = joins(:bookings).where.not("bookings.start_date >= start_date OR bookings.end_date <= end_date", start_date: start_date, end_date: end_date)
+      #.where("bookings.start_date > start_date AND bookings.start_date < end_date OR bookings.end_date > start_date AND bookings.end_date < end_date OR bookings.start_date < start_date AND bookings.end_date > end_date", start_date: start_date, end_date: end_date).uniq
   end
 
   def self.filter(args)
@@ -52,9 +50,6 @@ class Item < ApplicationRecord
       buying_range = ((arr2[0].to_i*100)..(arr2[1].to_i*100))
     end
 
-    start_date = args[:start_date] if args[:start_date].present?
-    end_date = args[:end_date] if args[:end_date].present?
-
     return where(size: size, rental_price_cents: rental_range, buying_price_cents: buying_range, color: color) if size && rental_price_cents && buying_price_cents && color
     return where(size: size, rental_price_cents: rental_range, buying_price_cents: buying_range) if size && rental_price_cents && buying_price_cents
     return where(size: size, rental_price_cents: rental_range, color: color) if size && rental_price_cents && color
@@ -70,7 +65,8 @@ class Item < ApplicationRecord
     return where(buying_price_cents: buying_range, color: color) if color && buying_price_cents
     return where(rental_price_cents: rental_range) if rental_price_cents
     return where(buying_price_cents: buying_range) if buying_price_cents
-    return where(size: size) if size
+    # binding.pry
+    return where("size iLIKE ?", size) if size
     return where(color: color) if color
     return all
   end
