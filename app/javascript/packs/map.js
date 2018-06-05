@@ -53,5 +53,4 @@ if (navigator.geolocation) {
   });
 }
 }
-
 autocomplete();

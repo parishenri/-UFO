@@ -1,6 +1,12 @@
-// show
-const div = document.getElementById('bookedDates')
-if (div) {
+import flatpickr from 'flatpickr';
+import "flatpickr/dist/flatpickr.min.css";
+import "flatpickr/dist/themes/light.css";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
+
+
+const start_date = document.getElementById('start_date');
+
+if (start_date) {
   const dates = JSON.parse(document.getElementById('bookedDates').dataset.dates);
 
   flatpickr("#start_date", {
@@ -38,3 +44,4 @@ if (datesdiv) {
    plugins: [new rangePlugin({ input: "#end_date"})]
   });
 }
+export { callFlatpickr }

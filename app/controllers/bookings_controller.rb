@@ -31,12 +31,13 @@ class BookingsController < ApplicationController
     @booking.item = Item.find(params[:item_id])
     @conversation.sender_id = current_user.id
     @conversation.receiver_id = @booking.item.user.id
-    @conversation.booking = @booking
     @booking.save
+    @conversation.booking = @booking
     @conversation.save
     @message.user = current_user
     @message.conversation = @conversation
     @message.save
+
 
     flash[:notice] = 'Your request has been sent'
     redirect_to conversation_messages_path(@conversation)

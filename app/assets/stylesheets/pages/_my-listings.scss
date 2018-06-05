@@ -1,6 +1,7 @@
 .items-div {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .item-counter {
@@ -35,6 +36,10 @@
   h1 {
     align-items: center;
     margin: 10px 0px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: lighter;
+    font-size: 24px;
+    margin-right: 8px;
   }
 }
 
@@ -53,6 +58,7 @@
 .flex-cards {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .row-show {
@@ -102,15 +108,16 @@
 }
 
 .mw {
-  flex: 0 0 30%;
+  flex: 0 0 23%;
   position: relative;
 }
 
 .my-listing-card-image {
-  height: 250px;
-  min-width: 180px;
-  width: 100%;
-  background-size: cover;
+  height: 200px;
+  min-width: 150px;
+  width: 80%;
+  background-repeat: no-repeat;
+  background-size: contain;
   background-position: center;
   border-radius: 2px;
 }
@@ -132,4 +139,10 @@
 
 .buy-price {
   color: grey;
+}
+
+.pages-add-icon a{
+  position: absolute;
+  bottom: 22px;
+  color: #fd9ab9;
 }

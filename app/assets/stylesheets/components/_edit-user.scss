@@ -1,0 +1,95 @@
+.edit-user-page-container{
+	display: flex;
+	margin-top: 20px;
+	min-height: 600px;
+}
+
+.edit-user-profile-menu{
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+} p {
+	font-size: 14px;
+}
+
+
+
+.edit-user{
+	display: flex;
+	flex-direction: column;	
+	border-style: solid;
+	border-width: 1px;
+	padding: 20px 40px;
+	width: 700px;
+	height: 600px;
+
+}
+
+
+.edit-user-activity-overview-tab{
+	display: flex;
+	flex-direction: column;	
+	border-style: solid;
+	border-width: 1px;
+	padding: 20px 40px;
+	display: none;
+	width: 700px;
+	height: 600px;
+}
+.underline {
+	text-decoration: underline;
+}
+
+.edit-user-tabs{
+	display: flex;
+}
+
+.edit-user-name-and-email{
+	display: flex;
+	flex-direction: column;
+}
+
+.edit-user-address{
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-user-other{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.activity_overview{
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	padding: 20px 40px;
+}
+
+.edit-user-nav-link{
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  background-color: gray;
+  color: white;
+}
+
+.edit-user-nav-link-active{
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  background-color: gray;
+  color: white;
+}
+
+#profile-tab {
+  
+}
+
+
+#activity-tab {
+
+}
+

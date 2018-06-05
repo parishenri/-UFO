@@ -17,7 +17,9 @@
             <div class="item-counter text-center">
               <%= count %>
             </div>
-            <%= link_to item_path(booking.item) do %>
+
+
+            <%= link_to item_booking_path(booking.item, booking) do %>
               <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)">
               </div>
             <% end %>
@@ -36,8 +38,6 @@
                 </div>
               </div>
               <div class="edit-and-calendar">
-                <div class="calendar-div"><a data-toggle="tab" href="#calendar"><i data-calendar-id="<%= booking.id %>" class="fa fa-calendar-alt js-click"></i></a>
-                </div>
                 <div class="remove-box">
                   <button data-toggle="modal" data-target="#edit-modal-<%= booking.id %>" class="fa fa-edit">
                   </button>
@@ -50,15 +50,11 @@
               </div>
             </div>
           </div>
-
           <div id="edit-modal-<%= booking.id %>" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Booking for <%= booking.item.name %></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                 </div>
                   <div class="row">
                     <div class="col-xs-6">
@@ -70,53 +66,14 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <%= f.submit "update", class: "btn btn-primary btn-xs" %>
+                    <%= f.submit "update", class: "btn-xs" %>
                     <% end %>
                   </div>
               </div>
             </div>
           </div>
-
       <% end %>
-    </div>
-
-    <div class="calendar-my-listing">
-      <div id="calendar">
-        <div>
-          <%= simple_form_for(@booking, url: user_bookings_path, method: :get) do |f| %>
-            <%= f.input :item, label: false, collection: @bookings, prompt: "Select item", input_html: { class: "hidden" } %>
-          <% end %>
-
-          <div class="calendar-container">
-            <div class="calendar">
-              <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: @user_bookings)  do |date, bookings| %>
-                <%= date.day %>
-                  <% bookings.each do |booking| %>
-                  <div>
-                    <%= booking.counter %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
-
-<script>
-  const calendars = document.querySelectorAll('.js-click');
-  let selectedCal = 0;
-  calendars.forEach( function (calendar) {
-    calendar.addEventListener("click", (event) =>  {
-      selectedCal = calendar.dataset.calendarId;
-      console.log(selectedCal)
-      const form = document.getElementById('new_booking')
-      const dropdown = document.getElementById('booking_item')
-      dropdown.value = Number.parseInt(selectedCal)
-      form.submit();
-    });
-  });
-</script>

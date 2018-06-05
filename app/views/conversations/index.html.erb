@@ -19,12 +19,10 @@
         <div class="container-conversations-box">
           <% @sent_conversations.reverse_each do |conversation| %>
 
-
             <div class="conversations-container">
               <div>
                 <%= image_tag "favicon.ico", height: 35 %>
               </div>
-
               <div class="name-and-date-of-convo">
                 <p><%= conversation.sender.first_name %></p>
                 <p><%= conversation.created_at.time.to_date %></p>
@@ -48,6 +46,16 @@
           <% end %>
         </div>
       </div>
+    </div>
+
+  <!-- My Listings -->
+    <div class="tab-pane" id="my-listings-conversations" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container-conversations-box">
+        <% @recieved_conversations&.reverse_each do |conversation| %>
+          <div class="conversations-container">
+            <div>
+              <%= image_tag "favicon.ico", height: 35 %>
+            </div>
 
     <!-- My Listings -->
       <div class="tab-pane" id="my-listings-conversations" role="tabpanel" aria-labelledby="profile-tab">

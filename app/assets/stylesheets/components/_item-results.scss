@@ -1,10 +1,45 @@
+
+
+
+.size-button select {
+  border-style: solid;
+  border-color: white;
+  border-radius: none !important;
+  font-size: 11px;
+  color: #616667;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  background-color: white;
+
+}
+.size-button {
+  margin: 0px 10px;
+}
+.size-button select option {
+  border-style: solid !important;
+  border-color: blue;
+  font-size: 11px;
+  color: blue;
+}
+
+#filter-button {
+  width: 70px;
+  margin: 2px;
+  height: 25px;
+  font-size: 12px;
+  border-radius: 1%;
+  background-color: white;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 2px;
+  font-weight: lighter;
+}
+
 .container-results-main {
   h2 {
     margin-left: 30px;
   }
 }
-
-
 
 .map-index {
   position: sticky;
@@ -27,9 +62,6 @@
 }
 
 .card-results{
-  // display: flex;
-  // flex-direction: column;
-  // position: relative;
   margin: 0 10px;
   padding: 3px;
   transition: .3s;
@@ -37,10 +69,6 @@
 
 
 .card-results:hover{
-  // border-style: solid;
-  // border-width: thin;
-  // border-color: #e5e5e8;
-  // margin: 7px;
   transform: scale(1.03);
 }
 
@@ -60,10 +88,31 @@
 
 }
 
+.margin-item-results-rent-price{
+  margin-right: 20px;
+}
+
 .card-image-index {
-  height: 250px;
-  width: 100%;
+  height: 200px;
+  width: 80%;
   background-size: cover;
   background-position: center;
   border-radius: 2px;
 }
+
+.results-card-description{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.results-card-description p {
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+.results-card-description h3{
+  font-size: 12px;
+  font-family: 'Heebo', sans-serif;
+}
+
+

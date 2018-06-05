@@ -15,8 +15,6 @@
 	align-items: center;
 	color: gray !important;
   border-bottom: 1px solid #dddddd;
-
-
 }
 
 .item-show-links a:hover{
@@ -45,7 +43,6 @@
   transition: .3s;
   height: 60vh;
   width: 50vh;
-  // crop: fill;
   background-position: center;
   background-size: cover;
 }
@@ -55,17 +52,12 @@
 }
 
 .item-description {
-// border-radius: 4px;
   margin-right: 5%;
-  // border-style: solid;
-  // border-color: #dddddd;
-  // border-width: 1px;
   display: flex;
   flex-direction: column;
   h1 {
 
     margin-top: 0px;
-    // background-color: #fd9ab9;
     margin-bottom: 10px;
     text-align: left;
     padding: 5px 0px 5px 0px;
@@ -73,10 +65,6 @@
     font-weight: normal;
     color: black;
     font-size: 18px;
-    // border-style: solid;
-    // border-width: 1px;
-    // border-color: #dddddd;
-    // border-radius: 3px;
   }
 }
 
@@ -86,6 +74,10 @@
 	justify-content: space-between;
 	margin: 0px 30px 0px 5px;
 } 
+
+.item-show-buying-renting p{
+  font-size: 10px;
+}
 
 
 .item-show-details{
@@ -99,10 +91,8 @@
 }
 
 .mapsize {
-
   margin-top: 10%;
   margin-bottom: 10%;
-  // margin-left: 10%;
 }
 
 .item-show-influencer-box{
@@ -158,7 +148,6 @@
 .toggle.btn {
   min-width: 50px !important;
   min-height: 19px !important;
-  // margin-bottom: 5px;
 }
 
 .btn {
@@ -243,21 +232,10 @@
 }
 
 
-// #buying-tab.tabactive {
-//   opacity: 0.4;
-//   color: white;
-// }
-
 .tabactive{
-  // background-color: black;
   color: white;
   opacity: 0.3;
 }
-
-// #booking-tab.tabactive {
-//   opacity: 0.4;
-//   color: white;
-// }
 
 
 .buy{
@@ -287,4 +265,13 @@
 
 .all-tabs-content{
   margin-top: 10px;
+}
+
+.booking_start_date .form-control {
+  font-size: 12px;
+  height: 30px !important;
+  width: 151px !important;
+  margin-left: 5px;
+  margin-bottom: 4px;
+  margin-top: 0px;
 }
