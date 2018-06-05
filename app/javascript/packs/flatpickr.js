@@ -44,4 +44,4 @@ if (datesdiv) {
    plugins: [new rangePlugin({ input: "#end_date"})]
   });
 }
-
+export { callFlatpickr }
