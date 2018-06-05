@@ -123,7 +123,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.delete
+    @item.destroy
     redirect_to user_listing_path
   end
 
