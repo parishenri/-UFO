@@ -98,9 +98,13 @@ class ItemsController < ApplicationController
         @unavailable_dates << { from: day, to: day }
       end
     end
-
-    @markers = { lat: @user.latitude, lng: @user.longitude}
-
+        @markers = [@user].map do |u|
+      {
+        lat: u.latitude,
+        lng: u.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
 
   end
 
