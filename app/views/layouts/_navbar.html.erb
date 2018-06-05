@@ -98,7 +98,7 @@
               <h4 class="modal-title login-title" id="myModalLabel">Log In</h4>
             </div>
             <div class="modal-body">
-              
+
               <!--Log In Content -->
               <div class="login-container">
                 <div>
@@ -110,7 +110,7 @@
                         <%= f.input :password, required: false, input_html: {class: "input-bar"} %>
                         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
                       </div>
-      
+
                     <%= render "devise/shared/links" %>
                   </div>
                 </div>
@@ -136,7 +136,7 @@
   </div>
 
 
-  
+
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-ufo-item hidden-md hidden-lg">
@@ -163,7 +163,7 @@
         <h4 class="modal-title login-title" id="myModalLabel">Sign Up </h4>
       </div>
       <div class="modal-body">
-            
+
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
         <div class="details-container">
@@ -171,7 +171,7 @@
             <div class="edit-user-name-and-email">
               <%= f.input :first_name, input_html: {class: "input-bar"} %>
               <%= f.input :last_name, input_html: {class: "input-bar"} %>
-            </div> 
+            </div>
             <div class="edit-user-name-and-email">
               <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
               <%= f.input :address, input_html: {class: "input-bar"} %>
@@ -184,15 +184,15 @@
               <%= f.input :photo, input_html: { class: "input-bar" } %>
               <%= f.input :photo_cache, as: :hidden %>
             </div>
-        </div> 
+        </div>
 
-        <div class="details-container-two">  
+        <div class="details-container-two">
           <%= image_tag "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "sign-up-image"%>
         </div>
-    
+
     </div>
 
-    
+
 
 
       </div>

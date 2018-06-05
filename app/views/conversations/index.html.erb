@@ -1,76 +1,87 @@
 <div class="container-min-height ">
+  <div class="container-min-margin-left">
+    <div class="conversation-tabs">
     <h1 class="clean-header">Messages</h1>
-  <div class="conversation-tabs">
-    <ul class="tabs-messages" id="myTab" role="tablist">
-      <li class="nav-item custom-tabs active">
-        <a class="tabs-messages-format" id="profile-tab" data-toggle="tab" href="#my-bookings-conversations" role="tab" aria-controls="profile" aria-selected="true"></i> My Bookings</a>
-      </li>
-      <li class="nav-item custom-tabs">
-        <a class="tabs-messages-format" id="activity-tab" data-toggle="tab" href="#my-listings-conversations" role="tab" aria-controls="activity" aria-selected="false"></i> My Listings</a>
-      </li>
-    </ul>
-  </div>
-
-  <!-- My Bookings -->
-  <div class="tab-content">
-    <div class="tab-pane active" id="my-bookings-conversations" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="container-conversations-box">
-
-        <% @sent_conversations.reverse_each do |conversation| %>
-
-
-          <div class="conversations-container">
-            <div>
-              <%= image_tag "favicon.ico", height: 35 %>
-            </div>
-
-            <div class="name-and-date-of-convo">
-              <p ><%= conversation.sender.first_name %></p>
-              <p><%= conversation.booking.created_at.time.to_date %></p>
-            </div>
-
-            <div class="start-of-message">
-              This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %> about <%= conversation.booking.item.name %>
-            </div>
-
-            <div class="booking-status-conversations">
-              <p><%= conversation.booking.status %></p>
-              <p>£<%= conversation.booking.days_range * conversation.booking.item.rental_price_cents / 100 %></p>
-            </div>
-              <%= link_to "conversation", conversation_messages_path(conversation), class: "conversation-btn" %>
-          </div>
-          <hr width="95%">
-        <% end %>
-      </div>
+      <ul class="tabs-messages" id="myTab" role="tablist">
+        <li class="nav-item custom-tabs active">
+          <a class="tabs-messages-format" id="profile-tab" data-toggle="tab" href="#my-bookings-conversations" role="tab" aria-controls="profile" aria-selected="true"></i> My Bookings</a>
+        </li>
+        <li class="nav-item custom-tabs">
+          <a class="tabs-messages-format" id="activity-tab" data-toggle="tab" href="#my-listings-conversations" role="tab" aria-controls="activity" aria-selected="false"></i> My Listings</a>
+        </li>
+      </ul>
     </div>
 
-  <!-- My Listings -->
-    <div class="tab-pane" id="my-listings-conversations" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="container-conversations-box">
-        <% @recieved_conversations.reverse_each do |conversation| %>
-          <div class="conversations-container">
-            <div>
-              <%= image_tag "favicon.ico", height: 35 %>
-            </div>
+    <!-- My Bookings -->
+    <div class="tab-content">
 
-            <div class="name-and-date-of-convo">
-              <p ><%= conversation.sender.first_name %></p>
-              <p><%= conversation.booking.created_at.time.to_date %></p>
-            </div>
+      <div class="tab-pane active" id="my-bookings-conversations" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="container-conversations-box">
+          <% @sent_conversations.reverse_each do |conversation| %>
 
-            <div class="start-of-message">
-              This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %> about <%= conversation.booking.item.name %>
-            </div>
 
-            <div class="booking-status-conversations">
-              <p><%= conversation.booking.status %></p>
-              <p>£<%= conversation.booking.days_range * conversation.booking.item.rental_price_cents / 100 %></p>
+            <div class="conversations-container">
+              <div>
+                <%= image_tag "favicon.ico", height: 35 %>
+              </div>
+
+              <div class="name-and-date-of-convo">
+                <p><%= conversation.sender.first_name %></p>
+                <p><%= conversation.created_at.time.to_date %></p>
+              </div>
+
+              <div class="start-of-message">
+                This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %>
+                <% if conversation.booking %>
+                  about <%= conversation.booking.item.name %>
+                <% end %>
+              </div>
+              <% if conversation.booking %>
+                <div class="booking-status-conversations">
+                  <p><%= conversation.booking.status %></p>
+                  <p>£<%= conversation.booking.days_range * conversation.booking.item.rental_price_cents / 100 %></p>
+                </div>
+              <% end %>
+                <%= link_to "conversation", conversation_messages_path(conversation), class: "conversation-btn" %>
             </div>
-              <%= link_to "conversation", conversation_messages_path(conversation), class: "conversation-btn" %>
-          </div>
-          <hr width="95%">
-        <% end %>
+            <hr width="95%">
+          <% end %>
+        </div>
       </div>
+
+    <!-- My Listings -->
+      <div class="tab-pane" id="my-listings-conversations" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="container-conversations-box">
+          <% @recieved_conversations.reverse_each do |conversation| %>
+            <div class="conversations-container">
+              <div>
+                <%= image_tag "favicon.ico", height: 35 %>
+              </div>
+
+              <div class="name-and-date-of-convo">
+                <p ><%= conversation.sender.first_name %></p>
+                <p><%= conversation.created_at.time.to_date %></p>
+              </div>
+
+              <div class="start-of-message">
+                This is a conv between <%= conversation.sender.first_name %> and <%= conversation.receiver.first_name %>
+                <% if conversation.booking %>
+                  about <%= conversation.booking.item.name %>
+                <% end %>
+              </div>
+              <% if conversation.booking %>
+                <div class="booking-status-conversations">
+                  <p><%= conversation.booking.status %></p>
+                  <p>£<%= conversation.booking.days_range * conversation.booking.item.rental_price_cents / 100 %></p>
+                </div>
+              <% end %>
+                <%= link_to "conversation", conversation_messages_path(conversation), class: "conversation-btn" %>
+            </div>
+            <hr width="95%">
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

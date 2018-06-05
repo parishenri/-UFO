@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @conversation = Conversation.new
-    @message = Message.new(content: @booking.start_date)
+    @message = Message.new(content: "")
     @booking.user = current_user
     @booking.status = "pending"
     @booking.item = Item.find(params[:item_id])
