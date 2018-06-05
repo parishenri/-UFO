@@ -14,13 +14,22 @@
 #filter-button {
   margin: 2px;
   height: 25px;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 10%;
 }
 
 input.flatpickr-input.form-control.input {
-  width: 200px;
+  width: 100px;
   background-color: white;
+  height: 20px;
+  font-size: 12px;
+}
+
+.input-group-results #end_date_search{
+  width: 100px;
+  background-color: white;
+  font-size: 12px;
+  color: gray;
 }
 
 
