@@ -4,7 +4,9 @@
     <div class="my-listing-title">
       <h1>My Listings</h1>
     </div>
-    <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_item_path(@item) %>
+    <div class="pages-add-icon">
+      <%= link_to '<i class="fas fa-plus"></i> add item'.html_safe, new_item_path(@item) %>
+    </div>
   </div>
 
 

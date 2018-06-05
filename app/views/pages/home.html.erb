@@ -18,7 +18,7 @@
 
   <h2 class="page-header-h2">Just In</h2>
   <div class="cards-container">
-    <% @items.first(4).each do |item| %>
+    <% @items.last(6).each do |item| %>
       <div class="card">
           <%= link_to item_path(item.id) do %>
             <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
@@ -36,7 +36,7 @@
 
   <h2 class="page-header">Most Popular</h2>
   <div class="cards-container">
-    <% @items.first(4).each do |item| %>
+    <% @items.first(6).each do |item| %>
       <div class="card">
           <%= link_to item_path(item.id) do %>
             <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
