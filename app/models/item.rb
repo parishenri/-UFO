@@ -29,39 +29,15 @@ class Item < ApplicationRecord
     @counter
   end
 
-  def self.filter_dates(items, start_date, end_date)
-    @unavailable_dates = []
-    @available_dates = []
-    @items = items
-    @final_items = []
-    @chosen_dates_by_user_in_filter = []
-    @items.each do |item|
-      (item.available_start_date..item.available_end_date).each do |day|
-        @available_dates << { from: day, to: day }
-      end
-      item.bookings.each do |booking|
-        (booking.start_date..booking.end_date).each do |day|
-          @unavailable_dates << { from: day, to: day }
-        end
-      end
-      @unavailable_dates.each do |day_hash|
-        if @available_dates.include?(day_hash)
-          @available_dates.delete(day_hash)
-        end
-      end
+  # bookings.start_date > start_date AND bookings.start_date < end_date OR bookings.end_date > start_date AND bookings.end_date < end_date OR bookings.start_date < start_date AND bookings.end_date > end_date
 
-      @correct_format_start_date = Date.parse(start_date.split.first).strftime('%B%e, %Y')
 
-      (Date.parse(@correct_format_start_date)..Date.parse(end_date)).each do |day|
-        @chosen_dates_by_user_in_filter << { from: day, to: day }
-      end
-
-      # only if every day chosen by user is in the available dates
-      if @chosen_dates_by_user_in_filter.all? { |day_hash| @available_dates.include?(day_hash)}
-        @final_items << item
-      end
-      return @final_items
-    end
+  def self.filter_dates(start_date, end_date)
+    # array = joins(:bookings).where("bookings.start_date > ? AND bookings.start_date < ? OR bookings.end_date > ? AND bookings.end_date < ? OR bookings.start_date < ? AND bookings.end_date > ?", start_date, end_date, start_date, end_date, start_date, end_date)
+    # array = joins(:bookings).where.not("bookings.start_date >= ? OR bookings.start_date <= ?", start_date, end_date)
+    #                         .where.not("bookings.end_date >= ? OR bookings.end_date <= ?", start_date, end_date)
+    array = joins(:bookings).where("bookings.start_date > ? AND bookings.start_date < ? OR bookings.end_date > ? AND bookings.end_date < ? OR bookings.start_date < ? AND bookings.end_date > ?", start_date, end_date, start_date, end_date, start_date, end_date)
+    final_array = array + Item.all.select { |item| item.bookings.empty? }
   end
 
   def self.filter(args)
@@ -79,9 +55,6 @@ class Item < ApplicationRecord
       buying_range = ((arr2[0].to_i*100)..(arr2[1].to_i*100))
     end
 
-    start_date = args[:start_date] if args[:start_date].present?
-    end_date = args[:end_date] if args[:end_date].present?
-
     return where(size: size, rental_price_cents: rental_range, buying_price_cents: buying_range, color: color) if size && rental_price_cents && buying_price_cents && color
     return where(size: size, rental_price_cents: rental_range, buying_price_cents: buying_range) if size && rental_price_cents && buying_price_cents
     return where(size: size, rental_price_cents: rental_range, color: color) if size && rental_price_cents && color
@@ -97,7 +70,7 @@ class Item < ApplicationRecord
     return where(buying_price_cents: buying_range, color: color) if color && buying_price_cents
     return where(rental_price_cents: rental_range) if rental_price_cents
     return where(buying_price_cents: buying_range) if buying_price_cents
-    return where(size: size) if size
+    return where("size iLIKE ?", size) if size
     return where(color: color) if color
     return all
   end

@@ -14,11 +14,11 @@
 
         <div class="size-button">
           <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
-        </div>  
+        </div>
 
         <div class="size-button">
           <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
-        </div>  
+        </div>
 
         <div class="input-group-results">
           <i class="far fa-calendar-alt"></i>
@@ -55,3 +55,6 @@
     </div>
   </div>
 </div>
+
+
+<%= javascript_pack_tag "flatpickr" %>

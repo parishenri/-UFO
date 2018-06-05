@@ -9,51 +9,51 @@ class ItemsController < ApplicationController
 
     @location = request.location.data['city']
 
-     if @location.empty?
-        if params[:place].present?
-          user_location = params[:place]
-        else
-          user_location = "London UK"
-        end
-     else
+    if @location.empty?
       if params[:place].present?
-          user_location = params[:place]
-        else
-          user_location = [request.location.data['latitude'], request.location.data['longitude']]
-        end
-     end
+        user_location = params[:place]
+      else
+        user_location = "London UK"
+      end
+    else
+      if params[:place].present?
+        user_location = params[:place]
+      else
+        user_location = [request.location.data['latitude'], request.location.data['longitude']]
+      end
+    end
 
-     near_items = User.near(user_location, 15)
+    near_items = User.near(user_location, 15)
 
-    @items = Item.includes(:user).where(user_id: near_items.map(&:id))
-
-    if params[:query].present?
-      @search = Item.global_search(params[:query])
-      @items = @search.where(user_id: near_items.map(&:id))
+    any_field_from_form = params[:size] || params[:buying_price_cents] || params[:rental_price_cents] || params[:color]
+    # both search in nav and filter in index
+    if params[:query].present? && any_field_from_form
+      items_searched = Item.global_search(params[:query])
+      items_filtered = Item.filter(params)
+      @items = items_searched & items_filtered
+    # only search in nav
+    elsif params[:start_date_search].present? && params[:start_date_search].include?('to')
+      start_date = Date.parse(params[:start_date_search].split("to").first)
+      end_date = Date.parse(params[:start_date_search].split("to").last)
+      @items = Item.filter_dates(start_date, end_date)
+      # binding.pry
+    elsif params[:query].present?
+      @items = Item.global_search(params[:query])
+    # only filters
+    elsif any_field_from_form
+      @items = Item.filter(params)
+    # none
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
 
-    # for when you first get to index page
-    @dates_for_search = []
-
-    if params[:size] || params[:buying_price_cents] || params[:rental_price_cents] || params[:color]
-      @items = @items.filter(form_tag_params)
-      if params[:start_date].present? && params[:end_date].present?
-        @items = Item.filter_dates(@items, params[:start_date], params[:end_date])
-      end
+    @markers = @items.map do |item|
+      {
+        lat: item.user.latitude,
+        lng: item.user.longitude#,
+      }
     end
-
-    if @items == []
-    else
-      @markers = @items.map do |item|
-        {
-          lat: item.user.latitude,
-          lng: item.user.longitude#,
-        }
-      end
-      @markers.uniq!
-    end
+    @markers.uniq!
 
     respond_to do |format|
       format.html { render 'items/index' }
@@ -69,8 +69,6 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
-    @item_date = []
-    @item_date << { from: @item.available_start_date, to: @item.available_end_date }
     if @item.save
       redirect_to item_path(@item)
     else
@@ -94,31 +92,15 @@ class ItemsController < ApplicationController
     @review = Review.new
 
     @order = Order.new
-    @booking_dates = []
-    @available_dates = []
     @unavailable_dates = []
-    (@item.available_start_date..@item.available_end_date).each do |day|
-      @available_dates << { from: day, to: day }
-    end
     @item.bookings.each do |booking|
       (booking.start_date..booking.end_date).each do |day|
         @unavailable_dates << { from: day, to: day }
       end
     end
 
-    @unavailable_dates.each do |day_hash|
-      if @available_dates.include?(day_hash)
-        @available_dates.delete(day_hash)
-      end
-    end
+    @markers = { lat: @user.latitude, lng: @user.longitude}
 
-    @markers = [@user].map do |u|
-      {
-        lat: u.latitude,
-        lng: u.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
-    end
 
   end
 
@@ -134,7 +116,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :available_start_date, :available_end_date, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
   end
 
   def form_tag_params
@@ -142,7 +124,7 @@ class ItemsController < ApplicationController
   end
 
   def set_variables
-    @categories = ["Jacket", "Long Sleeve Shirt", "Shirt", "Dress"]
+    @categories = ["Jacket", "Shirt", "Trousers", "Dress"]
     @prices = ["0-20", "21-100", "100-1000"]
     @sizes = ["XS", "S", "M", "L", "XL"]
     @colors = ["Red", "Green", "Blue", "Black", "White", "Yellow", "Pink"]

@@ -1,4 +1,4 @@
-  .month-calendar {
+.month-calendar {
   font-size: 12px;
 }
 
@@ -61,14 +61,28 @@ font-weight: bold;
 
 
 .btn-primary {
-  background: none;
-  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  background: white !important;
+  border: none !important;
   color: #D3D3D4;
+  padding-left: 0px;
 }
 
-.btn-primary:hover {
-  background: none;
+
+
+.fa-calendar-plus {
+  outline: none !important;
+  box-shadow: none !important;
+  background: white !important;
+  border: none !important;
+  color: #D3D3D4;
+  font-size: 12px;
+}
+
+.fa-calendar-plus:hover {
+  outline: none !important;
+  border: none !important;
   border: none;
   color: #FD9AB9;
 }
-
