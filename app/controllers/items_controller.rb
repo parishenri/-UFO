@@ -143,8 +143,8 @@ class ItemsController < ApplicationController
   def set_variables
     @categories = ["Jacket", "Long Sleeve Shirt", "Shirt", "Dress"]
     @prices = ["0-20", "21-100", "100-1000"]
-    @sizes = ["xs", "s", "m", "l", "xl"]
-    @colors = ["red", "green", "blue", "black", "white", "yellow", "pink"]
+    @sizes = ["XS", "S", "M", "L", "XL"]
+    @colors = ["Red", "Green", "Blue", "Black", "White", "Yellow", "Pink"]
   end
 
 
