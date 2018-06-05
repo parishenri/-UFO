@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :set_variables, only: [:new, :index, :edit]
   skip_before_action :authenticate_user!, only: [:index]
@@ -122,7 +123,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
+    @item.delete
     redirect_to user_listing_path
   end
 
