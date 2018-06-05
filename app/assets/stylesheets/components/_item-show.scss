@@ -15,8 +15,6 @@
 	align-items: center;
 	color: gray !important;
   border-bottom: 1px solid #dddddd;
-
-
 }
 
 .item-show-links a:hover{
@@ -28,6 +26,7 @@
 	display: flex;
 	flex-direction: column;
 	font-size: 12px;
+  margin-top: 40px;
 }
 
 .item-show-card{
@@ -42,9 +41,8 @@
   margin-right: 140px;
   padding: 10px;
   transition: .3s;
-  height: 70vh;
-  width: 60vh;
-  crop: fill;
+  height: 60vh;
+  width: 50vh;
   background-position: center;
   background-size: cover;
 }
@@ -54,28 +52,19 @@
 }
 
 .item-description {
-border-radius: 4px;
   margin-right: 5%;
-  border-style: solid;
-  border-color: #dddddd;
-  border-width: 1px;
   display: flex;
   flex-direction: column;
   h1 {
 
     margin-top: 0px;
-    background-color: #fd9ab9;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
     padding: 5px 0px 5px 0px;
     font-family: 'Raleway', sans-serif;
-    font-weight: lighter;
-    color: #F7FBFC;
-    font-size: 16px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #dddddd;
-    border-radius: 3px;
+    font-weight: normal;
+    color: black;
+    font-size: 18px;
   }
 }
 
@@ -83,8 +72,9 @@ border-radius: 4px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	margin: 0px 5px 0px 5px;
+	margin: 0px 30px 0px 5px;
 } 
+
 
 .item-show-details{
 	display: flex;
@@ -97,10 +87,8 @@ border-radius: 4px;
 }
 
 .mapsize {
-
   margin-top: 10%;
   margin-bottom: 10%;
-  // margin-left: 10%;
 }
 
 .item-show-influencer-box{
@@ -122,6 +110,8 @@ border-radius: 4px;
 }
 
 .container {
+  min-height: 80vh;
+  padding: 20px;
   h2 {
     font-size: 28px;
     font-weight: bold;
@@ -148,13 +138,12 @@ border-radius: 4px;
 
 
 .toggle.android .toggle-handle {
- border-radius: 0px; 
+ border-radius: 0px;
 }
 
 .toggle.btn {
   min-width: 50px !important;
   min-height: 19px !important;
-  // margin-bottom: 5px;
 }
 
 .btn {
@@ -191,11 +180,21 @@ border-radius: 4px;
 
 }
 
+.booking-buying-tab{
+  display: flex;
+}
+
 #booking-tab{
+  margin-left: 10px;
+  background-color: #2f3030;
+  padding-top: 5px;
   text-align: center;
   width: 100px;
-  color: black;
+  color: white;
   font-family: 'Raleway', sans-serif !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px 0px 0px 0px;
 }
 
 #item-show-p{
@@ -203,26 +202,37 @@ border-radius: 4px;
   font-weight: lighter;
 }
 
-#booking-tab:hover{
-  text-decoration: none;
-}
-
 
 #buying-tab{
+  background-color: #2f3030;
+  color: white;
+  padding-top: 5px;
   text-align: center;
   width: 100px;
-  color: black;
+  color: white;
   font-family: 'Raleway', sans-serif !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0px 8px 0px 0px;
 }
+
 
 #buying-tab:hover{
   text-decoration: none;
+  opacity: 0.7;
+}
+
+#booking-tab:hover{
+  text-decoration: none;
+  opacity: 0.7;
 }
 
 
-.tabactive {
-color: red;
+.tabactive{
+  color: white;
+  opacity: 0.3;
 }
+
 
 .buy{
   margin-top: 5px;
@@ -249,3 +259,15 @@ color: red;
   margin: 7px;
 }
 
+.all-tabs-content{
+  margin-top: 10px;
+}
+
+.booking_start_date .form-control {
+  font-size: 12px;
+  height: 30px !important;
+  width: 151px !important;
+  margin-left: 5px;
+  margin-bottom: 4px;
+  margin-top: 0px;
+}

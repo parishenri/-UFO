@@ -26,8 +26,7 @@ if (mapElement) {
       map.setZoom(13);
     });
   }
-}
-autocomplete();
+
 
 if (navigator.geolocation) {
 
@@ -54,3 +53,5 @@ if (navigator.geolocation) {
     console.error(error)
   });
 }
+}
+autocomplete();

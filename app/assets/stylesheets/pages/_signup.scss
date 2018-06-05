@@ -5,10 +5,7 @@
   border-width: 1px;
   border-color: #eeeeee;
   background: white;
-  padding: 0px 20px 15px 20px;
-  width: 400px;
-  position: absolute;
-  top: 40px;
+  padding: 0px 10px 10px 10px;
 } h2{
 	font-size: 20px;
 	font-family: 'Montserrat', sans-serif;
@@ -29,16 +26,23 @@
 	font-size: 12px;
 }
 
+.login-title{
+	padding-top: 10px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	font-size: 12px;
+}
 
 
 .remember-me{
 	margin-left: 10px;
 }
 
-.login-container{
-	min-height: 500px;
-	position: relative;
-}
+// .login-container{
+// 	min-height: 300px;
+// 	position: relative;
+// }
 
 .login-btn{
 	background-color: black;

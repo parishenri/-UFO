@@ -13,8 +13,8 @@
             <%= f.input :buying_price, :label => "Buying Price", input_html: { class: "input-bar" } %>
           </div>
           <div class="edit-user-name-and-email">
-            <%= f.input :size, :as => :select, collection: @sizes, label: false, include_blank: "Size", input_html: { class: "input-bar" } %>
-            <%= f.input :color, :as => :select, collection: @colors, label: false, include_blank: "Colour", input_html: { class: "input-bar" } %>
+            <%= f.input :size, :as => :select, collection: ["XS", "S", "M", "L", "XL"], label: false, include_blank: "Size", input_html: { class: "input-bar" } %>
+            <%= f.input :color, :as => :select, collection: ["Red", "Green", "Blue", "Black", "White", "Yellow", "Pink"], label: false, include_blank: "Color", input_html: { class: "input-bar" } %>
           </div>
 
           <div class="edit-user-name-and-email">

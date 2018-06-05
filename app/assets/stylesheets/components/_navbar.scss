@@ -14,7 +14,9 @@
 
 /* Logo */
 .navbar-ufo-brand img {
-  height: 50px;
+  height: 30px;
+  margin-left: 15px;
+  margin-bottom: 11px;
 }
 
 /* User Avatar */
@@ -41,10 +43,10 @@
 .navbar-ufo-link {
   color: #616668;
   font-size: 14px;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 18px;
+  padding-bottom: 28px;
   border-bottom: solid 0.5px transparent;
   transition: color 0.4s ease-in-out;
 }
@@ -56,11 +58,24 @@
   border-color: #FD9AB9;
 }
 
+.navbar-ufo-link:active {
+  color: #dddddd;
+  text-decoration: none;
+  border-bottom: solid 1.5px #9595a0;
+  display: inline;
+  border-color: #FD9AB9;
+}
+
+.navbar-ufo-link:visited {
+  text-decoration: none;
+}
+
+
 /* Dropdown menu */
 .navbar-ufo-dropdown-menu {
   margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #dddddd;
+  box-shadow: 1px 1px 3px #616667;;
+  border-color: #616667;
   background-color: #2f3030;
 }
 .navbar-ufo-dropdown-menu li > a {
@@ -82,10 +97,10 @@
   position: absolute;
   right: 10px;
   top: -6px;
-  background-color: white;
+  background-color: #2f3030;
   transform: rotate(45deg);
-  border-left: 1px solid #E6E6E6;
-  border-top: 1px solid #E6E6E6;
+  border-left: 1px solid #616667;
+  border-top: 1px solid #616667;
 }
 
 .navbar-logo-search {

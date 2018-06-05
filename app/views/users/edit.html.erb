@@ -1,62 +1,97 @@
-<!-- Nav tabs -->
-<div class="tabs">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true"><i class="fas fa-user-alt"></i> Profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="activity-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false"><i class="fas fa-book"></i> Activity</a>
-    </li>
-  </ul>
-</div>
+<div class="edit-user-page-container">
+  
+  <dir class="edit-user-profile-menu">
+    <!--PROFILE TAB-->
+    <div class="profile-menu-edit-user-profile-tab" id="id-edit-user-profile-tab">
+      <p>Edit Profile</p>
+    </div>  
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <div class="container">
-      <h1>Welcome <%= current_user.first_name %></h1>
-      <div class="edit-user">
-        <h2 class="page-header">Edit Profile</h2>
-        <%= simple_form_for(@user) do |f| %>
-          <%= f.error_notification %>
-          <div class="details-container">
-            <div class="edit-user-name-and-email">
-              <%= f.input :first_name, input_html: {class: "input-bar"} %>
-              <%= f.input :last_name, input_html: {class: "input-bar"}%>
-              <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
-              <%= f.input :address, required: false, input_html: {class: "input-bar"}%>
-            </div>
-            <div class="edit-user-address">
-              <%= f.input :phone_number, input_html: {class: "input-bar"}%>
-              <%= f.input :age, required: false, input_html: {class: "input-bar"} %>
-              <%= f.input :gender, input_html: {class: "input-bar"}%>
-              <%= f.input :id_document, required: false, input_html: {class: "input-bar"} %>
-            </div>
-            <div class="edit-user-address">
-              <%= image_tag "https://images.pexels.com/photos/914664/pexels-photo-914664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", class: "sign-up-image"%>
-            </div>
-          </div>
+    <!--ACTIVITY OVERVIEW TAB -->
+    <div class="profile-menu-edit-user-activity-overview-tab" id="id-edit-user-activity-overview-tab">
+      <p>Activity Overview</p>
+    </div> 
+  </dir>
 
-          <div class="details-container-two">
+  <div class="edit-user-menu-items">
+    
+    <!--Profile Tab -->
+    <div class="edit-user-profile-tab">
+
+      <div class="edit-user" id="euid">
+        <div>
+          <h2 class="page-header">Edit Profile</h2>
+          <%= simple_form_for(@user) do |f| %>
+            <%= f.error_notification %>
+            <div class="details-container">
+
+              <div class="edit-user-name-and-email">
+                <%= f.input :first_name, input_html: {class: "input-bar"} %>
+                <%= f.input :last_name, input_html: {class: "input-bar"}%>
+                <%= f.input :email, required: true, autofocus: true, input_html: {class: "input-bar"} %>
+                <%= f.input :address, required: false, input_html: {class: "input-bar"}%>
+              </div>
+
+              <div class="edit-user-address">
+                <%= f.input :phone_number, input_html: {class: "input-bar"}%>
+                <%= f.input :age, required: false, input_html: {class: "input-bar"} %>
+                <%= f.input :gender, input_html: {class: "input-bar"}%>
+                <%= f.input :id_document, required: false, input_html: {class: "input-bar"} %>
+                <%= f.input :photo, input_html: { class: "input-bar" } %>
+                <%= f.input :photo_cache, as: :hidden %>
+              </div>        
+            </div>  
+        </div>
+
+        <div class="details-container-two">
             <input type="submit" name="commit" value="Update" input_html="{&quot;class&quot;=>&quot;btn input-btn&quot;}" class="input-btn-ontop" data-disable-with="Update">
-          </div>
+        </div>
         <% end %>
         <p><%= link_to "Back", :back, input_html: {class: "back-link"} %></p>
-      </div>
+
+      </div>   
     </div>
-  </div>
-  <div class="tab-pane" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-    <div class="container">
-      <h1>Welcome <%= current_user.first_name %></h1>
-      <div class="activity_overview">
+    
+    <!--Activity Overview -->
+    <div class="edit-user-activity-overview-tab" id="actid">
+      <div class="activity-overview eu-hide-form">
         <h2 class="page-header">Activity Overview</h2>
           <div class="edit-user-name-and-email">
             <p>Booker</p>
             <p>Lister</p>
-          </div>
-          <%= image_tag "https://images.pexels.com/photos/102303/pexels-photo-102303.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", class: "sign-up-image"%>
+          </div>  
       </div>
-        <p><%= link_to "Back", :back, input_html: {class: "back-link"} %></p>
     </div>
-  </div>
+
+  </div> 
+
 </div>
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+  }
+  editProfileTab = document.getElementById("id-edit-user-profile-tab");
+  activitiesTab = document.getElementById("id-edit-user-activity-overview-tab");
+  editProfileBox = document.getElementById("euid");
+  activitiesBox = document.getElementById("actid");
+ 
+  editProfileTab.addEventListener("click", function() {
+    // console.log("hello");
+    editProfileTab.classList.add("underline")
+    activitiesTab.classList.remove("underline")
+    editProfileBox.style.display = "block"
+    activitiesBox.style.display = "none"
+  
+  });
+  activitiesTab.addEventListener("click", function() {
+    editProfileTab.classList.remove("underline")
+    activitiesTab.classList.add("underline")
+    activitiesBox.style.display = "block"
+    editProfileBox.style.display = "none"
+  });  
+</script>

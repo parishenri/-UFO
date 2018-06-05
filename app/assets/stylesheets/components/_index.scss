@@ -20,6 +20,8 @@
 @import "your_order";
 @import "home_page";
 @import "dashboard";
+@import "avatar";
+@import "edit-user";
 
 body{
   background-color: #ffffff;
@@ -28,8 +30,6 @@ body{
 .p-new{
 	font-size: 12px;
 }
-
-
 
 label {
 	font-size: 16px;

@@ -1,13 +1,12 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
-  has_many :reviews, dependent: :destroy
   validates :name, presence: true
   validates :description, presence: true
   validates :rental_price_cents, presence: true
-  validates :size, presence: true, inclusion: { in: %w(xs s m l xl) }
+  validates :size, presence: true, inclusion: { in: %w(XS S M L XL) }
   validates :photo, presence: true
-  validates :color, presence: true, inclusion: { in: %w(red green blue black white yellow pink) }
+  validates :color, presence: true, inclusion: { in: %w(Red Green Blue Black White Yellow Pink) }
 
   mount_uploader :photo, PhotoUploader
   monetize :rental_price_cents
@@ -21,42 +20,15 @@ class Item < ApplicationRecord
     tsearch: { prefix: true }
     }
 
-  # def self.filter_dates(items, start_date, end_date)
-  #   @unavailable_dates = []
-  #   @available_dates = []
-  #   @items = items
-  #   @final_items = []
-  #   @chosen_dates_by_user_in_filter = []
-  #   @items.each do |item|
-  #     (item.available_start_date..item.available_end_date).each do |day|
-  #       @available_dates << { from: day, to: day }
-  #     end
-  #     item.bookings.each do |booking|
-  #       (booking.start_date..booking.end_date).each do |day|
-  #         @unavailable_dates << { from: day, to: day }
-  #       end
-  #     end
-  #     @unavailable_dates.each do |day_hash|
-  #       if @available_dates.include?(day_hash)
-  #         @available_dates.delete(day_hash)
-  #       end
-  #     end
 
-  #     correct_format_start_date = start_date.strftime('%B%e, %Y')
-  #     correct_format_end_date = end_date.strftime('%B%e, %Y')
+  def counter=(number)
+    @counter = number
+  end
 
-  #     (correct_format_start_date..correct_format_end_date).each do |day|
-  #       @chosen_dates_by_user_in_filter << { from: day, to: day }
-  #     end
+  def counter
+    @counter
+  end
 
-  #     # only if every day chosen by user is in the available dates
-  #     if @chosen_dates_by_user_in_filter.all? { |day_hash| @available_dates.include?(day_hash)}
-  #       @final_items << item
-  #     end
-  #     # binding.pry
-  #     return @final_items
-  #   end
-  # end
 
   def self.filter_dates(items, start_date, end_date)
     # binding.pry
