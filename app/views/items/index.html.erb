@@ -4,6 +4,10 @@
     <%= form_tag items_path, remote: true, method: :get do %>
       <div class="custom-inline-form">
 
+
+
+
+
         <div class="size-button">
         <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'hitest'} %>
         </div>
@@ -14,21 +18,15 @@
 
         <div class="size-button">
           <%= select_tag "rental_price_cents", options_for_select(@prices), include_blank: "Rent price", input_html: {class: 'filter-btn'} %>
-        </div>  
+        </div>
 
         <div class="size-button">
           <%= select_tag "color", options_for_select(@colors), include_blank: "Colour", input_html: {class: 'filter-btn'} %>
-        </div>  
-
-<!--         <div class="input-group">
-          <i class="far fa-calendar-alt"></i>
-          <%#= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, label: false, placeholder: "Start Date" %>
         </div>
-    
-        <div class="input-group">
-          <i class="far fa-calendar-alt"></i>
-          <%#= text_field_tag 'end_date_search', as: :string, input_html: { id: "end_date_search" }, label: false, placeholder: "End date" %>
-        </div>   -->
+
+        <div class="size-button">
+           <%= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, placeholder: "Date" %>
+        </div>
 
         <div class="item-results-submit-button">
           <%= submit_tag 'Apply', id: "filter-button" %>
@@ -55,3 +53,6 @@
     </div>
   </div>
 </div>
+
+
+<%= javascript_pack_tag "flatpickr" %>

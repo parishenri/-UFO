@@ -44,7 +44,7 @@
                       <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
                     </div>
 
-                    <div id="bookedDates" data-dates="<%= @available_dates.to_json %>">
+                    <div id="bookedDates" data-dates="<%= @unavailable_dates.to_json %>">
                     </div>
                     <%= t.submit "Request Booking", class: "request-booking-btn" %>
                   <% end %>
@@ -133,3 +133,5 @@
     }
   });
 </script>
+
+<%= javascript_pack_tag "flatpickr" %>
