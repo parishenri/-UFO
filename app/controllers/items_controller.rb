@@ -32,10 +32,11 @@ class ItemsController < ApplicationController
       items_filtered = Item.filter(params)
       @items = items_searched & items_filtered
     # only search in nav
-    elsif params[:start_date_search].present?
+    elsif params[:start_date_search].present? && params[:start_date_search].include?('to')
       start_date = Date.parse(params[:start_date_search].split("to").first)
       end_date = Date.parse(params[:start_date_search].split("to").last)
       @items = Item.filter_dates(start_date, end_date)
+      # binding.pry
     elsif params[:query].present?
       @items = Item.global_search(params[:query])
     # only filters
@@ -115,7 +116,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price_cents, :buying_price_cents, :size, :availability, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
   end
 
   def form_tag_params
@@ -123,7 +124,7 @@ class ItemsController < ApplicationController
   end
 
   def set_variables
-    @categories = ["Jacket", "Long Sleeve Shirt", "Shirt", "Dress"]
+    @categories = ["Jacket", "Shirt", "Trousers", "Dress"]
     @prices = ["0-20", "21-100", "100-1000"]
     @sizes = ["XS", "S", "M", "L", "XL"]
     @colors = ["Red", "Green", "Blue", "Black", "White", "Yellow", "Pink"]

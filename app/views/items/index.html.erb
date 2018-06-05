@@ -4,10 +4,6 @@
     <%= form_tag items_path, remote: true, method: :get do %>
       <div class="custom-inline-form">
 
-
-
-
-
         <div class="size-button">
         <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'hitest'} %>
         </div>
