@@ -6,7 +6,7 @@
         <%= simple_form_for([@item, @booking]) do |f| %>
           <%= f.input :start_date, as: :date, order: [:day, :month, :year], input_html: { class: "form_style" }%>
           <%= f.input :end_date, as: :date, order: [:day, :month, :year],input_html: { class: "form_style" } %>
-          <%= f.submit "update", class: "btn btn-primary btn-xs" %>
+          <%= f.submit "update", class: "btn btn-xs" %>
         <% end %>
       </div>
     </div>
