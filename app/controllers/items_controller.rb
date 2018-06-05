@@ -28,18 +28,21 @@ class ItemsController < ApplicationController
 
     if params[:query].present?
       @search = Item.global_search(params[:query])
-      @items = @search.where(user_id: near_items.map(&:id))
+      # @items = @search.where(user_id: near_items.map(&:id))
     else
-      @items = Item.includes(:user).where(user_id: near_items.map(&:id))
+      # @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
 
     # for when you first get to index page
     @dates_for_search = []
 
     if params[:size] || params[:buying_price_cents] || params[:rental_price_cents] || params[:color]
-      @items = @items.filter(form_tag_params)
-      if params[:start_date].present? && params[:end_date].present?
-        @items = Item.filter_dates(@items, params[:start_date], params[:end_date])
+      # @items = @items.filter(form_tag_params)
+      if params[:start_date_search].present?
+        # binding.pry
+        start_d = Date.parse(params[:start_date_search].split("to").first)
+        end_d = Date.parse(params[:start_date_search].split("to").last)
+        @items = Item.filter_dates(@items, start_d, end_d)
       end
     end
 

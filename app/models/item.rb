@@ -21,39 +21,48 @@ class Item < ApplicationRecord
     tsearch: { prefix: true }
     }
 
+  # def self.filter_dates(items, start_date, end_date)
+  #   @unavailable_dates = []
+  #   @available_dates = []
+  #   @items = items
+  #   @final_items = []
+  #   @chosen_dates_by_user_in_filter = []
+  #   @items.each do |item|
+  #     (item.available_start_date..item.available_end_date).each do |day|
+  #       @available_dates << { from: day, to: day }
+  #     end
+  #     item.bookings.each do |booking|
+  #       (booking.start_date..booking.end_date).each do |day|
+  #         @unavailable_dates << { from: day, to: day }
+  #       end
+  #     end
+  #     @unavailable_dates.each do |day_hash|
+  #       if @available_dates.include?(day_hash)
+  #         @available_dates.delete(day_hash)
+  #       end
+  #     end
+
+  #     correct_format_start_date = start_date.strftime('%B%e, %Y')
+  #     correct_format_end_date = end_date.strftime('%B%e, %Y')
+
+  #     (correct_format_start_date..correct_format_end_date).each do |day|
+  #       @chosen_dates_by_user_in_filter << { from: day, to: day }
+  #     end
+
+  #     # only if every day chosen by user is in the available dates
+  #     if @chosen_dates_by_user_in_filter.all? { |day_hash| @available_dates.include?(day_hash)}
+  #       @final_items << item
+  #     end
+  #     # binding.pry
+  #     return @final_items
+  #   end
+  # end
+
   def self.filter_dates(items, start_date, end_date)
-    @unavailable_dates = []
-    @available_dates = []
-    @items = items
-    @final_items = []
-    @chosen_dates_by_user_in_filter = []
-    @items.each do |item|
-      (item.available_start_date..item.available_end_date).each do |day|
-        @available_dates << { from: day, to: day }
-      end
-      item.bookings.each do |booking|
-        (booking.start_date..booking.end_date).each do |day|
-          @unavailable_dates << { from: day, to: day }
-        end
-      end
-      @unavailable_dates.each do |day_hash|
-        if @available_dates.include?(day_hash)
-          @available_dates.delete(day_hash)
-        end
-      end
-
-      @correct_format_start_date = Date.parse(start_date.split.first).strftime('%B%e, %Y')
-
-      (Date.parse(@correct_format_start_date)..Date.parse(end_date)).each do |day|
-        @chosen_dates_by_user_in_filter << { from: day, to: day }
-      end
-
-      # only if every day chosen by user is in the available dates
-      if @chosen_dates_by_user_in_filter.all? { |day_hash| @available_dates.include?(day_hash)}
-        @final_items << item
-      end
-      return @final_items
-    end
+    # binding.pry
+    joins(:bookings)
+      .where("bookings.start_date > :start_date AND bookings.start_date < :end_date OR bookings.end_date > :start_date AND bookings.end_date < :end_date OR bookings.start_date < :start_date AND bookings.end_date > :end_date", start_date: start_date, end_date: end_date).uniq
+      # .where
   end
 
   def self.filter(args)
