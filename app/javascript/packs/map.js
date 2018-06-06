@@ -27,7 +27,6 @@ if (mapElement) {
     });
   }
 
-
 if (navigator.geolocation) {
 
   navigator.geolocation.getCurrentPosition(function(position) {

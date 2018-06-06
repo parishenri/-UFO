@@ -20,7 +20,6 @@
 @import "your_order";
 @import "home_page";
 @import "dashboard";
-@import "avatar";
 @import "edit-user";
 @import "sign-up";
 @import "user-show";
@@ -44,4 +43,10 @@ label {
 .container-min-height {
   min-height: 80vh;
   padding: 20px;
+}
+
+.container-min-margin-left {
+  min-height: 80vh;
+  padding: 20px;
+  margin-left: 215px;
 }
