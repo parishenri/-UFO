@@ -195,3 +195,26 @@
 .status-margin {
   margin-right: 28px;
 }
+
+.user-profile-link {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.user-profile-link:hover {
+  text-decoration: none;
+  color: #FB9BB9;
+}
+
+.reference-position {
+  position: relative;
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}
