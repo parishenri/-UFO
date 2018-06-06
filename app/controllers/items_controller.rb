@@ -6,50 +6,60 @@ class ItemsController < ApplicationController
 
   def index
     @item = Item.new
-
     @location = request.location.data['city']
     if @location.empty?
       if params[:place].present?
-        user_location = params[:place]
+        @user_location = params[:place]
       else
-        user_location = "London UK"
+        @user_location = "London UK"
       end
     else
       if params[:place].present?
-        user_location = params[:place]
+        @user_location = params[:place]
       else
-        user_location = request.location.data['loc'].split(',')
+        @user_location = request.location.data['loc'].split(',')
       end
     end
-    near_items = User.near(user_location, 15)
+
+    @show_clear = params[:controller] == 'items' && params[:action] == 'index'
+
+    near_items = User.near(@user_location, 15)
 
     any_field_from_form = !params[:size].blank? || !params[:buying_price_cents].blank? || !params[:rental_price_cents].blank? || !params[:color].blank?
     date_param = params[:start_date_search].present? && params[:start_date_search].include?('to')
     # both search in nav and filter in index
+    # binding.pry
+    nearby_items = Item.includes(:user).where(user_id: near_items.map(&:id))
+
     if params[:query].present? && any_field_from_form && date_param
       items_searched = Item.global_search(params[:query])
       items_filtered = Item.filter(params)
       start_date = Date.parse(params[:start_date_search].split("to").first)
       end_date = Date.parse(params[:start_date_search].split("to").last)
       filtered_by_date = Item.filter_dates(start_date, end_date)
-      @items = items_searched & items_filtered & filtered_by_date
+      @items = items_searched & items_filtered & filtered_by_date & nearby_items
+    # only search in nav
+    elsif params[:query].present? && any_field_from_form
+      items_searched = Item.global_search(params[:query])
+      items_filtered = Item.filter(params)
+      @items = items_searched & items_filtered & nearby_items
     # only search in nav
     elsif date_param && any_field_from_form
       start_date = Date.parse(params[:start_date_search].split("to").first)
       end_date = Date.parse(params[:start_date_search].split("to").last)
       filtered_by_date = Item.filter_dates(start_date, end_date)
       items_filtered = Item.filter(params)
-      @items = filtered_by_date & items_filtered
+      @items = filtered_by_date & items_filtered & nearby_items
     elsif params[:query].present?
-      @items = Item.global_search(params[:query])
+      @items = Item.global_search(params[:query]) & nearby_items
     # only filters
     elsif any_field_from_form
-      @items = Item.filter(params)
+      @items = Item.filter(params) & nearby_items
     # none
     elsif date_param
       start_date = Date.parse(params[:start_date_search].split("to").first)
       end_date = Date.parse(params[:start_date_search].split("to").last)
-      @items = Item.filter_dates(start_date, end_date)
+      @items = Item.filter_dates(start_date, end_date) & nearby_items
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
