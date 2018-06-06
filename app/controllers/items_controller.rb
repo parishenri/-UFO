@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
         user_location = [request.location.data['latitude'], request.location.data['longitude']]
       end
     end
-
+    p "USER LOCATION: >>>>>>>   #{user_location}"
     near_items = User.near(user_location, 15)
 
     any_field_from_form = !params[:size].blank? || !params[:buying_price_cents].blank? || !params[:rental_price_cents].blank? || !params[:color].blank?
@@ -59,6 +59,7 @@ class ItemsController < ApplicationController
       p "I AM NUMBER 5"
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
+      p "I AM NUMBER 6"
     end
     p @items
     @markers = @items.map do |item|
