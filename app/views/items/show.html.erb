@@ -9,12 +9,6 @@
 
       <div class="item-show-details">
         <div class="item-show-buying-renting" id:"item-show-p">
-
-          <% if @item.user == current_user %>
-          <% else %>
-            <%= link_to "Owner Profile", user_path(@item.user)  %>
-          <% end %>
-
           <h1><%= @item.name %></h1>
           <p> Description:<%= @item.description %></p>
           <p> Rental Price:<%= humanized_money_with_symbol(@item.rental_price) %></p>
@@ -122,6 +116,27 @@
 
       <div class="item-show-links">
         <%= link_to 'back', items_path %>
+      </div>
+
+      <div class="item-show-ratings">
+        <div class="item-show-owner-review-link">
+        <%= link_to "Owner Profile", user_path(@item.user)  %>
+          <%= link_to "Review Item", item_reviews_path(@item) %>
+          <%= link_to "All Reviews", item_reviews_path(@item) %>
+        </div>
+          <div class="item-show-reviews-content">
+            <p style="text-decoration: underline;">Some Reviews:</p>
+            <% @item.reviews.last(3).each do |review| %>
+              <h3><%= review.user.first_name %> from
+              <%= @user.city %>
+              <% review.rating.times do %>
+              <i class="fas fa-star icon-stars"></i>
+              <% end %></h3>
+              <div>
+              <p><%= review.content %></p>
+              </div>
+            <% end %>
+          </div>
       </div>
 
       <div class="map-border">

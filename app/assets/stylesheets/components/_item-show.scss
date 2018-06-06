@@ -1,3 +1,32 @@
+.item-show-owner-review-link{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.item-show-owner-review-link a:hover{
+  color: #fd9ab9;
+  text-decoration: none;
+}
+
+.item-show-ratings p{
+  margin-bottom: 0px;
+  font-size: 11px;
+} 
+
+.item-show-reviews-content p:last-child{
+  padding-bottom: 10px;
+}
+
+.item-show-reviews-content p{
+  color: #717373;
+}
+
+.item-show-reviews-content h3{
+  margin-bottom: 0px;
+  margin-top: 5px;
+  font-size: 11px;
+}
 
 .container-item-show {
   display: flex;

@@ -80,7 +80,7 @@
                 <div class="edit-user-name-and-email">
 
                   <p> Please give us a small description of you so other users know how awesome you are </p>
-                  <%= f.input :description, input_html: {class: "description-input-bar"} %>
+                  <%= f.input :description, length: 80, input_html: {class: "description-input-bar"} %>
 
                   <p> Where are you located? </p>
                   <%= f.input :city, input_html: {class: "input-bar"}%>
