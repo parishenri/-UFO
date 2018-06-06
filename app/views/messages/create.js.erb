@@ -3,4 +3,6 @@ newBubble = "<%= j render 'messages/message_bubble', message: @message %>";
  // 2. append the new message
 bubbles = document.getElementById('message-bubble');
 bubbles.insertAdjacentHTML('afterbegin', newBubble);
+inputbox = document.getElementById('message_content')
+inputbox.value = "";
 
