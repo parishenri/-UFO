@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
       if params[:place].present?
         user_location = params[:place]
       else
-        user_location = [request.location.data['latitude'], request.location.data['longitude']]
+        user_location = request.location.data['loc'].split(',')
       end
     end
     p "USER LOCATION: >>>>>>>   #{user_location}"
