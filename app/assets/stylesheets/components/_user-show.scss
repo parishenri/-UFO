@@ -1,0 +1,29 @@
+.user-show-container{
+	min-height: 600px;
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
+}
+
+.user-show-profile-details{
+	display: flex;
+}
+
+.user-show-avatar{
+	border-radius: 50%;
+	width: 30vh;
+	height: 30vh;
+	margin: 30px;
+	vertical-align: middle;
+	// background-size: cover;
+ //  	background-position: center;
+}
+
+.user-show-details-box{
+	display: flex;
+	flex-direction: column;
+}
+
+.user-show-names-box{
+	display: flex;
+}

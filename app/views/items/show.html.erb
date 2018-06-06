@@ -9,6 +9,7 @@
 
       <div class="item-show-details">
         <div class="item-show-buying-renting" id:"item-show-p">
+          <%= link_to "Owner Profile", user_path(@item.user)  %>
           <h1><%= @item.name %></h1>
           <p> 1. Description:<%= @item.description %></p>
           <p> 2. Rental Price:<%= humanized_money_with_symbol(@item.rental_price) %></p>
