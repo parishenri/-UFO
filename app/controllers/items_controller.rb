@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
-
+    p @items
     @markers = @items.map do |item|
       {
         lat: item.user.latitude,
