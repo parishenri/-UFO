@@ -1,0 +1,7 @@
+<div class="speech-bubble">
+  <div class="avatar-message-div">
+    <%= cl_image_tag message.user.photo, class: "avatar-message" %>
+    <h3 class="text-center"><%= message.user.first_name %></h3>
+  </div>
+  <p><%= message.content%></p>
+</div>
