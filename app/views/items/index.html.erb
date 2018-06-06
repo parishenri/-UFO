@@ -3,9 +3,8 @@
 
     <%= form_tag items_path, remote: true, method: :get do %>
       <div class="custom-inline-form">
-
         <div class="size-button">
-        <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'hitest'} %>
+        <%= select_tag "size", options_for_select(@sizes), include_blank: "Size", input_html: {class: 'size-btn'} %>
         </div>
 
         <div class="size-button">
@@ -21,10 +20,11 @@
         </div>
 
         <div class="input-group-results">
-          <i class="far fa-calendar-alt"></i>
-
           <%= text_field_tag 'start_date_search', as: :string, input_html: { id: "start_date_search" }, placeholder: "Choose dates" %>
         </div>
+
+        <%= hidden_field_tag :query , "", id: "query-filter" %>
+        <%= hidden_field_tag :place , "", id: "place-filter" %>
 
         <div class="item-results-submit-button">
           <%= submit_tag 'Apply', id: "filter-button" %>
@@ -52,5 +52,16 @@
   </div>
 </div>
 
-
+<script>
+  let query = document.getElementById('query').value
+  let place = document.getElementById('place').value
+  let queryFilter = document.getElementById('query-filter')
+  let placeFilter = document.getElementById('place-filter')
+  queryFilter.value = query
+  placeFilter.value = place
+</script>
 <%= javascript_pack_tag "flatpickr" %>
+
+<script>
+  document.querySelector(".input-group-results").childNodes[2].placeholder = "Choose date range"
+</script>

@@ -23,24 +23,39 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @conversation = Conversation.new
-    @message = Message.new(content: "")
-    @booking.user = current_user
-    @booking.status = "pending"
-    @booking.item = Item.find(params[:item_id])
-    @conversation.sender_id = current_user.id
-    @conversation.receiver_id = @booking.item.user.id
-    @booking.save
-    @conversation.booking = @booking
-    @conversation.save
-    @message.user = current_user
-    @message.conversation = @conversation
-    @message.save
+    if @item.user != current_user
+      @booking = Booking.new(booking_params)
+      @conversation = Conversation.new
+      @message = Message.new(content: "")
+      @booking.user = current_user
+      @booking.status = "pending"
+      @booking.item = Item.find(params[:item_id])
+      @conversation.sender_id = current_user.id
+      @conversation.receiver_id = @booking.item.user.id
+      @booking.save
+      @conversation.booking = @booking
+      @conversation.save
+      @message.user = current_user
+      @message.conversation = @conversation
+      @message.save
+      redirect_to conversation_messages_path(@conversation)
+      flash[:notice] = 'Your request has been sent'
 
+    else
+      @booking = Booking.new(booking_params)
+      @conversation = Conversation.new
+      @booking.user = current_user
+      @booking.status = "accepted"
+      @booking.item = Item.find(params[:item_id])
+      @conversation.sender_id = current_user.id
+      @conversation.receiver_id = @booking.item.user.id
+      @booking.save
+      @booking.conversation = @conversation
+      @conversation.save
+      redirect_to item_path(@booking.item)
+      flash[:notice] = 'Your item is marked unavailable for specified dates'
+    end
 
-    flash[:notice] = 'Your request has been sent'
-    redirect_to conversation_messages_path(@conversation)
   end
 
   def update

@@ -3,5 +3,5 @@
 meta_product_name: "UFO - Unlimited Fashion Options"
 meta_title: "UFO  - Sustainable Apparel"
 meta_description: "UFO 'Unlimited Fashion Options' is a marketplace for clothing supporting second-hand ownership of apparel. Turn your extra space into extra income by uploading your items"
-meta_image: "UFOlogocropped.png"                       # should exist in `app/assets/images/`
+meta_image: "ufo-landing-page.png"                       # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
