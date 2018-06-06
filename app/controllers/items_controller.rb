@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
     @item = Item.new
 
     @location = request.location.data['city']
-    p request.location.data
     if @location.empty?
       if params[:place].present?
         user_location = params[:place]
@@ -22,7 +21,6 @@ class ItemsController < ApplicationController
         user_location = request.location.data['loc'].split(',')
       end
     end
-    p "USER LOCATION: >>>>>>>   #{user_location}"
     near_items = User.near(user_location, 15)
 
     any_field_from_form = !params[:size].blank? || !params[:buying_price_cents].blank? || !params[:rental_price_cents].blank? || !params[:color].blank?
@@ -35,7 +33,6 @@ class ItemsController < ApplicationController
       end_date = Date.parse(params[:start_date_search].split("to").last)
       filtered_by_date = Item.filter_dates(start_date, end_date)
       @items = items_searched & items_filtered & filtered_by_date
-      p "I AM NUMBER 1"
     # only search in nav
     elsif date_param && any_field_from_form
       start_date = Date.parse(params[:start_date_search].split("to").first)
@@ -43,25 +40,19 @@ class ItemsController < ApplicationController
       filtered_by_date = Item.filter_dates(start_date, end_date)
       items_filtered = Item.filter(params)
       @items = filtered_by_date & items_filtered
-      p "I AM NUMBER 2"
     elsif params[:query].present?
       @items = Item.global_search(params[:query])
-      p "I AM NUMBER 3"
     # only filters
     elsif any_field_from_form
       @items = Item.filter(params)
-      p "I AM NUMBER 4"
     # none
     elsif date_param
       start_date = Date.parse(params[:start_date_search].split("to").first)
       end_date = Date.parse(params[:start_date_search].split("to").last)
       @items = Item.filter_dates(start_date, end_date)
-      p "I AM NUMBER 5"
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
-      p "I AM NUMBER 6"
     end
-    p @items
     @markers = @items.map do |item|
       {
         lat: item.user.latitude,
