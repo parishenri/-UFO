@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     if params[:query].present? && any_field_from_form
       items_searched = Item.global_search(params[:query])
       items_filtered = Item.filter(params)
-      @items = items_searched & items_filtered
+      @items = items_searched
     # only search in nav
     elsif params[:start_date_search].present? && params[:start_date_search].include?('to')
       start_date = Date.parse(params[:start_date_search].split("to").first)
