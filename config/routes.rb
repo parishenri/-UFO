@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/user_listing', to: 'pages#user_listing', as: :user_listing
   get '/user_booking', to: 'pages#user_booking', as: :user_booking
 
-  resources :users, only: [:edit, :update] do
+  resources :users, only: [:edit, :update, :show] do
     resources :bookings, only: :index
   end
 
