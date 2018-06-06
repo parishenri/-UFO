@@ -25,24 +25,33 @@ class ItemsController < ApplicationController
 
     near_items = User.near(user_location, 15)
 
-    any_field_from_form = params[:size] || params[:buying_price_cents] || params[:rental_price_cents] || params[:color]
+    any_field_from_form = !params[:size].blank? || !params[:buying_price_cents].blank? || !params[:rental_price_cents].blank? || !params[:color].blank?
+    date_param = params[:start_date_search].present? && params[:start_date_search].include?('to')
     # both search in nav and filter in index
-    if params[:query].present? && any_field_from_form
+    if params[:query].present? && any_field_from_form && date_param
       items_searched = Item.global_search(params[:query])
       items_filtered = Item.filter(params)
-      @items = items_searched & items_filtered
-    # only search in nav
-    elsif params[:start_date_search].present? && params[:start_date_search].include?('to')
       start_date = Date.parse(params[:start_date_search].split("to").first)
       end_date = Date.parse(params[:start_date_search].split("to").last)
-      @items = Item.filter_dates(start_date, end_date)
-      # binding.pry
+      filtered_by_date = Item.filter_dates(start_date, end_date)
+      @items = items_searched & items_filtered & filtered_by_date
+    # only search in nav
+    elsif date_param && any_field_from_form
+      start_date = Date.parse(params[:start_date_search].split("to").first)
+      end_date = Date.parse(params[:start_date_search].split("to").last)
+      filtered_by_date = Item.filter_dates(start_date, end_date)
+      items_filtered = Item.filter(params)
+      @items = filtered_by_date & items_filtered
     elsif params[:query].present?
       @items = Item.global_search(params[:query])
     # only filters
     elsif any_field_from_form
       @items = Item.filter(params)
     # none
+    elsif date_param
+      start_date = Date.parse(params[:start_date_search].split("to").first)
+      end_date = Date.parse(params[:start_date_search].split("to").last)
+      @items = Item.filter_dates(start_date, end_date)
     else
       @items = Item.includes(:user).where(user_id: near_items.map(&:id))
     end
