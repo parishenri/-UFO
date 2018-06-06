@@ -3,10 +3,30 @@
     <div class="messages-cards booking-details">
       <strong><%= @messages.first.conversation.booking.item.name.capitalize %></strong>
       <div class="messages-cards request-avatar">
-        <h3><strong class="owner-margin">Owner:</strong></h3>
-        <%= cl_image_tag @messages.first.conversation.receiver.photo, class: "avatar-request-message" %>
-        <h3><%= @messages.first.conversation.receiver.first_name %></h3>
+
+        <% if @messages.first.conversation.receiver.first_name == current_user.first_name %>
+          <h3><strong class="owner-margin">Renter:</strong></h3>
+          <div class="reference-position">
+            <%= cl_image_tag @messages.first.conversation.sender.photo, class: "avatar-request-message" %>
+            <p><%= @messages.first.conversation.sender.first_name %></p>
+            <%= link_to "", user_path(@messages.first.conversation.sender), class: "user-profile-link" %>
+          </div>
+
+        <% else @messages.first.conversation.sender.first_name == current_user.first_name %>
+          <h3><strong class="owner-margin">Owner:</strong></h3>
+          <div class="reference-position">
+            <%= cl_image_tag @messages.first.conversation.receiver.photo, class: "avatar-request-message" %>
+            <p><%= @messages.first.conversation.receiver.first_name %></p>
+            <%= link_to "", user_path(@messages.first.conversation.receiver), class: "user-profile-link" %>
+          </div>
+
+        <% end %>
+
       </div>
+
+
+
+
       <h3><strong class="duration-margin">Duration:</strong> <%= @messages.first.conversation.booking.days_range %> days (from <%= @messages.first.conversation.booking.start_date.strftime("%b %d, %Y") %> to <%= @messages.first.conversation.booking.end_date.strftime("%b %d, %Y") %>)</h3>
       <h3>
         <strong class="total-price-margin">Total price:</strong> £<%=  @messages.first.conversation.booking.item.rental_price_cents / 100 * @messages.first.conversation.booking.days_range %> (£<%= @messages.first.conversation.booking.item.rental_price_cents / 100 %> / day)
