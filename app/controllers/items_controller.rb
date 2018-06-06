@@ -50,9 +50,10 @@ class ItemsController < ApplicationController
     @markers = @items.map do |item|
       {
         lat: item.user.latitude,
-        lng: item.user.longitude#,
+        lng: item.user.longitude
       }
     end
+    puts "MARKERS!: #{@markers}"
     @markers.uniq!
 
     respond_to do |format|
