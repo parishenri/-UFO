@@ -29,6 +29,11 @@
         <%= submit_tag :submit, class: "hidden" %>
       <% end %>
     </div>
+      <div class= "clear-button">
+        <% if @show_clear %>
+          <%= link_to "X", items_path %>
+        <% end %>
+      </div>
   </div>
 
   <!-- Right Navigation -->

@@ -249,4 +249,34 @@
 // 	width: 40px !important;
 // }
 
+.clear-button {
+  color: #616668;
+  font-size: 12px;
+  padding-top: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 23px;
+  border-bottom: solid 0.1px transparent;
+  transition: color 0.4s ease-in-out;
+}
+.clear-button {
+  a:hover {
+    color: #dddddd;
+    text-decoration: none;
+  }
+}
+
+
+// .clear-button:active {
+//   color: #dddddd;
+//   text-decoration: none;
+//   border-bottom: solid 1.5px #9595a0;
+//   display: inline;
+//   border-color: #FD9AB9;
+// }
+
+.clear-button:visited {
+  text-decoration: none;
+}
+
 
