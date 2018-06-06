@@ -29,14 +29,8 @@ class Item < ApplicationRecord
     @counter
   end
 
-  # bookings.start_date > start_date AND bookings.start_date < end_date OR bookings.end_date > start_date AND bookings.end_date < end_date OR bookings.start_date < start_date AND bookings.end_date > end_date
-
-
   def self.filter_dates(start_date, end_date)
-    # array = joins(:bookings).where("bookings.start_date > ? AND bookings.start_date < ? OR bookings.end_date > ? AND bookings.end_date < ? OR bookings.start_date < ? AND bookings.end_date > ?", start_date, end_date, start_date, end_date, start_date, end_date)
-    # array = joins(:bookings).where.not("bookings.start_date >= ? OR bookings.start_date <= ?", start_date, end_date)
-    #                         .where.not("bookings.end_date >= ? OR bookings.end_date <= ?", start_date, end_date)
-    array = joins(:bookings).where("bookings.start_date > ? AND bookings.start_date < ? OR bookings.end_date > ? AND bookings.end_date < ? OR bookings.start_date < ? AND bookings.end_date > ?", start_date, end_date, start_date, end_date, start_date, end_date)
+    array = joins(:bookings).where.not("bookings.start_date >= ? AND bookings.start_date <= ? OR bookings.end_date >= ? AND bookings.end_date <= ? OR bookings.start_date <= ? AND bookings.end_date >= ?", start_date, end_date, start_date, end_date, start_date, end_date)
     final_array = array + Item.all.select { |item| item.bookings.empty? }
   end
 
