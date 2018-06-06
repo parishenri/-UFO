@@ -21,7 +21,7 @@
 
           <div class="conversations-container">
             <div>
-              <%= image_tag "favicon.ico", height: 35 %>
+              <%= cl_image_tag conversation.booking.item.photo, class: "avatar-item-booked", height: 35 %>
             </div>
 
             <div class="name-and-date-of-convo">
@@ -50,7 +50,7 @@
         <% @recieved_conversations&.reverse_each do |conversation| %>
           <div class="conversations-container">
             <div>
-              <%= image_tag "favicon.ico", height: 35 %>
+              <%= cl_image_tag conversation.booking.item.photo, class: "avatar-item-booked", height: 35 %>
             </div>
 
             <div class="name-and-date-of-convo">
