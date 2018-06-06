@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :bookings, except: [:index]
-    resources :reviews, only: [ :new, :create]
+    resources :reviews, only: [:create, :index, :destroy]
   end
 
 

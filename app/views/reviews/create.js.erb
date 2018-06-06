@@ -1,0 +1,18 @@
+// app/views/reviews/create.js.erb
+// Here you generate *JavaScript* that would be executed in the browser
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('review_form');
+  newReviewForm.innerHTML = innerHTML;
+}
+
+function addReview(reviewsHTML) {
+  const reviews = document.getElementById('reviews_container');
+  reviews.innerHTML = reviewsHTML ;
+}
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", item: @item, review: @review %>');
+<% else %>
+  addReview('<%= j render "reviews/reviews_container", reviews: @reviews %>');
+  refreshForm('<%= j render "reviews/form", item: @item, review: Review.new %>');
+<% end %>

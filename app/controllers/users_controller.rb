@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def show
     #already finds
+    @available_items = Item.where("availability = ? AND user_id = ?", true, @user.id).count
   end
 
   def destroy
