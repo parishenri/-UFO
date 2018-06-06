@@ -89,3 +89,64 @@
 .avatar-item-booked {
   border-radius: 3px;
 }
+
+.back-btn {
+  padding: 5px 10px;
+  color: white;
+  background: #2F3030;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.back-btn:hover {
+  padding: 5px 10px;
+  color: white;
+  background: #616667;
+  text-decoration: none;
+}
+
+.owner-avatar {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.owner-page {
+  display: flex;
+  height: 50px;
+  h1 {
+    margin: 0px 0px;
+  }
+}
+
+.owner-page-link {
+  display: flex;
+  vertical-align: middle;
+  a {
+    margin: 18px 10px;
+    padding: 0px 0px;
+  }
+}
+
+.item-description-booking {
+  display:flex;
+}
+
+.remove-box-booking {
+  outline: none !important;
+  box-shadow: none !important;
+  background: white !important;
+  border: none !important;
+  color: #D3D3D4;
+  padding: 5px 2px;
+}
+
+.booking-item-name {
+  margin: 15px 0px;
+  h1 {
+    margin: 0px;
+  }
+}
+
+.booking-description {
+  width: 100%;
+}
