@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new
 
     @location = request.location.data['city']
-    p request.loacation.data
+    p request.location.data
     if @location.empty?
       if params[:place].present?
         user_location = params[:place]
