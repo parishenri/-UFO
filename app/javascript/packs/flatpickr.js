@@ -11,7 +11,7 @@ if (start_date) {
 
   flatpickr("#start_date", {
     altInput: true,
-    enable: dates,
+    disable: dates,
     plugins: [new rangePlugin({ input: "#end_date"})]
   });
 }
