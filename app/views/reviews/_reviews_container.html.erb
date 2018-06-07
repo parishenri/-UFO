@@ -1,10 +1,10 @@
 <ul>
 	<% reviews.reverse.each do |review| %>
-	<h3><%= review.user.first_name %> from <%= review.user.city %> 
+	<h3><%= review.user.first_name %> from <%= review.user.address.split(",")[1] %>
 		<% review.rating.times do %>
 		<i class="fas fa-star icon-stars"></i>
 	  	<% end %></h3>
 	  <li><%= review.content %></li>
-	  <%= link_to "Delete", item_reviews_path(review), method: :delete %>
+	  <%= link_to "Delete", item_review_path(review.item, review), method: :delete %>
 	<% end %>
 </ul>

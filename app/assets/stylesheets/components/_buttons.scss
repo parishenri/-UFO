@@ -4,7 +4,7 @@
 	color: black;
 	height: 40px;
 	width: 95px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: lighter;
 	letter-spacing: 2px;
@@ -20,7 +20,7 @@
 	color: black;
 	height: 40px;
 	width: 95px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: lighter;
 	letter-spacing: 2px;
@@ -35,7 +35,7 @@
 	color: black;
 	height: 40px;
 	width: 95px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: lighter;
 	letter-spacing: 2px;
@@ -49,7 +49,7 @@
   padding: 10px 15px;
   background-color: green;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   letter-spacing: 2px;
@@ -65,7 +65,7 @@
   padding: 10px 15px;
   background-color: red;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   letter-spacing: 2px;
@@ -81,7 +81,7 @@
   color: black;
   height: 40px;
   width: 95px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   letter-spacing: 2px;
@@ -96,7 +96,7 @@
   color: black;
   height: 40px;
   width: 95px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   letter-spacing: 2px;
@@ -111,7 +111,7 @@
 	background-color: #D2D3D8;
 	color: black;
 	width: 120px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: lighter;
 	letter-spacing: 2px;
@@ -127,7 +127,7 @@
 	background-color: #2b2b2b;
 	color: white;
 	width: 180px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	letter-spacing: 2px;
 	opacity: 0.9;
@@ -138,7 +138,7 @@
 	// background-color: #2b2b2b;
 	color: white;
 	width: 180px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	letter-spacing: 2px;
 	opacity: 1;
@@ -153,7 +153,7 @@
 	width: 150px;
 	height: 40px;
 	color: white;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-weight: lighter;
 }
 
@@ -167,7 +167,7 @@
 	color: #DE7F7F;
 	height: 30px;
 	width: 95px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: lighter;
 	letter-spacing: 2px;
@@ -185,7 +185,7 @@
 	color: #DE7F7F;
 	height: 30px;
 	width: 95px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: lighter;
 	letter-spacing: 2px;
@@ -199,12 +199,12 @@
 }
 
 .request-booking-btn{
-	background-color: black;
-	border-radius: 3px;
+	background-color: #2f3030;
+	border-radius: 4px;
 	color: white;
 	height: 30px;
 	width: 153px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-weight: lighter;
 	letter-spacing: 2px;
 	position: absolute;
@@ -216,7 +216,7 @@
 .request-booking-btn:hover{
 	background-color: #fd9ab9;
 	color: black;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-weight: lighter;
 	letter-spacing: 2px;
 }
@@ -228,7 +228,7 @@
 	color: white;
 	height: 30px;
 	width: 153px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-weight: lighter;
 	letter-spacing: 2px;
 	position: absolute;
@@ -240,14 +240,10 @@
 .request-purchase-btn:hover{
 	background-color: #fd9ab9;
 	color: black;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-weight: lighter;
 	letter-spacing: 2px;
 }
-// .booking_start_date .form-control .flatpickr-input{
-// 	margin: 30px;
-// 	width: 40px !important;
-// }
 
 .clear-button {
   color: #616668;
@@ -266,17 +262,6 @@
   }
 }
 
-
-// .clear-button:active {
-//   color: #dddddd;
-//   text-decoration: none;
-//   border-bottom: solid 1.5px #9595a0;
-//   display: inline;
-//   border-color: #FD9AB9;
-// }
-
 .clear-button:visited {
   text-decoration: none;
 }
-
-

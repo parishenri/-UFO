@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+
+  ActiveAdmin.routes(self)
 end
 
 

@@ -49,11 +49,11 @@ h1 { font-size: 1.5em; margin: 10px; }
 	display: flex;
 	flex-direction: column;
 	width: 400px;
-	margin: 10px 40px;
+	margin: 10px 0px 10px 40px;
 	padding: 0px 30px;
 	border-style: solid;
 	border-width: 1px;
-	border-color: gray;
+	border-color: #dddddd;
 	border-radius: 8px;
 }
 
@@ -70,10 +70,13 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .review-index-item-avatar{
 	border-radius: 50%;
-	width: 50vh;
+	width: 45vh;
 	height: 50vh;
 	margin: 30px;
 	vertical-align: middle;
+	// border-style: solid;
+	// border-width: 1px;
+	// border-color: #dddddd;
 }
 
 .review-index-overall-rating{
@@ -88,7 +91,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 #reviews_container {
 	border-style: solid;
 	border-width: 1px;
-	border-color: gray;
+	border-color: #dddddd;
 	border-radius: 8px;
 	padding-bottom: 20px;
 	overflow-y: scroll;
@@ -139,4 +142,8 @@ textarea#review-content {
 
 .submit-review-btn:hover{
  	opacity: 1.0;
+}
+
+#review_content{
+	font-size: 12px !important;
 }

@@ -9,12 +9,18 @@
 
       <div class="item-show-details">
         <div class="item-show-buying-renting" id:"item-show-p">
-          <h1><%= @item.name %></h1>
-          <p> Description:<%= @item.description %></p>
-          <p> Rental Price:<%= humanized_money_with_symbol(@item.rental_price) %></p>
-          <p> Buying Price:<%= humanized_money_with_symbol(@item.buying_price) %></p>
-          <p> Size:<%= @item.size %></p>
-          <p> Color:<%= @item.color %></p>
+          <h1 style="margin: 0px;"><%= @item.name %></h1>
+          <div style="margin-bottom: 15px;">
+            <% @item.average_rating.times do %>
+            <i class="fas fa-star icon-stars"></i>
+            <% end %>
+            <i class="fas fa-comments icon-comments"> <%= @item.total_reviews %></i>
+          </div>
+          <p style="margin-bottom: 0px;"> Rental Price:<%= humanized_money_with_symbol(@item.rental_price) %></p>
+          <p style="margin-bottom: 10px;"> Buying Price:<%= humanized_money_with_symbol(@item.buying_price) %></p>
+          <p style="margin-bottom: 10px;"> Description:<%= @item.description %></p>
+          <p style="margin-bottom: 5px;"> Size:<%= @item.size %></p>
+          <p style="margin-bottom: 5px;"> Color:<%= @item.color %></p>
         </div>
 
         <% if @item.user == current_user %>
@@ -27,12 +33,12 @@
                       <p style="text-align: center;"> Specify dates when item not available:</p>
 
                       <div class="input-group">
-                        <i class="far fa-calendar-alt"></i>
+                        <i class="far fa-calendar-alt item-show-calendar-icon-top"></i>
                         <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
                       </div>
 
                       <div class="input-group">
-                        <i class="far fa-calendar-alt"></i>
+                        <i class="far fa-calendar-alt item-show-calendar-icon-bottom"></i>
                         <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
                       </div>
 
@@ -66,12 +72,12 @@
                       <p style="text-align: center;"> Available Dates:</p>
 
                       <div class="input-group">
-                        <i class="far fa-calendar-alt"></i>
+                        <i class="far fa-calendar-alt item-show-calendar-icon-top"></i>
                         <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
                       </div>
 
                       <div class="input-group">
-                        <i class="far fa-calendar-alt"></i>
+                        <i class="far fa-calendar-alt item-show-calendar-icon-bottom"></i>
                         <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
                       </div>
 
@@ -94,7 +100,7 @@
                     <%= label_tag(:shipping, "Shipping:") %>
                     <%= check_box_tag :shipping, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
                   </div>
-                  <div id="myDIV" style= "display: none";>
+                  <div id="myDIV" style= "display: none margin";>
                     <div style= "display: block;">
                       <%= label_tag(:dry_cleaning, "Dry Cleaning:") %>
                       <%= check_box_tag :dry_cleaning, 1, false, data: {"toggle" =>"toggle", "style" => "android" , "onstyle" => "success", "on" => "Yes", "off" => "no"} %>
@@ -120,15 +126,18 @@
 
       <div class="item-show-ratings">
         <div class="item-show-owner-review-link">
-        <%= link_to "Owner Profile", user_path(@item.user)  %>
-          <%= link_to "Review Item", item_reviews_path(@item) %>
+          <%= link_to "Owner Profile", user_path(@item.user)  %>
+          <% if @item.user == current_user || Booking.where(user: current_user, item: @item).length == 0 %>
+          <% else %>
+            <%= link_to "Review Item", item_reviews_path(@item) %>
+          <% end %>
           <%= link_to "All Reviews", item_reviews_path(@item) %>
         </div>
           <div class="item-show-reviews-content">
             <p style="text-decoration: underline;">Some Reviews:</p>
             <% @item.reviews.last(3).each do |review| %>
               <h3><%= review.user.first_name %> from
-              <%= @user.city %>
+              <%= review.user.address.split(",")[1] %>
               <% review.rating.times do %>
               <i class="fas fa-star icon-stars"></i>
               <% end %></h3>
@@ -141,7 +150,8 @@
 
       <div class="map-border">
         <div id="map"
-        style= "width: 100%;
+        style= "width: 450px;
+        min-width: 300px;
         height: 300px;"
         data-markers="<%= @markers.to_json %>"
         data-userimage="<%= image_path('blue.png') %>"
@@ -166,7 +176,6 @@
   bookingBox = document.querySelector(".request-booking-box");
   buyingBox = document.querySelector(".request-buying-box");
   bookingTab.addEventListener("click", function() {
-    // console.log("hello");
     bookingTab.classList.toggle("tabactive");
     buyingTab.classList.toggle("tabactive");
     if (bookingBox.classList.contains("hide-form")) {

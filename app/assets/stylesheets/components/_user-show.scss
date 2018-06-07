@@ -20,8 +20,12 @@
 }
 
 .user-show-ratings-box{
-	margin-bottom: 30px;
-}
+	padding-top: 0px;
+	margin-bottom: 5px;
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+} 	
 
 .user-show-details-box{
 	display: flex;
