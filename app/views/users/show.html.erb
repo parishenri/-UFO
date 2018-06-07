@@ -2,20 +2,20 @@ x
 <!-- User Show Profile Page -->
 
 <div class="user-show-container">
-	
+
 	<!-- Profile Details Rating and Comments -->
 	<div class="user-show-profile-details">
-		
+
 		<div class="user-show-avatar-box">
 			<%= cl_image_tag @user.photo, class: "user-show-avatar"%>
 		</div>
-		
+
 		<div class="user-show-details-box">
 
 
 			<div class="user-show-names-box">
 				<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-				<h3><strong><%= @user.city %></strong>, <%= @user.country %></h3>	
+				<h3><strong><%= @user.address %></strong></h3>
 			</div>
 
 			<div class="user-show-ratings-box">
@@ -33,7 +33,7 @@ x
 				<p><strong>Current Listings: </strong> <%= @user.items.count %></p>
 				<p><strong>Items Currently Available:</strong>	 <%= @available_items %></p>
 			</div>
-			
+
 		</div>
 
 	</div>
@@ -78,8 +78,8 @@ x
 		    </div>
 		  <% end %>
 		</div>
-	
-	<!-- END OF USER SHOW ITEMS -->	
+
+	<!-- END OF USER SHOW ITEMS -->
 	</div>
 
 </div>
