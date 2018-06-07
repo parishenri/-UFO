@@ -1,135 +1,76 @@
-<div class="container">
+  <div class="container">
 
   <div class="items-div">
-    <div class="my-listing-title">
-      <h1>My Listings</h1>
-    </div>
-    <div class="pages-add-icon">
-      <%= link_to '<i class="fas fa-plus"></i> add item'.html_safe, new_item_path(@item) %>
+    <div class="my-booking-title">
+      <h1>My Bookings</h1>
     </div>
   </div>
-
 
   <div class="items-and-calendar">
     <div class="flex-cards">
       <% count = 0 %>
-      <% @items.each do |item| %>
-        <% if item.user == current_user %>
-            <% count += 1 %>
-            <% item.counter = count %>
+      <% @bookings.each do |booking| %>
+          <% count += 1 %>
+          <% booking.counter = count %>
           <div class="card mw">
             <div class="item-counter text-center">
               <%= count %>
             </div>
-            <%= link_to item_path(item) do %>
-              <div class="my-listing-card-image" style="background-image: url(<%= image_tag = item.photo %>)">
+
+            <%= link_to item_booking_path(booking.item, booking) do %>
+              <div class="card-image" style="background-image: url(<%= image_tag = booking.item.photo %>)">
               </div>
             <% end %>
             <div class="card-description">
-              <div class="card-description-edit-delete">
-                <div class="margin-of-card-edit">
-                  <%= item.name %>
+              <div class="name-and-rating">
+                <div class="name-and-dates">
+                  <h3><%= booking.item.name %></h3>
+                  <p>From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+                </div>
+                <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <div class="edit-and-calendar">
+                <div class="remove-box">
+                  <button data-toggle="modal" data-target="#edit-modal-<%= booking.id %>" class="fa fa-edit">
+                  </button>
                 </div>
                 <div class="margin-of-card-edit">
-                  <%= link_to item_path(item), method: :delete do %>
+                  <%= link_to item_booking_path(booking.item, booking), method: :delete do %>
                     <i class="fas fa-trash-alt delete-bin js-click"></i>
                   <% end %>
-                  <%= link_to edit_item_path(item) do %>
-                    <i class="far fa-edit js-click"></i>
-                  <% end %>
                 </div>
               </div>
-              <p> <span class="rent-price">£<%= item.rental_price %>/day </span><span class="buy-price"> | £<%= item.buying_price %> retail</span></p>
-            </div>
-
-            <div class="listing-status">
-              <div class="listing-status-items">
-                <p>Booking status:</p>
-              </div>
-
-              <% if item.bookings.map(&:status).include?("pending") %>
-                <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= item.id %>">
-                  <i data-calendar-id="<%= item.id %>"class="far fa-calendar-plus"></i>
-                </button>
-              <% elsif item.bookings.map(&:status).include?("accepted") %>
-                <div class="item-status"><p class="green listing-status-items">Booked</p></div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= item.id %>">
-                  <i data-calendar-id="<%= item.id %>"class="far fa-calendar-plus"></i>
-                </button>
-              <% elsif item.bookings.map(&:status).include?("pending & booked") %>
-                <div class="item-status"><p class="orange listing-status-items">Requested</p></div>
-                <div class="item-status"><p class="green listing-status-items">Booked</p></div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= item.id %>">
-                  <i data-calendar-id="<%= item.id %>"class="far fa-calendar-plus"></i>
-                </button>
-                <% elsif item.bookings.map(&:status).include?("declined") %>
-                <div class="item-status"><p class="red listing-status-items">Declined</p></div>
-              <% else %>
-               <%# leave this line in case we cadd more scenarios %>
-              <% end %>
             </div>
           </div>
-        <% end %>
-
-        <div class="modal fade" id="exampleModal-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> <%= item.name %></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-
-                <div class="calendar-my-listing">
-                  <div id="calendar">
-                    <div>
-                      <%= simple_form_for(item, url: user_listing_path, method: :get) do |f| %>
-                        <%= f.input :name, label: false, collection: @user_items, prompt: "Select item", input_html: { class: "hidden" } %>
-                      <% end %>
-                      <div class="calendar-container">
-                        <div class="calendar">
-                          <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: item.bookings) do |date, bookings| %>
-                            <%= date.day %>
-                              <% bookings.each do |booking| %>
-                              <div>
-                                <%= booking.item.counter %>
-                              </div>
-                            <% end %>
-                          <% end %>
-                        </div>
+          <div id="edit-modal-<%= booking.id %>" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Booking for <%= booking.item.name %></h5>
+                </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="date_form">
+                        <%= simple_form_for([booking.item, booking]) do |f| %>
+                          <%= f.input :start_date, as: :date, order: [:day, :month, :year], input_html: { class: "form_style" }%>
+                          <%= f.input :end_date, as: :date, order: [:day, :month, :year],input_html: { class: "form_style" } %>
                       </div>
                     </div>
                   </div>
-                </div>
-
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-xs" data-dismiss="modal">Close</button>
+                  <div class="modal-footer">
+                    <%= f.submit "update", class: "btn-xs" %>
+                    <% end %>
+                  </div>
               </div>
             </div>
           </div>
-        </div>
       <% end %>
     </div>
-
   </div>
-
 </div>
-
-<script>
-  const calendars = document.querySelectorAll('.js-click');
-  let selectedCal = 0;
-  calendars.forEach( function (calendar) {
-    calendar.addEventListener("click", (event) => {
-      selectedCal = calendar.dataset.calendarId;
-      const form = document.getElementById('new_item')
-      const dropdown = document.getElementById('item_name')
-      dropdown.value = Number.parseInt(selectedCal)
-      form.submit();
-    });
-  });
-</script>

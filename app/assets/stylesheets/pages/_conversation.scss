@@ -70,10 +70,15 @@
 .container-conversations-box {
   justify-content: space-between;
   border: #dce0e0;
-  margin: 0 12% 0 0;
+  margin: 0 0 0 0;
   margin-bottom: 2%;
   padding: 15px;
   font-family: 'Heebo', sans-serif;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E0E0E0;
+  border-radius: 8px;
+  padding-right: 30px;
 }
 
 .conversations-container {
@@ -92,20 +97,21 @@
 
 .conversation-btn {
   text-decoration: none;
-  background: black;
+  background: #2f3030;
   color: white;
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 10px 10px;
   margin: 0 0px;
   font-family: 'Heebo', sans-serif;
-  font-size: 14px;
+  letter-spacing: 2px;
+  font-size: 12px;
 }
 
 .conversation-btn:hover {
   color: black;
   text-decoration: none;
-  background: #dce0e0;
-  font-family: 'Heebo', sans-serif;
+  background: #fd9ab9;
+
 }
 
 .tabs-messages {
@@ -119,7 +125,7 @@
 .tabs-messages-format {
   color: #dce0e0;
   margin-right: 10px;
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: 10px;
   padding-bottom: 10px;
   margin-right: 24px;
@@ -128,9 +134,8 @@
 
 .tabs-messages-format:hover {
   color: black;
-  font-weight: bold;
-  border-bottom: black;
-  border-bottom: 5px solid black;
+  border-bottom: #fd9ab9;
+  border-bottom: 2px solid black;
   margin-bottom: 5px;
   padding-bottom: 10px;
   font-family: 'Heebo', sans-serif;
