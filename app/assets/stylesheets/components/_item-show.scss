@@ -12,7 +12,7 @@
 .item-show-ratings p{
   margin-bottom: 0px;
   font-size: 11px;
-} 
+}
 
 .item-show-reviews-content p:last-child{
   padding-bottom: 10px;
@@ -104,7 +104,7 @@
 	justify-content: space-between;
 	margin: 20px 30px 0px 5px;
   padding-left: 15px;
-} 
+}
 
 .item-show-buying-renting p{
   font-size: 10px;
@@ -229,6 +229,7 @@
 
 .booking-buying-tab{
   display: flex;
+  margin-bottom: 8px;
 }
 
 #booking-tab{
@@ -265,30 +266,35 @@
 
 #buying-tab p{
   font-size: 11px;
-  margin-bottom: 0px;
+  font-weight: 800;
   margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
 }
 
 #booking-tab p{
   font-size: 11px;
-  margin-bottom: 0px;
+  font-weight: 800;
   margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
 }
 
 #buying-tab:hover{
   text-decoration: none;
   opacity: 0.9;
   color: #fd9ab9;
+  margin-bottom: -2px;
+  border-bottom: 2px solid #fd9ab9;
 }
 
-// #buying-tab p {
-//   margin-bottom: 0px;
-// }
 
 #booking-tab:hover{
   text-decoration: none;
   opacity: 0.9;
   color: #fd9ab9;
+  margin-bottom: -2px;
+  border-bottom: 2px solid #fd9ab9;
 }
 
 
