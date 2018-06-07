@@ -4,3 +4,69 @@ cards.forEach(function(card) {
 });
 results = document.getElementById('results')
 results.innerHTML = "<%= j render 'card_results', items: @items %>";
+
+// We create a global variable to store all the markers that we add to the Map after the initial render
+// - if the variable markersAddedToMap already exists then we don't initialise it.
+if (!markersAddedToMap) {
+  var markersAddedToMap = []
+}
+
+// function to remove markers from map
+function removeAllMarkers(markersArray) {
+  markersArray.forEach((marker) => {
+    marker.setMap(null)
+  })
+}
+
+removeAllMarkers(markersAddedToMap)
+
+// convert the ruby array of markers to a JS object that we can loop over
+var markersAsObject = JSON.parse('<%= @markers.to_json.html_safe %>')
+
+// if we have no markers then do nothing
+if (markersAsObject.length > 0) {
+  // Check if have map on page
+  var mapElem = document.getElementById('map')
+  if (mapElem) {
+    // Get map elem from page and create gMap with google constructor
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: markersAsObject[0]
+    });
+
+    // Create markers
+    markersAsObject.forEach((latLng) => {
+       var marker = new google.maps.Marker({
+          position: latLng,
+          visible: true,
+       });
+       // add new marker to the map
+       marker.setMap(map)
+       // add the the marker to our global array so that we can track which markers we have added
+       markersAddedToMap.push(marker)
+    })
+  }
+}
+
+// Set user location
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+    var userIcon = {
+      url: document.getElementById('map').dataset.userimage,
+      scaledSize: new google.maps.Size(55, 55),
+    };
+
+    var marker = new google.maps.Marker({
+      position: pos,
+      title:"Hello World!",
+      visible: true,
+      map: map,
+      icon: userIcon
+    });
+  })
+}

@@ -1,14 +1,14 @@
 <!-- User Show Profile Page -->
 
 <div class="user-show-container">
-	
+
 	<!-- Profile Details Rating and Comments -->
 	<div class="user-show-profile-details">
-		
+
 		<div class="user-show-avatar-box">
 			<%= cl_image_tag @user.photo, class: "user-show-avatar"%>
 		</div>
-		
+
 		<div class="user-show-details-box">
 
 
@@ -32,7 +32,7 @@
 				<p><strong>Current Listings: </strong> <%= @user.items.count %></p>
 				<p><strong>Items Currently Available:</strong>	 <%= @available_items %></p>
 			</div>
-			
+
 		</div>
 
 	</div>
@@ -80,8 +80,8 @@
 		    </div>
 		  <% end %>
 		</div>
-	
-	<!-- END OF USER SHOW ITEMS -->	
+
+	<!-- END OF USER SHOW ITEMS -->
 	</div>
 
 </div>
