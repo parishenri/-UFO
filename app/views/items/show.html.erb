@@ -12,7 +12,7 @@
           <h1 style="margin: 0px;"><%= @item.name %></h1>
           <div style="margin-bottom: 15px;">
             <% @item.average_rating.times do %>
-            <i class="fas fa-star icon-stars"></i> 
+            <i class="fas fa-star icon-stars"></i>
             <% end %>
             <i class="fas fa-comments icon-comments"> <%= @item.total_reviews %></i>
           </div>
@@ -126,8 +126,11 @@
 
       <div class="item-show-ratings">
         <div class="item-show-owner-review-link">
-        <%= link_to "Owner Profile", user_path(@item.user)  %>
-          <%= link_to "Review Item", item_reviews_path(@item) %>
+          <%= link_to "Owner Profile", user_path(@item.user)  %>
+          <% if @item.user == current_user || Booking.where(user: current_user, item: @item).length == 0 %>
+          <% else %>
+            <%= link_to "Review Item", item_reviews_path(@item) %>
+          <% end %>
           <%= link_to "All Reviews", item_reviews_path(@item) %>
         </div>
           <div class="item-show-reviews-content">
