@@ -45,6 +45,9 @@
       <%= link_to "Nearby Items", items_path, class: "navbar-ufo-item navbar-ufo-link" %>
       <%= link_to "Groups", "#", class: "navbar-ufo-item navbar-ufo-link" %>
       <%= link_to "Messages", conversations_path, class: "navbar-ufo-item navbar-ufo-link" %>
+      <% if current_user.received_messages.any? { |m| !m.read } %>
+        <div class="dot"><i class="fas fa-circle" ></i></div>
+      <% end %> %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-ufo-item">
