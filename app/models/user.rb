@@ -33,9 +33,6 @@ class User < ApplicationRecord
       return average
     end
 
-    return 0 if counter == 0
-    average = sum / counter
-    return average
   end
 
 end
