@@ -5,21 +5,24 @@
 			<%= cl_image_tag @item.photo, class: "review-index-item-avatar"%>
 		</div>
 
-		<div class="review-index-details">
-			<h3><%= @item.name %></h3>
-			
-			<div class="review-index-overall-rating">
-				<h3>Overall Rating:
-				<% @item.average_rating.times do %>
-				<i class="fas fa-star icon-stars"></i>
-				<% end %>
-				</h3>
-			</div>
+    <% if @item.user == current_user || Booking.where(user: current_user, item: @item).length == 0 %>
+    <% else %>
+  		<div class="review-index-details">
+  			<h3><%= @item.name %></h3>
 
-			<div id="review_form">
-				<%= render "form", item: @item, review: @review %>
-			</div>
-		</div>
+  			<div class="review-index-overall-rating">
+  				<h3>Overall Rating:
+  				<% @item.average_rating.times do %>
+  				<i class="fas fa-star icon-stars"></i>
+  				<% end %>
+  				</h3>
+  			</div>
+
+    			<div id="review_form">
+    				<%= render "form", item: @item, review: @review %>
+    			</div>
+  		</div>
+      <% end %>
 	</div>
 
 	<div class="review-index-ratings-box">
@@ -30,7 +33,7 @@
 		</div>
 
 	</div>
-</div>	
+</div>
 
 
 
