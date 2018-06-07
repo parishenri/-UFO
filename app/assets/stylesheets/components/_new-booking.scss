@@ -95,6 +95,7 @@
 
 .input-group {
 	position: relative;
+  margin: 2px 0px;
 }
 
 .request-booking-box .item-show-calendar-icon-top {
@@ -115,7 +116,7 @@
 
 .request-booking-box .item-show-calendar-icon-bottom {
     position: absolute;
-    top: 7px;
+    top: 10px;
     right: 10%;
     color: gray;
     z-index: 13;

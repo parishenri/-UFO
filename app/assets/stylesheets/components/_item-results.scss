@@ -17,6 +17,8 @@
 }
 .size-button {
   margin: 0px 10px;
+  vertical-align: middle;
+  display: flex;
 }
 .size-button select option {
   border-style: solid !important;
@@ -27,8 +29,7 @@
 
 #filter-button {
   width: 60px;
-  margin: 7px;
-  height: 18px;
+  height: 25px;
   font-size: 12px;
   border-radius: 3%;
   background-color: white;
@@ -119,7 +120,12 @@
 }
 
 .input-groups-results.flatpickr-input input{
-  height: 30px;
+  height: 25px !important;
+}
+
+.form-control {
+  height: 25px;
+  vertical-align: center;
 }
 
 
