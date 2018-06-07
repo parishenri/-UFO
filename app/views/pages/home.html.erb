@@ -26,12 +26,9 @@
           <div class="card-description">
             <h3><%= item.name %></h3>
             <p> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong>    Buy it for: <%= humanized_money_with_symbol(item.buying_price) %></p>
-            <div>
-            <% item.average_rating.times do %>
-            <i class="fas fa-star icon-stars"></i> 
-            <% end %>
-              <i class="fas fa-comments icon-comments"> <%= item.total_reviews %></i>
-            </div>
+            <p>This is the rating and comments</p>
+          </div>
+          <div class="card-rating">
           </div>
       </div>
     <% end %>
@@ -56,21 +53,28 @@
   </div>
 
 
-  <h2 class="page-header">Top Influencer's</h2>
+  <h2 class="page-header">Top Influencers</h2>
   <div class="cards-container">
-    <% @items.first(5).each do |item| %>
-      <div class="card">
-          <%= link_to item_path(item.id) do %>
-            <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
+
+    <% User.all.first(5).each do |user| %>
+      <% if user.influencer_status == true %>
+        <div class="card">
+          <%= link_to user_path(user) do %>
+            <% if user.photo? %>
+              <% photo_path = cl_image_path user.photo %>
+            <% else %>
+              <% photo_path = 'https://cdn.pastemagazine.com/www/articles/shutter%20cocktail%20party%20long.jpg' %>
+            <% end %>
+            <div class="card-image" style="background-image: url(<%= photo_path %>)"></div>
           <% end %>
           <div class="card-description">
-            <h3>Influencer's Name</h3>
-            <p>PARIS, France</p>
-            <p>In here we will give a brief summary of the influencer's style and whatever.</p>
+            <h3> <%= user.first_name %> </h3>
+            <p> <%= user.city %> </p>
           </div>
           <div class="card-rating">
           </div>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <br>
