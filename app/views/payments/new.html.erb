@@ -31,20 +31,20 @@
           <% if @order.shipping  %>
         <p>*Shipping Cost:  £<%= @shipping_cost %></p>
         <% else %>
-          <p class="additional-costs">*No Shipping Included</p>
+          <p style="color: red; font-size: 9px;" class="additional-costs">*No Shipping Included</p>
         <% end %>
 
         <% if @order.dry_cleaning  %>
-          <p>*Dry Cleaning: £<%= @dry_cleaning_cost %></p>
+          <p style="color: red; font-size: 9px">*Dry Cleaning: £<%= @dry_cleaning_cost %></p>
         <% else %>
-          <p class="additional-costs">*No Dry Clean Included</p>
+          <p style="color: red; font-size: 9px" class="additional-costs">*No Dry Clean Included</p>
         <% end %>
         
 
         <%= form_tag order_payments_path(@order) do %>
         <article>
           <label class="amount">
-            <span>3. Total Amount to Pay:  <%= humanized_money_with_symbol(@order.amount) %></span>
+            <p>3. Total Amount to Pay:  <%= humanized_money_with_symbol(@order.amount) %></p>
           </label>
         </article>
         <br>
