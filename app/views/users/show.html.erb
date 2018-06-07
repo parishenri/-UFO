@@ -22,15 +22,16 @@
 				<% @user.average_rating.times do %>
 				<i class="fas fa-star icon-stars"></i>
 				<% end %> </h3>
+				<i class="fas fa-comments icon-comments"></i>
 			</div>
 
-			<div class="user-show-description">
-				<p><strong>Bio: </strong><%= @user.description %></p>
+			<div class="user-show-description-one">
+				<p>Bio:<%= @user.description %></p>
 			</div>
 
-			<div class="user-show-description">
-				<p><strong>Current Listings: </strong> <%= @user.items.count %></p>
-				<p><strong>Items Currently Available:</strong>	 <%= @available_items %></p>
+			<div class="user-show-description-two">
+				<p>Current Listings: <%= @user.items.count %></p>
+				<p> Items Currently Available:<%= @available_items %></p>
 			</div>
 
 		</div>

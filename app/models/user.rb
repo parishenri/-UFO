@@ -18,16 +18,20 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def average_rating
-    sum = 0
-    counter = 0
-    items.each do |item|
-      item.reviews.each do |review|
-        sum += review.rating
-        counter += 1
+    if reviews.count == 0
+      0
+    else 
+      sum = 0
+      counter = 0
+      items.each do |item|
+        item.reviews.each do |review|
+          sum += review.rating
+          counter += 1
+        end
       end
+      average = sum / counter 
+      return average
     end
-    average = sum / counter 
-    return average
   end
 
 end

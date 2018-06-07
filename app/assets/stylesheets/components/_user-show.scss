@@ -25,6 +25,10 @@
 	display: flex;
 	align-items: center;
 	font-size: 12px;
+}
+
+.user-show-ratings-box h3{
+	font-size: 12px;
 } 	
 
 .user-show-details-box{
@@ -44,4 +48,20 @@
 
 .user-show-names-box h3{
 	padding: 0px 20px 0px 0px;
+}
+
+.user-show-description-one p{
+	margin-bottom: 0px;
+	font-size: 11px;
+}
+
+.user-show-description-two p{
+	margin-bottom: 0px;
+	font-size: 11px;
+}
+
+.user-show-description-two{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
 }

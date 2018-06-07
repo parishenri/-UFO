@@ -33,15 +33,6 @@ class ReviewsController < ApplicationController
     redirect_to item_reviews_path
   end
 
-  #   if @review.save
-  #     redirect_to item_reviews_path
-  #   else
-  #     @reviews = @item.reviews
-  #     render :index
-  #   end
-  # end
-
-
   private
 
   def set_item

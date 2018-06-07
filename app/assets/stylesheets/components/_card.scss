@@ -41,6 +41,7 @@
   font-size: 12px;
   font-weight: 10px;
   font-family: 'Heebo', sans-serif;
+  margin-bottom: 3px;
 }
 
 .card-boot {
@@ -78,8 +79,18 @@
 
 .influencer-card-image{
   height: 190px;
-  width: 210px;
+  width: 240px;
   background-size: cover;
   background-position: center;
   border-radius: 2px;
+  opacity: 0.8;
+}
+
+.influencer-card{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E0E0E0;
+  border-radius: 4px;
+  padding: 10px 13px 20px 13px;
+  margin: 0px 10px;
 }
