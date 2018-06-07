@@ -28,9 +28,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # @reivew = Review.find
-    # @review.destroy
-    # redirect_to item_reviews_path
+    @review = Review.find(params[:id])
+    @review.delete
+    redirect_to item_reviews_path
   end
 
   #   if @review.save
