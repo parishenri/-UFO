@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
 
   def show
     # see before action
+    # @marker = {
+    #     lat: @item.user.latitude,
+    #     lng: @item.user.longitude,
+    #   }
   end
 
   def index

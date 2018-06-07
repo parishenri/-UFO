@@ -1,0 +1,101 @@
+.bookings-show-container{
+	min-height: 600px;
+	padding: 30px;
+}
+
+.bookings-show-container h3{
+	font-size: 18px;
+	font-family: 'Heebo', sans-serif;
+	color: #2f3030;
+	font-weight: normal;
+	letter-spacing: 2px;
+}
+
+.bookings-show-box{
+	display: flex;
+	padding: 0px 0px;
+}
+
+.booking-show-card{
+  width: 45vh;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+
+}
+
+.booking-show-item-card{
+	border-radius: 5px;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #F2F2F2;
+  	padding: 10px;
+  	transition: 0.3s;
+}
+
+.booking-show-item-card:hover{
+  transform: scale(1.03);
+}
+
+.bookings-show-details{
+	display: flex;
+	width: 850px;
+	border-radius: 5px;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #F2F2F2;
+  	margin-left: 10px;
+}
+
+.bookings-show-map-details{
+	border-radius: 5px;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #F2F2F2;
+  	margin: 10px;
+}
+
+.bookings-show-items-details{
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #F2F2F2;
+	margin: 10px;
+	width: 400px;
+	padding: 0px 15px;
+}
+
+.bookings-show-owner-details{
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #F2F2F2;
+	margin: 10px;
+	width: 400px;
+}
+
+.bookings-show-owner-text{
+	padding: 0px 15px;
+	display: flex;
+	flex-direction: column;
+}
+
+.bookings-show-owner-page{
+	display: flex;
+	padding: 20px;
+}
+
+.bookings-show-details p {
+	font-size: 10px;
+	margin-bottom: 3px;
+}
+
+.bookings-show-details h1{
+	border-bottom: 1px solid #F2F2F2;
+	padding-bottom: 10px;
+}
+
+.booking-show-title{
+	display: flex;
+	align-items: center;
+}
