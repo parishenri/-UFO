@@ -4,9 +4,11 @@ class PagesController < ApplicationController
   def home
     @items = Item.all
     @location = request.location.data['city']
+    @users = User.all
   end
 
   def user_listing
+
     @items = current_user.items
     @user = current_user
     @bookings = @items.map(&:bookings).flatten
