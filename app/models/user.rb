@@ -20,13 +20,13 @@ class User < ApplicationRecord
   def average_rating
     sum = 0
     counter = 0
-    return 0 if item.reviews.count == 0
     items.each do |item|
       item.reviews.each do |review|
         sum += review.rating
         counter += 1
       end
     end
+    return 0 if counter == 0
     average = sum / counter
     return average
   end
