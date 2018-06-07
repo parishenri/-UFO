@@ -1,6 +1,6 @@
 <ul>
 	<% reviews.reverse.each do |review| %>
-	<h3><%= review.user.first_name %> from <%= review.user.city %> 
+	<h3><%= review.user.first_name %> from <%= review.user.address.split(",")[1] %> 
 		<% review.rating.times do %>
 		<i class="fas fa-star icon-stars"></i>
 	  	<% end %></h3>
