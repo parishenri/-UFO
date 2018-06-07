@@ -19,13 +19,14 @@ class User < ApplicationRecord
 
   def average_rating
     sum = 0
-    items.each do |i|
-      sum += i.average_rating
+    counter = 0
+    items.each do |item|
+      item.reviews.each do |review|
+        sum += review.rating
+        counter += 1
+      end
     end
-    average = sum / items.count
-    # iterate over items
-    # for each item add the average rating of that item in a sum
-    # divide sum by number of items
+    average = sum / counter 
     return average
   end
 

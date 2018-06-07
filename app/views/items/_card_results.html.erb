@@ -8,8 +8,12 @@
         <p class="margin-item-results-rent-price"> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong></p>
         <p>Sell: <%= humanized_money_with_symbol(item.buying_price) %></p>
       </div>
-      <div class="card-rating">
-      </div>
+        <div class="item-results-ratings">
+        <% @item.average_rating.times do %>
+        <i class="fas fa-star icon-stars"></i> 
+        <% end %>
+          <i class="fas fa-comments icon-comments"> <%= @item.total_reviews %></i>
+        </div>  
     </div>
   </div>
 <% end %>

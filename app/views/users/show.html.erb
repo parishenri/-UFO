@@ -1,4 +1,3 @@
-x
 <!-- User Show Profile Page -->
 
 <div class="user-show-container">
@@ -15,14 +14,14 @@ x
 
 			<div class="user-show-names-box">
 				<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-				<h3><strong><%= @user.address %></strong></h3>
+				<h3><strong><%= @user.address.split(",")[1] %></strong>, <%=  @user.address.split(",")[2] %></h3>	
 			</div>
 
 			<div class="user-show-ratings-box">
-				<h1>Overall Rating:</h1>
+				<h3>Overall Rating:
 				<% @user.average_rating.times do %>
-				<i class="fas fa-star"></i>
-				<% end %>
+				<i class="fas fa-star icon-stars"></i>
+				<% end %> </h3>
 			</div>
 
 			<div class="user-show-description">
@@ -52,9 +51,12 @@ x
 		        <div class="card-description">
 		          <h3><%= item.name %></h3>
 		          <p> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong>    Buy it for: <%= humanized_money_with_symbol(item.buying_price) %></p>
-		          <p>This is the rating and comments</p>
+		        <div>
+		        <% item.average_rating.times do %>
+		        <i class="fas fa-star icon-stars"></i> 
+		        <% end %>
+		          <i class="fas fa-comments icon-comments"> <%= item.total_reviews %></i>
 		        </div>
-		        <div class="card-rating">
 		        </div>
 		    </div>
 		  <% end %>

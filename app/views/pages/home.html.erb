@@ -38,15 +38,18 @@
   <div class="cards-container">
     <% @items.first(5).each do |item| %>
       <div class="card">
-          <%= link_to item_path(item.id) do %>
-            <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
+        <%= link_to item_path(item.id) do %>
+          <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
+        <% end %>
+        <div class="card-description">
+          <h3><%= item.name %></h3>
+          <p> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong>    Buy it for: <%= humanized_money_with_symbol(item.buying_price) %></p>
+          <div>
+          <% item.average_rating.times do %>
+          <i class="fas fa-star icon-stars"></i> 
           <% end %>
-          <div class="card-description">
-            <h3><%= item.name %></h3>
-            <p> <strong>Rent per day: <%= humanized_money_with_symbol(item.rental_price) %></strong>    Buy it for: <%= humanized_money_with_symbol(item.buying_price) %></p>
-            <p>This is the rating and comments</p>
+            <i class="fas fa-comments icon-comments"> <%= item.total_reviews %></i>
           </div>
-          <div class="card-rating">
           </div>
       </div>
     <% end %>

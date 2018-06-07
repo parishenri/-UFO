@@ -43,7 +43,7 @@
   justify-content: center;
 	align-items: center;
 	color: gray !important;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .item-show-links a:hover{
@@ -64,11 +64,12 @@
   margin: 10px;
   border-style: solid;
   border-width: 1px;
-  border-color: #dddddd;
+  border-color: #eeeeee;
+  border-radius: 5px;
   margin-top: 50px;
   margin-left: 100px;
   margin-right: 140px;
-  padding: 10px;
+  padding: 20px;
   transition: .3s;
   height: 60vh;
   width: 50vh;
@@ -101,8 +102,9 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	margin: 0px 30px 0px 5px;
-}
+	margin: 20px 30px 0px 5px;
+  padding-left: 15px;
+} 
 
 .item-show-buying-renting p{
   font-size: 10px;
@@ -116,11 +118,14 @@
 .item-show-details{
 	display: flex;
 	margin: 1px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-between;
+	align-items: flex-start;
 	padding: 0px 0px 0px ;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  padding-bottom: 20px;
 }
 
 .mapsize {
@@ -217,51 +222,73 @@
 
 }
 
+.dry-clean-tag{
+  font-size: 10px;
+  margin-bottom: 0px;
+}
+
 .booking-buying-tab{
   display: flex;
 }
 
 #booking-tab{
   margin-left: 10px;
-  background-color: #2f3030;
+  // background-color: #2f3030;
   padding-top: 5px;
   text-align: center;
   width: 100px;
-  color: white;
-  font-family: 'Raleway', sans-serif !important;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 8px 0px 0px 0px;
+  color: #2f3030;
+  font-family: 'Heebo', sans-serif !important;
+  // border-style: solid;
+  // border-width: 1px;
+  // border-radius: 8px 0px 0px 0px;
 }
 
 #item-show-p{
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Heebo', sans-serif !important;
   font-weight: lighter;
 }
 
 
 #buying-tab{
-  background-color: #2f3030;
+  // background-color: #2f3030;
   color: white;
   padding-top: 5px;
   text-align: center;
   width: 100px;
-  color: white;
-  font-family: 'Raleway', sans-serif !important;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 0px 8px 0px 0px;
+  color: #2f3030;
+  font-family: 'Heebo', sans-serif !important;
+  // border-style: solid;
+  // border-width: 1px;
+  // border-radius: 0px 8px 0px 0px;
 }
 
+#buying-tab p{
+  font-size: 11px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+#booking-tab p{
+  font-size: 11px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
 
 #buying-tab:hover{
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 0.9;
+  color: #fd9ab9;
 }
+
+// #buying-tab p {
+//   margin-bottom: 0px;
+// }
 
 #booking-tab:hover{
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 0.9;
+  color: #fd9ab9;
 }
 
 
@@ -276,7 +303,7 @@
 }
 
 .item-show-dry-cleaning {
-  float: right;
+  float: right !important;
 }
 
 #myDIV {
@@ -300,11 +327,12 @@
   margin-top: 10px;
 }
 
-.booking_start_date .form-control {
+.booking_start_date input {
   font-size: 12px;
   height: 30px !important;
   width: 151px !important;
   margin-left: 5px;
   margin-bottom: 4px;
   margin-top: 0px;
+  background-color: white !important;
 }
