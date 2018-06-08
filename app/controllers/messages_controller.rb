@@ -4,12 +4,20 @@ class MessagesController < ApplicationController
     @message = Message.new
     @conversation = Conversation.find(params[:conversation_id])
     @messages = @conversation.messages
+    current_user.received_messages.each do |message|
+      message.read = true
+      message.save
+    end
   end
 
   def create
     @message = Message.new(params_message)
-    @message.conversation_id = params[:conversation_id]
-    @message.user_id = current_user.id
+    @conversation = Conversation.find(params[:conversation_id])
+    @message.conversation = @conversation
+    message_receiver = [@conversation.sender, @conversation.receiver] - [current_user]
+    @message.user = current_user
+    @message.sender = current_user
+    @message.receiver = message_receiver.first
     if @message.save
       respond_to do |format|
         format.html { redirect_to conversation_messages_path(@message.conversation.id) }

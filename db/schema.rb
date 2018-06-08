@@ -86,7 +86,12 @@ ActiveRecord::Schema.define(version: 2018_06_07_194403) do
     t.bigint "user_id"
     t.string "content"
     t.bigint "conversation_id"
+    t.boolean "read", default: false
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 

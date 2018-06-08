@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
 
   def show
     # see before action
+  @markers = [ {
+    lat: @item.user.latitude,
+    lng: @item.user.longitude
+  }]
   end
 
   def index
@@ -33,9 +37,12 @@ class BookingsController < ApplicationController
       @conversation.sender_id = current_user.id
       @conversation.receiver_id = @booking.item.user.id
       @booking.save
+      binding.pry
       @conversation.booking = @booking
       @conversation.save
       @message.user = current_user
+      @message.sender = current_user
+      @message.receiver = @booking.item.user
       @message.conversation = @conversation
       @message.save
       redirect_to conversation_messages_path(@conversation)
