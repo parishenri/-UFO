@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
     any_field_from_form = !params[:size].blank? || !params[:buying_price_cents].blank? || !params[:rental_price_cents].blank? || !params[:color].blank?
     date_param = params[:start_date_search].present? && params[:start_date_search].include?('to')
     # both search in nav and filter in index
-    # binding.pry
     nearby_items = Item.includes(:user).where(user_id: near_items.map(&:id))
 
     if params[:query].present? && any_field_from_form && date_param
