@@ -9,11 +9,11 @@
         <p>Sell: <%= humanized_money_with_symbol(item.buying_price) %></p>
       </div>
         <div class="item-results-ratings">
-        <% @item.average_rating.times do %>
-        <i class="fas fa-star icon-stars"></i> 
+        <% item.average_rating.times do %>
+        <i class="fas fa-star icon-stars"></i>
         <% end %>
-          <i class="fas fa-comments icon-comments"> <%= @item.total_reviews %></i>
-        </div>  
+          <i class="fas fa-comments icon-comments"> <%= item.total_reviews %></i>
+        </div>
     </div>
   </div>
 <% end %>
