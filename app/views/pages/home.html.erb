@@ -38,7 +38,7 @@
 
   <h2 class="page-header">Most Popular</h2>
   <div class="cards-container">
-    <% @items.first(5).each do |item| %>
+    <% @most.first(5).each do |item| %>
     <div class="card">
         <%= link_to item_path(item.id) do %>
           <div class="card-image" style="background-image: url(<%= cl_image_path item.photo %>)"></div>
@@ -62,7 +62,7 @@
   <h2 class="page-header">Top Influencers</h2>
   <div class="cards-container">
 
-    <% @users.first(5).each do |user| %>
+    <% @users.all.each do |user| %>
       <% if user.influencer_status == true %>
         <div class="influencer-card">
           <%= link_to user_path(user) do %>

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
-  before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_item, only: [:edit, :show, :update, :destroy, :bookingcount]
   before_action :set_variables, only: [:new, :index, :edit]
   skip_before_action :authenticate_user!, only: [:index]
 
@@ -76,7 +76,6 @@ class ItemsController < ApplicationController
       format.html { render 'items/index' }
       format.js
     end
-
   end
 
   def new
@@ -94,7 +93,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -122,8 +120,9 @@ class ItemsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
-
   end
+
+
 
   def destroy
     @item.destroy
@@ -141,7 +140,7 @@ class ItemsController < ApplicationController
   end
 
   def form_tag_params
-     params.permit(:rental_price_cents, :buying_price_cents, :size, :color, :start_date, :end_date)
+     params.permit(:rental_price_cents, :buying_price_cents, :size, :color, :start_date, :end_date, :bookingcnt)
   end
 
   def set_variables

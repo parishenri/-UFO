@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_102110) do
+ActiveRecord::Schema.define(version: 2018_06_07_194403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_06_07_102110) do
     t.string "sku"
     t.boolean "shipping"
     t.string "category"
+    t.integer "bookingcnt", default: 0
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
