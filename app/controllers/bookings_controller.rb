@@ -37,7 +37,6 @@ class BookingsController < ApplicationController
       @conversation.sender_id = current_user.id
       @conversation.receiver_id = @booking.item.user.id
       @booking.save
-      binding.pry
       @conversation.booking = @booking
       @conversation.save
       @message.user = current_user
