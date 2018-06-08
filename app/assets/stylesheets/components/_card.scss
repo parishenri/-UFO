@@ -7,13 +7,18 @@
 }
 
 .card-image{
-  width: 177px;
-  height: 180px;
-  // height: 220px;
-  // min-width: 200px;
-  background-size: cover;
+  width: 150px;
+  height: 170px;
+  min-width: 160px;
+  margin: 10px 10px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #F2F2F2;
+  border-radius: 4px;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
-  border-radius: 2px;
 }
 
 
@@ -28,6 +33,10 @@
 .card-description{
   font-size: 10px;
   font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  padding: 0px 10px;
 }
 
 .card-description p{
@@ -38,7 +47,9 @@
   font-size: 12px;
   font-weight: 10px;
   font-family: 'Heebo', sans-serif;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  margin-top: 5px;
 }
 
 .card-boot {
@@ -50,12 +61,14 @@
   flex-direction: column;
   position: relative;
   margin: 8px;
-  padding: 12px 12px;
+  padding: 5px 5px 10px 5px;
   transition: .3s;
   border-style: solid;
   border-width: 1px;
-  border-color: #F2F2F2;
+  border-color: #f2f2f2;
   border-radius: 4px;
+  width: 195px;
+  height: 270px;
 }
 
 
@@ -67,7 +80,7 @@
   top: 0;
   bottom: 0;
   right: 0;
-  width: 100%;
+  width: 50px;
   z-index: 2;
   background: black;
   opacity: 0;

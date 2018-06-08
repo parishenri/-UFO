@@ -85,6 +85,7 @@
   p {
     font-size: 10px;
     margin: 0px 0px;
+    margin-left: 10px;
   }
   a {
     font-size: 12px;
@@ -134,10 +135,15 @@
 .rent-price {
   color: black;
   font-weight: bold;
+  position: absolute;
+  bottom: 28px;
 }
 
 .buy-price {
   color: grey;
+  position: absolute;
+  left: 70px;
+  bottom: 28px;
 }
 
 .pages-add-icon a{

@@ -17,7 +17,7 @@
         <% if item.user == current_user %>
             <% count += 1 %>
             <% item.counter = count %>
-          <div class="card mw">
+          <div class="user-listings-card mw">
             <div class="item-counter text-center">
               <%= count %>
             </div>
@@ -27,8 +27,8 @@
             <% end %>
             <div class="card-description">
               <div class="card-description-edit-delete">
-                <div class="margin-of-card-edit">
-                  <%= item.name %>
+                <div class="margin-of-card-edit user-listing-product-name">
+                  <h3><%= item.name %></h3>
                 </div>
                 <div class="margin-of-card-edit">
                   <%= link_to item_path(item), method: :delete do %>
@@ -39,7 +39,10 @@
                   <% end %>
                 </div>
               </div>
+              <!-- <div style="margin-bottom: 10px;"> -->
+
               <p> <span class="rent-price">£<%= item.rental_price %>/day </span><span class="buy-price"> | £<%= item.buying_price %> retail</span></p>
+              <!-- </div> -->
             </div>
 
             <div class="listing-status">

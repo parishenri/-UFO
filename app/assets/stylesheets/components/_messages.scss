@@ -31,6 +31,16 @@
 	margin-left: 80px;
 }
 
+.messages-cards-h3 {
+  font-size: 20px;
+  font-weight: normal;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #F2F2F2;
+  padding-bottom: 5px;
+
+}
+
 .messages {
   font-family: 'Heebo', sans-serif;
   padding: 20px;
@@ -46,6 +56,11 @@
   align-items: center;
   min-height: 300px;
   margin: 30px 225px 30px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #f2f2f2;
+  border-width: 1px;
+  padding-bottom: 15px;
 }
 
 .booking-details {
@@ -53,12 +68,26 @@
   margin: 0px 60px;
 }
 
+.banner-messages-title{
+  font-weight: normal;
+  margin-bottom: 2px;
+  position: absolute;
+  left: 250px;
+  bottom: 330px;
+  color: #dddddd;
+  font-weight: lighter;
+}
+
 .request-avatar {
   width: 10%;
   display: flex;
+  position: relative;
   align-items: center;
   h3 {
     margin-right: 15px;
+    font-family: 'Heebo', sans-serif;
+    letter-spacing: 2px;
+    font-weight: normal;
   }
   img {
     margin-right: 10px;
@@ -102,6 +131,7 @@
     margin: 0;
   }
 }
+
 
 .speech-bubble-r {
   position: relative;
@@ -163,7 +193,12 @@
 }
 
 .duration-margin {
-  margin-top: 15px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.duratio-margin p{
+  font-size: 12px;
 }
 
 .messages-info-label {
@@ -172,6 +207,7 @@
 
 .banner-messages {
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: relative;
 }
 
 .accept-decline-btn-div {
@@ -182,6 +218,7 @@
 
 .owner-margin {
   margin-right: 16px;
+  margin-top: 15px;
 }
 
 .duration-margin {
@@ -190,10 +227,21 @@
 
 .total-price-margin {
   margin-right: 4px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+} 
+
+.messages-titles-h3 {
+  font-family: 'Heebo', sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
 .status-margin {
   margin-right: 28px;
+  margin-top: 10px;
+  width: 50px;
 }
 
 .user-profile-link {
@@ -217,4 +265,50 @@
   p {
     margin: 0;
   }
+}
+
+.messages-avatar-picture{
+  position: absolute;
+  left: 300px;
+  bottom: 55px;
+  opacity: 0.8;
+}
+
+.messages-avatar-picture-two{
+  position: absolute;
+  left: 330px;
+  bottom: 55px;
+  opacity: 0.8;
+}
+
+.messages-avatar-picture-three{
+  position: absolute;
+  left: 380px;
+  bottom: 55px;
+  opacity: 0.8;
+  color: #DCDCDC;
+  font-weight: lighter;
+}
+
+.messages-duration-box{
+  display: flex;
+} h4{
+  font-size: 11px;
+  font-weight: lighter;
+  font-family: 'Heebo', sans-serif;
+  align-items: center;
+}
+
+.messages-total-price-box{
+  display: flex;
+  align-items: center;
+} h4{
+  font-size: 11px;
+  font-weight: lighter;
+  font-family: 'Heebo', sans-serif;
+  align-items: center;
+}
+
+.messages-status-box{
+  display: flex;
 }

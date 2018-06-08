@@ -9,19 +9,18 @@
         <p>* Please review your order before submitting payment</p>
         <p>1. Your Item: <%= @order.item.name %> </p>
         <p>2. Description: <%= @order.item.description %></p>
-        <p>2. Size: <%= @order.item.size.capitalize %></p>
-        <p>2. Item Sku: <%= @order.item.sku %></p>
+        <p>3. Size: <%= @order.item.size.capitalize %></p>
+        <!-- <p>2. Item Sku: <%#= @order.item.sku %></p> -->
       </div>
 
       <div class="payment-details">
         <h1 class="payments-summary-h2"> <i class="fas fa-user"></i> User Details:</h1>
         <p>*Please review your details before submitting payment</p>
-        <p>1. First Name:<%= @order.user.first_name %> </p>
-        <p>2. Last Name: <%= @order.user.last_name %></p>
-        <p>3. User ID: <%= @order.user.id %></p>
-        <p>4. Mobile Number: <%= @order.user.phone_number %></p>
-        <p>5. Your Address: <%= @order.user.address %></p>
-        <p>6. Your Email: <%= @order.user.email %></p>
+        <p>1. First Name:<em><%= @order.user.first_name %></em> </p>
+        <p>2. Last Name: <em><%= @order.user.last_name %></em></p>
+        <p>3. Mobile Number: <em><%= @order.user.phone_number %></em></p>
+        <p>4. Your Address:<em> <%= @order.user.address %></em></p>
+        <p>5. Your Email: <em> <%= @order.user.email %></em></p>
       </div>
 
       <div class="payment-info">
@@ -29,7 +28,7 @@
         <p> 1. Item Price:<%= humanized_money_with_symbol(@order.item.buying_price) %></p>
         <p> 2. Additional Costs: </p>
           <% if @order.shipping  %>
-        <p>*Shipping Cost:  £<%= @shipping_cost %></p>
+        <p style="color: red; font-size: 9px;">*Shipping Cost:  £<%= @shipping_cost %></p>
         <% else %>
           <p style="color: red; font-size: 9px;" class="additional-costs">*No Shipping Included</p>
         <% end %>
@@ -44,7 +43,7 @@
         <%= form_tag order_payments_path(@order) do %>
         <article>
           <label class="amount">
-            <p>3. Total Amount to Pay:  <%= humanized_money_with_symbol(@order.amount) %></p>
+            <p style="font-weight: bold">3. Total Amount to Pay:  <%= humanized_money_with_symbol(@order.amount) %></p>
           </label>
         </article>
         <br>
