@@ -19,6 +19,22 @@
   margin-left: 10px;
 }
 
+.user-listings-card{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 8px;
+  padding: 10px 5px 10px 5px;
+  transition: .3s;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f2f2f2;
+  border-radius: 4px;
+  width: 195px;
+  height: 290px;
+}
+
+
 .green {
   background: green;
   color: white;
@@ -50,6 +66,8 @@
 
 .card-description {
   margin: 10px 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .margin-of-card-edit {
@@ -150,4 +168,7 @@
 
 .booking-description {
   width: 100%;
+}
+
+.user-listing-product-name{
 }
