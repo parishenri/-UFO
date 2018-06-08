@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def index
     @item = Item.new
+    @bookings = Booking.all
     @location = request.location.data['city']
     if @location.empty?
       if params[:place].present?
@@ -137,7 +138,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color)
+    params.require(:item).permit(:name, :description, :rental_price, :buying_price, :size, :availability, :rental_only, :photo, :color, :average_rating)
   end
 
   def form_tag_params
