@@ -61,26 +61,23 @@
 
   <h2 class="page-header">Top Influencers</h2>
   <div class="cards-container">
-
-    <% @users.first(5).each do |user| %>
-      <% if user.influencer_status == true %>
-        <div class="influencer-card">
-          <%= link_to user_path(user) do %>
-            <% if user.photo? %>
-              <% photo_path = cl_image_path user.photo %>
-            <% else %>
-              <% photo_path = 'https://cdn.pastemagazine.com/www/articles/shutter%20cocktail%20party%20long.jpg' %>
-            <% end %>
-            <div class="influencer-card-image" style="background-image: url(<%= photo_path %>)"></div>
+    <% @users.where(influencer_status: true).first(4).each do |user| %>
+      <div class="influencer-card">
+        <%= link_to user_path(user) do %>
+          <% if user.photo? %>
+            <% photo_path = cl_image_path user.photo %>
+          <% else %>
+            <% photo_path = 'https://cdn.pastemagazine.com/www/articles/shutter%20cocktail%20party%20long.jpg' %>
           <% end %>
-          <div class="card-description">
-            <h3> <%= user.first_name %> from <%= user.address.split(",")[1] %>
-            <% user.average_rating.times do %>
-            <i class="fas fa-star icon-stars"></i>
-            <% end %> </h3>
-          </div>
+          <div class="influencer-card-image" style="background-image: url(<%= photo_path %>)"></div>
+        <% end %>
+        <div class="card-description">
+          <h3> <%= user.first_name %> from <%= user.address.split(",")[1] %>
+          <% user.average_rating.times do %>
+          <i class="fas fa-star icon-stars"></i>
+          <% end %> </h3>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
   <br>
