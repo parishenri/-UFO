@@ -7,6 +7,21 @@
 
 .user-show-profile-details{
 	display: flex;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #E3E3E3;
+	border-radius: 25px;
+}
+
+.user-show-title{
+	margin-top: 0px;
+	font-size: 16px;
+	margin-left: 20px;
+	margin-bottom: 3px;
+	color: #B5B5B5;
+	font-family: 'Heebo', sans-serif;
+	letter-spacing: 2px;
+	font-weight: lighter;
 }
 
 .user-show-avatar{
@@ -15,8 +30,9 @@
 	height: 30vh;
 	margin: 30px;
 	vertical-align: middle;
-	// background-size: cover;
- //  	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .user-show-ratings-box{
