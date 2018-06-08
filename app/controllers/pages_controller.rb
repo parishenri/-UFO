@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @items = Item.all
     @location = request.location.data['city']
     @users = User.all
+    # @most = Item.left_joins(:bookings).where.not("items.user_id = bookings.user_id").group(:id).order('COUNT(bookings.id) DESC')
+    @most = Item.left_joins(:bookings).group(:id).order('COUNT(bookings.id) DESC')
+    # @most_popular = @most.reject { |item| item.user == current_user }
   end
 
   def user_listing

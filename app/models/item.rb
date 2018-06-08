@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   def average_rating
     if reviews.count == 0
        0
-    else 
+    else
       sum = 0
       reviews.each do |r|
         sum += r.rating
