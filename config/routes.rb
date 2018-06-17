@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'about', to: 'pages#about', as: :about
+  get 'contact', to: 'pages#contact', as: :contact
+
   devise_for :users
 
   get 'calendar/:id', to: 'pages#calendar', as: :calendar
