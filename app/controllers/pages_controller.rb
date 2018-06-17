@@ -7,6 +7,21 @@ class PagesController < ApplicationController
   def about
   end
 
+  def howworks
+  end
+
+  def gettingstarted
+  end
+
+  def FAQ
+  end
+
+  def partners
+  end
+
+  def careers
+  end
+
   def home
     @items = Item.all
     @location = request.location.data['city']
