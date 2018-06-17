@@ -70,22 +70,18 @@
                   <div class="rent">
                     <%= simple_form_for [@item, @booking], method: :post, html: {class: "form-inline"} do |t| %>
                       <p style="text-align: center;"> Available Dates:</p>
-
                       <div class="input-group">
                         <i class="far fa-calendar-alt item-show-calendar-icon-top"></i>
                         <%= t.input :start_date, as: :string, input_html: { id: "start_date"},label: false, placeholder: "Start Date" %>
                       </div>
-
                       <div class="input-group">
                         <i class="far fa-calendar-alt item-show-calendar-icon-bottom"></i>
                         <%= t.input :end_date, as: :string, input_html: { id: "end_date"},label: false, placeholder: "End Date" %>
                       </div>
-
                       <div id="bookedDates" data-dates="<%= @unavailable_dates.to_json %>">
                       </div>
                       <%= t.submit "Request Booking", class: "request-booking-btn" %>
                     <% end %>
-
                   </div>
                 </div>
               </div>

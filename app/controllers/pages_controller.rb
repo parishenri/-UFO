@@ -18,4 +18,10 @@ class PagesController < ApplicationController
 
     @user_items = Item.where(user: current_user)
   end
+
+  def contact
+  end
+
+  def about
+  end
 end
