@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: :contact
   get 'howworks', to: 'pages#howworks', as: :howworks
   get 'gettingstarted', to: 'pages#gettingstarted', as: :gettingstarted
-  get 'FAQ', to: 'pages#FAQ', as: :FAQ
+  get 'faq', to: 'pages#faq', as: :faq
   get 'partners', to: 'pages#partners', as: :partners
   get 'careers', to: 'pages#careers', as: :careers
 

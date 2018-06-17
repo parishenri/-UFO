@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   def gettingstarted
   end
 
-  def FAQ
+  def faq
   end
 
   def partners
