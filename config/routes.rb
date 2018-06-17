@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'faq', to: 'pages#faq', as: :faq
   get 'partners', to: 'pages#partners', as: :partners
   get 'careers', to: 'pages#careers', as: :careers
+  get 'sustainability', to: 'pages#sustainability', as: :sustainability
+  get 'locations', to: 'pages#locations', as: :locations
 
   devise_for :users
 
