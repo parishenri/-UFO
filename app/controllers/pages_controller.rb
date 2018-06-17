@@ -1,5 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :about, :contact]
+
+  def contact
+  end
+
+  def about
+  end
 
   def home
     @items = Item.all
@@ -8,7 +14,6 @@ class PagesController < ApplicationController
   end
 
   def user_listing
-
     @items = current_user.items
     @user = current_user
     @bookings = @items.map(&:bookings).flatten
@@ -19,9 +24,4 @@ class PagesController < ApplicationController
     @user_items = Item.where(user: current_user)
   end
 
-  def contact
-  end
-
-  def about
-  end
 end
