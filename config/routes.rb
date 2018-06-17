@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'careers', to: 'pages#careers', as: :careers
   get 'sustainability', to: 'pages#sustainability', as: :sustainability
   get 'locations', to: 'pages#locations', as: :locations
+  get 'termsofservice', to: 'pages#termsofservice', as: :termsofservice
+  get 'ppolicy', to: 'pages#ppolicy', as: :ppolicy
 
   devise_for :users
 
